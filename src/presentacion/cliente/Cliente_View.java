@@ -21,8 +21,8 @@ public class Cliente_View extends javax.swing.JDialog implements java.util.Obser
     public Cliente_View(java.awt.Frame parent, boolean modal) {
         super(parent,modal);
         initComponents();
-        this.setLocation(100, 100);
-        this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
+//        this.setLocation(100, 100);
+//        this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
     }
 
     /**
