@@ -51,9 +51,7 @@ public class Producto_View extends javax.swing.JDialog implements java.util.Obse
 
         jLabel1.setText("jLabel1");
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setResizable(false);
-        setSize(new java.awt.Dimension(910, 350));
+        setBackground(new java.awt.Color(204, 255, 204));
 
         Titulo_Registro.setFont(new java.awt.Font("Rockwell", 3, 36)); // NOI18N
         Titulo_Registro.setText("Registro de producto");
@@ -105,9 +103,6 @@ public class Producto_View extends javax.swing.JDialog implements java.util.Obse
         Button_Agregar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Button_Agregar.setText("Agregar");
         Button_Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Button_AgregarMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 Button_AgregarMousePressed(evt);
             }
@@ -124,11 +119,6 @@ public class Producto_View extends javax.swing.JDialog implements java.util.Obse
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        Table_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Table_ProductosMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(Table_Productos);
 
         Label_Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
@@ -153,34 +143,33 @@ public class Producto_View extends javax.swing.JDialog implements java.util.Obse
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Label_Detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Label_Unidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Label_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Label_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Label_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(Label_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Textfield_Codigo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Textfield_Codigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                             .addComponent(Textfield_Detalle, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Textfield_Unidad, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Textfield_Precio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)))
+                            .addComponent(Textfield_Precio)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(Titulo_Registro)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(Label_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(Textfield_Buscar)))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(2, 2, 2)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Titulo_Registro, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,16 +193,37 @@ public class Producto_View extends javax.swing.JDialog implements java.util.Obse
                         .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Label_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))))
+                        .addContainerGap())))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+       if( Textfield_Detalle.getText().isEmpty() || Textfield_Codigo.getText().isEmpty() /*|| Textfield_Precio.getText().isEmpty()*/) return; //
+       Producto producto = new Producto();
+       producto.setDetalle(Textfield_Detalle.getText());
+       producto.setCodigo(Textfield_Codigo.getText());
+       //producto.setPrecio_unitario(Textfield_Precio.getText());                                                                            //
+       control.agregar(producto);
+    }                                       
+
+    private void filtroBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        Producto filtro= new Producto();
+        filtro.setDetalle(Textfield_Buscar.getText());
+        control.buscar(filtro);
+    }                                            
+    
+    private void listaMouseClicked(java.awt.event.MouseEvent evt) {                                   
+        if(evt.getClickCount()==2){
+            control.seleccionar(Table_Productos.getSelectedRow());
+        }
+    }
+    
     private void Textfield_DetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_DetalleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Textfield_DetalleActionPerformed
@@ -235,25 +245,8 @@ public class Producto_View extends javax.swing.JDialog implements java.util.Obse
     }//GEN-LAST:event_Button_AgregarMousePressed
 
     private void Textfield_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_BuscarActionPerformed
-        Producto filtro= new Producto();
-        filtro.setDetalle(Textfield_Buscar.getText());
-        control.buscar(filtro);
+        // TODO add your handling code here:
     }//GEN-LAST:event_Textfield_BuscarActionPerformed
-
-    private void Table_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ProductosMouseClicked
-        if(evt.getClickCount()==2){
-            control.seleccionar(Table_Productos.getSelectedRow());
-        }
-    }//GEN-LAST:event_Table_ProductosMouseClicked
-
-    private void Button_AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_AgregarMouseClicked
-        if( Textfield_Detalle.getText().isEmpty() || Textfield_Codigo.getText().isEmpty() /*|| Textfield_Precio.getText().isEmpty()*/) return; //
-       Producto producto = new Producto();
-       producto.setDetalle(Textfield_Detalle.getText());
-       producto.setCodigo(Textfield_Codigo.getText());
-       //producto.setPrecio_unitario(Textfield_Precio.getText());                                                                            //
-       control.agregar(producto);
-    }//GEN-LAST:event_Button_AgregarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
