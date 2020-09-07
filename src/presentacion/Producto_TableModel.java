@@ -14,7 +14,7 @@ import javax.swing.table.TableModel;
  * @author Ivan
  */
 public class Producto_TableModel extends AbstractTableModel implements TableModel {
-    String[] cols ={"Descripción","Código",/*"Precio"*/ };               //
+    String[] cols ={"Descripción","Unidad", "Código",/*"Precio"*/ };               //
     List<Producto> rows;
 
     public  Producto_TableModel(List<Producto> rows){
@@ -22,7 +22,7 @@ public class Producto_TableModel extends AbstractTableModel implements TableMode
     }
 
     public int getColumnCount() {
-        return 2;                               //SON 3
+        return 3;                               //SON 3
     }
 
     public String getColumnName(int col){
@@ -38,7 +38,8 @@ public class Producto_TableModel extends AbstractTableModel implements TableMode
         java.text.DecimalFormat df = new java.text.DecimalFormat("####");
         switch (col){
             case 0: return p.getDetalle();
-            case 1:return p.getCodigo();
+            case 1: return p.getCodigo();
+            case 2: return p.getMedida();
             //case 2:return p.getPrecio_unitario();           //
             default: return "";
         }
