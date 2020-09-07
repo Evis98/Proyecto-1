@@ -55,6 +55,8 @@ public class Cliente_View extends javax.swing.JDialog implements java.util.Obser
         jLabel2 = new javax.swing.JLabel();
         jTextField_buscar = new javax.swing.JTextField();
 
+        setResizable(false);
+
         jLabel1.setFont(new java.awt.Font("Rockwell", 3, 36)); // NOI18N
         jLabel1.setText("Registrar un Cliente");
 
