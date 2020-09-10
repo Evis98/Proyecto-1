@@ -21,8 +21,8 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
      */
     public Producto_View() {
        initComponents();
-       this.setLocation(100, 100);
-       this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
+//       this.setLocation(100, 100);
+//       this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
     }
 
     /**
@@ -48,21 +48,33 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         Textfield_Buscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Productos = new javax.swing.JTable();
-        buscajButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
+        tituloJLabel.setBackground(new java.awt.Color(153, 255, 153));
+        tituloJLabel.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
+        tituloJLabel.setForeground(new java.awt.Color(51, 51, 51));
+        tituloJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloJLabel.setText("Resgistro producto");
+        tituloJLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tituloJLabel.setOpaque(true);
 
+        Label_Detalle.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Detalle.setForeground(new java.awt.Color(51, 51, 51));
         Label_Detalle.setText("Detalle:");
 
+        Label_Unidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Unidad.setText("Tipo de unidad:");
 
+        Label_Codigo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Codigo.setText("Código:");
 
+        Label_Precio.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Precio.setText("Precio unitario:");
 
+        Button_Agregar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Button_Agregar.setText("Agregar");
         Button_Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +82,24 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
             }
         });
 
+        Textfield_Codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Textfield_CodigoActionPerformed(evt);
+            }
+        });
+
+        Label_Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Buscar.setText("Buscar:");
 
+        Textfield_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Textfield_BuscarActionPerformed(evt);
+            }
+        });
+
+        Table_Productos.setBackground(new java.awt.Color(204, 255, 204));
+        Table_Productos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Table_Productos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         Table_Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -83,6 +111,13 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Table_Productos.setAlignmentX(1.5F);
+        Table_Productos.setAlignmentY(1.5F);
+        Table_Productos.setColumnSelectionAllowed(true);
+        Table_Productos.setEditingColumn(1);
+        Table_Productos.setEditingRow(1);
+        Table_Productos.setName(""); // NOI18N
+        Table_Productos.setRowHeight(20);
         Table_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Table_ProductosMouseClicked(evt);
@@ -90,90 +125,81 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         });
         jScrollPane1.setViewportView(Table_Productos);
 
-        buscajButton.setText("Buscar");
-        buscajButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscajButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Label_Precio)
-                                .addComponent(Label_Codigo))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Textfield_Codigo)
-                                .addComponent(Textfield_Precio)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Label_Unidad)
-                                .addComponent(tituloJLabel)
-                                .addComponent(Label_Detalle))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Textfield_Detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Textfield_Unidad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(Button_Agregar)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_Detalle)
+                            .addComponent(Label_Codigo)
+                            .addComponent(tituloJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(Button_Agregar))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(Label_Precio))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Label_Unidad)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(buscajButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Textfield_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Textfield_Unidad, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Textfield_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Textfield_Detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Label_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloJLabel)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(tituloJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(Label_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buscajButton, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Detalle)
                             .addComponent(Textfield_Detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_Unidad)
-                            .addComponent(Textfield_Unidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Codigo)
                             .addComponent(Textfield_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Unidad)
+                            .addComponent(Textfield_Unidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Precio)
                             .addComponent(Textfield_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(37, 37, 37)
                         .addComponent(Button_Agregar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 120, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,11 +222,15 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         }
     }//GEN-LAST:event_Table_ProductosMouseClicked
 
-    private void buscajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscajButtonActionPerformed
-       Producto filtro= new Producto();
+    private void Textfield_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_CodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Textfield_CodigoActionPerformed
+
+    private void Textfield_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_BuscarActionPerformed
+   Producto filtro= new Producto();
         filtro.setDetalle(Textfield_Buscar.getText());
-        control.buscar(filtro);
-    }//GEN-LAST:event_buscajButtonActionPerformed
+        control.buscar(filtro);        // TODO add your handling code here:
+    }//GEN-LAST:event_Textfield_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,8 +292,8 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     public void update(Observable o, Object o1) {
         Producto current = modelo.getCurrent();
         Textfield_Detalle.setText(current.getDetalle());
-        Textfield_Unidad.setText(current.getMedida());
         Textfield_Codigo.setText(current.getCodigo());
+        Textfield_Unidad.setText(current.getMedida());
         Textfield_Precio.setText(current.getString_Precio_unitario());
         Table_Productos.setModel(new Producto_TableModel(modelo.getLista()));
     }
@@ -281,7 +311,6 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     private javax.swing.JTextField Textfield_Detalle;
     private javax.swing.JTextField Textfield_Precio;
     private javax.swing.JTextField Textfield_Unidad;
-    private javax.swing.JButton buscajButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tituloJLabel;
     // End of variables declaration//GEN-END:variables

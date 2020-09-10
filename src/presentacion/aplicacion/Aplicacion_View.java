@@ -23,7 +23,7 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
   public void LogoIcon() {
-        ImageIcon ImageIcon = new ImageIcon("factura.png");
+        ImageIcon ImageIcon = new ImageIcon("F.png");
         Image image = ImageIcon.getImage();
         this.setIconImage(image);
     }
@@ -77,8 +77,10 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
             .addGap(0, 478, Short.MAX_VALUE)
         );
 
+        jMenu_Producto.setBorder(null);
         jMenu_Producto.setText("Producto");
         Eleccion.add(jMenu_Producto);
+        jMenu_Producto.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         jMenu_Producto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu_ProductoMouseClicked(evt);
@@ -86,8 +88,10 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         });
         jMenuBar1.add(jMenu_Producto);
 
+        jMenu_Cliente.setBorder(null);
         jMenu_Cliente.setText("Cliente");
         Eleccion.add(jMenu_Cliente);
+        jMenu_Cliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         jMenu_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu_ClienteMouseClicked(evt);
@@ -95,7 +99,9 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         });
         jMenuBar1.add(jMenu_Cliente);
 
+        jMenu_Empresa.setBorder(null);
         jMenu_Empresa.setText("Empresa");
+        jMenu_Empresa.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         jMenu_Empresa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu_EmpresaMouseClicked(evt);

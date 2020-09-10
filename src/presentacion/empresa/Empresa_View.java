@@ -21,8 +21,8 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
      */
     public Empresa_View() {
         initComponents();
-        this.setLocation(100, 100);
-        this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
+//        this.setLocation(100, 100);
+//        this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
     }
 
     /**
@@ -55,23 +55,35 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         Table_Empresas = new javax.swing.JTable();
         Button_Agregar = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tituloJLabel.setBackground(new java.awt.Color(153, 153, 255));
+        tituloJLabel.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
         tituloJLabel.setText("Registro empresa");
+        tituloJLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tituloJLabel.setOpaque(true);
 
+        Label_codigoActividad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_codigoActividad.setText("Codigo actividad:");
 
+        Label_Nombre.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         Label_Nombre.setText("Nombre comercial:");
 
+        Label_Id.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Id.setText("Identificacion:");
 
+        Label_Ubicacion.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Ubicacion.setText("Ubicacion:");
 
+        Label_Correo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Correo.setText("Correo:");
 
+        Label_Telefono.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Telefono.setText("Telefono:");
 
+        Label_Fax.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Fax.setText("Fax:");
 
         Textfield_Id.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +104,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
+        Label_Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Buscar.setText("Buscar:");
 
         Textfield_Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +113,9 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
+        Table_Empresas.setBackground(new java.awt.Color(204, 204, 255));
+        Table_Empresas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Table_Empresas.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Table_Empresas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -111,6 +127,9 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Table_Empresas.setRowHeight(20);
+        Table_Empresas.setRowMargin(2);
+        Table_Empresas.setRowSelectionAllowed(false);
         Table_Empresas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Table_EmpresasMouseClicked(evt);
@@ -118,7 +137,9 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         });
         jScrollPane1.setViewportView(Table_Empresas);
 
+        Button_Agregar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Button_Agregar.setText("Agregar");
+        Button_Agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Button_Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_AgregarActionPerformed(evt);
@@ -133,56 +154,57 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Label_Id)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Textfield_Id))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_Correo)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addComponent(Textfield_Correo))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Label_codigoActividad)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Textfield_CodigoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tituloJLabel)
+                        .addComponent(Label_Telefono)
+                        .addGap(18, 18, 18)
+                        .addComponent(Textfield_Telefono))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Label_Ubicacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Textfield_Ubicacion))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_Nombre)
-                            .addComponent(Label_Id)
-                            .addComponent(Label_Ubicacion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Label_codigoActividad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Textfield_NombreComercial)
-                            .addComponent(Textfield_Id)
-                            .addComponent(Textfield_Ubicacion)))
+                            .addComponent(Textfield_CodigoActividad)))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Label_Fax)
+                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Label_Telefono)
-                            .addComponent(Label_Fax))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Button_Agregar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Textfield_Telefono)
-                                .addComponent(Textfield_Fax)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(Label_Buscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                            .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Textfield_Fax, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Label_Buscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(280, 280, 280))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(tituloJLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloJLabel)
-                    .addComponent(Label_Buscar)
-                    .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(tituloJLabel)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_codigoActividad)
                             .addComponent(Textfield_CodigoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,7 +216,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Id)
                             .addComponent(Textfield_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Ubicacion)
                             .addComponent(Textfield_Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,18 +224,25 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Correo)
                             .addComponent(Textfield_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Telefono)
                             .addComponent(Textfield_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Fax)
                             .addComponent(Textfield_Fax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(Label_Buscar)
                         .addGap(18, 18, 18)
-                        .addComponent(Button_Agregar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
