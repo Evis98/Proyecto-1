@@ -183,8 +183,10 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
           if( Textfield_Detalle.getText().isEmpty() || Textfield_Codigo.getText().isEmpty() /*|| Textfield_Precio.getText().isEmpty()*/) return; //
        Producto producto = new Producto();
        producto.setDetalle(Textfield_Detalle.getText());
+       producto.setMedida(Textfield_Unidad.getText());
        producto.setCodigo(Textfield_Codigo.getText());
-       //producto.setPrecio_unitario(Textfield_Precio.getText());                                                                            //
+       double Precio = Double.parseDouble(Textfield_Precio.getText());
+       producto.setPrecio_unitario(Precio);                                                                         //
        control.agregar(producto);
     }//GEN-LAST:event_Button_AgregarActionPerformed
 
@@ -260,8 +262,9 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     public void update(Observable o, Object o1) {
         Producto current = modelo.getCurrent();
         Textfield_Detalle.setText(current.getDetalle());
+        Textfield_Unidad.setText(current.getMedida());
         Textfield_Codigo.setText(current.getCodigo());
-        //Textfield_Precio.setText(current.getPrecio_unitario());
+        Textfield_Precio.setText(current.getString_Precio_unitario());
         Table_Productos.setModel(new Producto_TableModel(modelo.getLista()));
     }
 

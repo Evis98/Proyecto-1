@@ -16,7 +16,7 @@ import javax.swing.table.TableModel;
  */
 public class Producto_TableModel extends AbstractTableModel implements TableModel {
 
-    String[] cols = {"Descripción", "Código",/*"Precio"*/};               //
+    String[] cols = {"Descripción", "Código", "Tipo de unidad", "Precio"};               //
     List<Producto> rows;
 
     public Producto_TableModel(List<Producto> rows) {
@@ -25,7 +25,7 @@ public class Producto_TableModel extends AbstractTableModel implements TableMode
 
     @Override
     public int getColumnCount() {
-        return 2;                               //SON 3
+        return 4;                               
     }
 
     @Override
@@ -46,9 +46,11 @@ public class Producto_TableModel extends AbstractTableModel implements TableMode
             case 0:
                 return p.getDetalle();
             case 1:
-                return p.getCodigo();
+                return p.getMedida();
             case 2:
-                return p.getPrecio_unitario();           //
+                return p.getCodigo();
+            case 3:
+                return p.getPrecio_unitario();
             default:
                 return "";
         }

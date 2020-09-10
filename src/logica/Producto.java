@@ -15,6 +15,7 @@ public class Producto {
     private String medida;
     private String codigo;
     private double precio_unitario;
+    public double setPrecio_unitario;
     
     public Producto(String detalle, int capacidad, String medida, String codigo, double precio_unitario) {
         this.detalle = detalle;
@@ -66,6 +67,11 @@ public class Producto {
 
     public void setPrecio_unitario(double precio_unitario) {
         this.precio_unitario = precio_unitario;
+    }
+    
+    public String getString_Precio_unitario(){
+        String stringPrecio = String.valueOf(precio_unitario);
+        return stringPrecio;
     }
   
 }
