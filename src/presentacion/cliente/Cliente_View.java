@@ -8,6 +8,8 @@ package presentacion.cliente;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Cliente;
 import presentacion.Cliente_TableModel;
 /**
@@ -55,6 +57,8 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         jTable_Clientes = new javax.swing.JTable();
         jButton_Agregar = new javax.swing.JButton();
         jTextField_Buscar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        load = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -131,6 +135,20 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
+        jButton1.setText("store");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        load.setText("load");
+        load.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,22 +174,27 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jTextField_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton_Agregar)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel_Distrito)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField_Distrito))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel_Canton)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel_Nombre)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_Agregar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel_Distrito)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField_Distrito))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel_Canton)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(load)
+                            .addComponent(jButton1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -222,7 +245,11 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
                             .addComponent(jLabel_Distrito)
                             .addComponent(jTextField_Distrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37)
-                        .addComponent(jButton_Agregar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_Agregar)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(load))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -260,6 +287,22 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         control.buscar(filtro);        
                    
     }//GEN-LAST:event_jTextField_BuscarActionPerformed
+
+    private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
+        try {
+            control.load();
+        } catch (Exception ex) {
+            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_loadMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+            control.store();        // TODO add your handling code here:
+        } catch (Exception ex) {
+            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -327,6 +370,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_Agregar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -347,6 +391,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JTextField jTextField_Nombre;
     private javax.swing.JTextField jTextField_Numero;
     private javax.swing.JTextField jTextField_Provincia;
+    private javax.swing.JButton load;
     // End of variables declaration//GEN-END:variables
 
    

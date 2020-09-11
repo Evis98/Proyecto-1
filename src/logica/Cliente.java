@@ -23,6 +23,9 @@ public class Cliente {
     public Cliente() {
         
     }
+    
+   
+    
     @Override
     public String toString() {
         return "Cliente{" + "nombre=" + nombre + ", id=" + id + ", correo=" + correo + ", provincia=" + provincia + ", canton=" + canton + ", distrito=" + distrito + ", telefono=" + telefono + '}';

@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package presentacion.cliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Cliente;
 
 /**
@@ -24,10 +26,12 @@ public class Cliente_Control {
     }
     
     public void agregar(Cliente c){
-        logica.Servicio.instance().add(c);
-        modelo.setCurrent(new Cliente());
-        modelo.setLista(logica.Servicio.instance().getClientes());        
-        modelo.commit();
+    
+            logica.Servicio.instance().add(c);
+            modelo.setCurrent(new Cliente());
+            modelo.setLista(logica.Servicio.instance().getClientes());
+            modelo.commit();
+       
     } 
     
     public void buscar(Cliente c){    
@@ -38,6 +42,17 @@ public class Cliente_Control {
     public void seleccionar(int row){
         modelo.setCurrent(modelo.getLista().get(row));
         modelo.commit();        
+    }
+    
+    
+     public void load() throws Exception {
+        logica.Servicio.instance().load();
+         modelo.commit();
+    }
+
+    public void store() throws Exception {
+        logica.Servicio.instance().store();
+        modelo.commit();
     }
     
     public void show(){

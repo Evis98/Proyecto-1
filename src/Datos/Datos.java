@@ -7,6 +7,9 @@ package Datos;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import logica.Cliente;
 import logica.Producto;
 import logica.Empresa;
@@ -16,6 +19,8 @@ import logica.Empresa;
  *
  * @author Ivan
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Datos {
     List<Producto> productos;   
     List<Cliente> clientes;
