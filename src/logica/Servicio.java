@@ -71,8 +71,8 @@ public class Servicio {
         datos.getClientes().add(c);
     } 
      
-     public void load() throws Exception{
-          logica.XmlPersister.TheinstanceXml().load();
+     public Datos load() throws Exception{
+        return  logica.XmlPersister.TheinstanceXml().load();
      }
      
      

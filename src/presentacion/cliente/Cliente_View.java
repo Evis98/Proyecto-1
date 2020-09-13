@@ -302,7 +302,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
 try { 
-            Datos c = this.load();
+            Datos c = control.load();
         jTable_Clientes.setModel(new Cliente_TableModel( c.getClientes()));
         } catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -376,16 +376,7 @@ try {
         return modelo;
     }
 
-     public Datos load() throws Exception {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Datos.class);
-        FileInputStream is = new FileInputStream("pruebaNuevoXmlTipoCliente.xml");
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        Datos result = (Datos) unmarshaller.unmarshal(is);
-        is.close();
-        return result;
-    }
-    
-    @Override
+      @Override
     public void update(Observable o, Object arg) {
         Cliente current = modelo.getCurrent();
         jTextField_Nombre.setText(current.getNombre());

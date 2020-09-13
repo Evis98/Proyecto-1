@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package presentacion.cliente;
+import Datos.Datos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Cliente;
@@ -45,9 +46,9 @@ public class Cliente_Control {
     }
     
     
-     public void load() throws Exception {
-        logica.Servicio.instance().load();
-         modelo.commit();
+     public Datos load() throws Exception {       
+         modelo.commit();         
+         return  logica.Servicio.instance().load();
     }
 
     public void store() throws Exception {
