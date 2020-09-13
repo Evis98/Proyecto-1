@@ -6,10 +6,13 @@
 package presentacion.cliente;
 
 import Datos.Datos;
+import java.io.FileInputStream;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 import logica.Cliente;
 import presentacion.Cliente_TableModel;
 
@@ -144,6 +147,11 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         cargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cargarMouseClicked(evt);
+            }
+        });
+        cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarActionPerformed(evt);
             }
         });
 
@@ -293,10 +301,9 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_jTextField_BuscarActionPerformed
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-//        jTable_Clientes.add(control.load()); 
-        try {
-//            control.load();
-           
+try { 
+            Datos c = this.load();
+        jTable_Clientes.setModel(new Cliente_TableModel( c.getClientes()));
         } catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -309,6 +316,10 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_storeMouseClicked
+
+    private void cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,15 +374,18 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         return modelo;
     }
 
+     public Datos load() throws Exception {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Datos.class);
+        FileInputStream is = new FileInputStream("pruebaNuevoXmlTipoCliente.xml");
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Datos result = (Datos) unmarshaller.unmarshal(is);
+        is.close();
+        return result;
+    }
+    
     @Override
     public void update(Observable o, Object arg) {
         Cliente current = modelo.getCurrent();
-//        try {
-//            control.load();
-//           
-//        } catch (Exception ex) {
-//            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         jTextField_Nombre.setText(current.getNombre());
         jTextField_Id.setText(current.getId());
         jTextField_Numero.setText(current.getTelefono());
