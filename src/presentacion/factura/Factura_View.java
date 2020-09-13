@@ -21,7 +21,7 @@ import presentacion.factura.Factura_Modelo;
 public class Factura_View extends javax.swing.JInternalFrame implements Observer {
 
     /**
-     * Creates new form Factura_View
+     * Creates new form_View
      */
     public Factura_View() {
         initComponents();
@@ -36,21 +36,227 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        tituloJLabel = new javax.swing.JLabel();
+        Label_Cliente = new javax.swing.JLabel();
+        jComboBox_Cliente = new javax.swing.JComboBox<>();
+        Label_Empresa = new javax.swing.JLabel();
+        jComboBox_Empresa = new javax.swing.JComboBox<>();
+        Label_Cliente1 = new javax.swing.JLabel();
+        jComboBox_Producto = new javax.swing.JComboBox<>();
+        Button_AgregarProducto = new javax.swing.JToggleButton();
+        Label_Cantidad = new javax.swing.JLabel();
+        jTextField_CantidadProductos = new javax.swing.JTextField();
+        Label_Moneda = new javax.swing.JLabel();
+        Label_FormaPago = new javax.swing.JLabel();
+        jComboBox_FormaPago = new javax.swing.JComboBox<>();
+        Label_Observaciones = new javax.swing.JLabel();
+        jTextField_Observaciones = new javax.swing.JTextField();
+        jComboBox_Moneda = new javax.swing.JComboBox<>();
+        jButton_Facturar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        tituloJLabel.setBackground(new java.awt.Color(102, 255, 102));
+        tituloJLabel.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
+        tituloJLabel.setText("Sistema de Facturación");
+        tituloJLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tituloJLabel.setOpaque(true);
+
+        Label_Cliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Cliente.setText("Cliente:");
+
+        jComboBox_Cliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jComboBox_Cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Label_Empresa.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Empresa.setText("Empresa:");
+
+        jComboBox_Empresa.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jComboBox_Empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Label_Cliente1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Cliente1.setText("Producto:");
+
+        jComboBox_Producto.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jComboBox_Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Button_AgregarProducto.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        Button_AgregarProducto.setText("Agregar Prodcuto");
+        Button_AgregarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_AgregarProductoActionPerformed(evt);
+            }
+        });
+
+        Label_Cantidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Cantidad.setText("Cantidad");
+
+        jTextField_CantidadProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        jTextField_CantidadProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_CantidadProductosActionPerformed(evt);
+            }
+        });
+
+        Label_Moneda.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Moneda.setText("Tipo de moneda:");
+
+        Label_FormaPago.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_FormaPago.setText("Forma de pago:");
+
+        jComboBox_FormaPago.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jComboBox_FormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Label_Observaciones.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_Observaciones.setText("Observaciones:");
+
+        jTextField_Observaciones.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jTextField_Observaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_ObservacionesActionPerformed(evt);
+            }
+        });
+
+        jComboBox_Moneda.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jComboBox_Moneda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton_Facturar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        jButton_Facturar.setText("Facturar");
+        jButton_Facturar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_FacturarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(tituloJLabel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(Label_Cliente)
+                                    .addGap(31, 31, 31)
+                                    .addComponent(jComboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(Label_Empresa)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jComboBox_Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Label_Cliente1)
+                                        .addComponent(Label_Cantidad))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(32, 32, 32)
+                                            .addComponent(jTextField_CantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(Button_AgregarProducto))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jComboBox_Producto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Label_Moneda)
+                                        .addComponent(Label_FormaPago)
+                                        .addComponent(Label_Observaciones))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jComboBox_FormaPago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField_Observaciones)
+                                        .addComponent(jComboBox_Moneda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tituloJLabel)
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Empresa)
+                            .addComponent(jComboBox_Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Cliente)
+                            .addComponent(jComboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Label_Cliente1)
+                            .addComponent(jComboBox_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Button_AgregarProducto)
+                            .addComponent(Label_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_CantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Moneda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_Moneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_FormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_FormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Button_AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_AgregarProductoActionPerformed
+
+    private void jTextField_CantidadProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CantidadProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_CantidadProductosActionPerformed
+
+    private void jButton_FacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FacturarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_FacturarActionPerformed
+
+    private void jTextField_ObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ObservacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_ObservacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,5 +324,24 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton Button_AgregarProducto;
+    private javax.swing.JLabel Label_Cantidad;
+    private javax.swing.JLabel Label_Cliente;
+    private javax.swing.JLabel Label_Cliente1;
+    private javax.swing.JLabel Label_Empresa;
+    private javax.swing.JLabel Label_FormaPago;
+    private javax.swing.JLabel Label_Moneda;
+    private javax.swing.JLabel Label_Observaciones;
+    private javax.swing.JButton jButton_Facturar;
+    private javax.swing.JComboBox<String> jComboBox_Cliente;
+    private javax.swing.JComboBox<String> jComboBox_Empresa;
+    private javax.swing.JComboBox<String> jComboBox_FormaPago;
+    private javax.swing.JComboBox<String> jComboBox_Moneda;
+    private javax.swing.JComboBox<String> jComboBox_Producto;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField_CantidadProductos;
+    private javax.swing.JTextField jTextField_Observaciones;
+    private javax.swing.JLabel tituloJLabel;
     // End of variables declaration//GEN-END:variables
 }

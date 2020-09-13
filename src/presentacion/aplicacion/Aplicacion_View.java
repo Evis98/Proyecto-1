@@ -46,6 +46,7 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         jMenu_Producto = new javax.swing.JMenu();
         jMenu_Cliente = new javax.swing.JMenu();
         jMenu_Empresa = new javax.swing.JMenu();
+        jMenu_Farturacion = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -109,6 +110,16 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         });
         jMenuBar1.add(jMenu_Empresa);
 
+        jMenu_Farturacion.setBorder(null);
+        jMenu_Farturacion.setText("Facturación");
+        jMenu_Farturacion.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        jMenu_Farturacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu_FarturacionMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu_Farturacion);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +149,10 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         this.control.empresaShow();
     }//GEN-LAST:event_jMenu_EmpresaMouseClicked
 
+    private void jMenu_FarturacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_FarturacionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu_FarturacionMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Eleccion;
@@ -152,6 +167,7 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jMenu_Cliente;
     private javax.swing.JMenu jMenu_Empresa;
+    private javax.swing.JMenu jMenu_Farturacion;
     private javax.swing.JMenu jMenu_Producto;
     public javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables

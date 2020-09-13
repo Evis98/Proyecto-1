@@ -38,7 +38,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     private void initComponents() {
 
         tituloJLabel = new javax.swing.JLabel();
-        Label_codigoActividad = new javax.swing.JLabel();
+        Label_CodigoActividad = new javax.swing.JLabel();
         Label_Nombre = new javax.swing.JLabel();
         Label_Id = new javax.swing.JLabel();
         Label_Ubicacion = new javax.swing.JLabel();
@@ -69,8 +69,8 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         tituloJLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tituloJLabel.setOpaque(true);
 
-        Label_codigoActividad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
-        Label_codigoActividad.setText("Codigo actividad:");
+        Label_CodigoActividad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Label_CodigoActividad.setText("Codigo actividad:");
 
         Label_Nombre.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         Label_Nombre.setText("Nombre comercial:");
@@ -183,7 +183,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_Nombre)
-                            .addComponent(Label_codigoActividad))
+                            .addComponent(Label_CodigoActividad))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Textfield_NombreComercial)
@@ -221,7 +221,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addComponent(tituloJLabel)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_codigoActividad)
+                            .addComponent(Label_CodigoActividad)
                             .addComponent(Textfield_CodigoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -390,13 +390,13 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Agregar;
     private javax.swing.JLabel Label_Buscar;
+    private javax.swing.JLabel Label_CodigoActividad;
     private javax.swing.JLabel Label_Correo;
     private javax.swing.JLabel Label_Fax;
     private javax.swing.JLabel Label_Id;
     private javax.swing.JLabel Label_Nombre;
     private javax.swing.JLabel Label_Telefono;
     private javax.swing.JLabel Label_Ubicacion;
-    private javax.swing.JLabel Label_codigoActividad;
     private javax.swing.JTable Table_Empresas;
     private javax.swing.JTextField Textfield_Buscar;
     private javax.swing.JTextField Textfield_CodigoActividad;
