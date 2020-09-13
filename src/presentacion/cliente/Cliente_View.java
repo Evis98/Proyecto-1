@@ -5,13 +5,14 @@
  */
 package presentacion.cliente;
 
-
+import Datos.Datos;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Cliente;
 import presentacion.Cliente_TableModel;
+
 /**
  *
  * @author Eva
@@ -294,7 +295,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
 //        jTable_Clientes.add(control.load()); 
         try {
-            control.load();
+//            control.load();
            
         } catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -349,6 +350,8 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
     public Cliente_Control getControl() {
         return control;
     }
+    
+    
 
     public void setModelo(Cliente_Modelo modelo) {
         this.modelo = modelo;
@@ -378,8 +381,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         jTextField_Distrito.setText(current.getDistrito());
         jTable_Clientes.setModel(new Cliente_TableModel(modelo.getLista()));
         
-       
-    }
+          }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargar;
