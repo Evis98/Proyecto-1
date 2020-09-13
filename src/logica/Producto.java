@@ -19,16 +19,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 public class Producto {
     @XmlID
     private String detalle;
-    private int capacidad;
+
     private String medida;
     private String codigo;
     private double precio_unitario;
-    public double setPrecio_unitario;
+   
 @XmlIDREF
 private List<Producto> productos;
-    public Producto(String detalle, int capacidad, String medida, String codigo, double precio_unitario) {
+    public Producto(String detalle,  String medida, String codigo, double precio_unitario) {
         this.detalle = detalle;
-        this.capacidad = capacidad;
         this.medida = medida;
         this.codigo = codigo;
         this.precio_unitario = precio_unitario;
@@ -46,13 +45,7 @@ private List<Producto> productos;
         this.detalle = detalle;
     }
 
-    public int getCapacidad() {
-        return capacidad;
-    }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
 
     public String getMedida() {
         return medida;

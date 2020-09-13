@@ -3,39 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentacion.producto;
+package presentacion.factura;
 
 import Datos.Datos;
-import logica.Producto;
+import logica.Factura;
 
 /**
  *
- * @author Ivan
+ * @author PC
  */
-public class Producto_Control {
-    Producto_Modelo modelo;
-    Producto_View view;
+public class Factura_Control {
+    Factura_Modelo modelo;
+   Factura_View view;
 
-    public Producto_Control(Producto_Modelo modelo, Producto_View view) {
+    public Factura_Control(Factura_Modelo modelo, Factura_View view) {
         this.modelo = modelo;
         this.view = view;
-        modelo.setLista(logica.Servicio.instance().getProductos());
+        modelo.setLista(logica.Servicio.instance().getFacturas());
         view.setModelo(modelo);
         view.setControl(this);
     }
     
-    public void agregar(Producto p){
-        logica.Servicio.instance().add(p);
-        modelo.setCurrent(new Producto());
-        modelo.setLista(logica.Servicio.instance().getProductos());        
+    public void agregar(Factura f){
+        logica.Servicio.instance().add(f);
+        modelo.setCurrent(new Factura());
+        modelo.setLista(logica.Servicio.instance().getFacturas());        
         modelo.commit();
     }
     
-    public void buscar(Producto p){    
-        modelo.setLista(logica.Servicio.instance().buscar(p));
-        modelo.commit();        
-    }
-
     public void seleccionar(int row){
         modelo.setCurrent(modelo.getLista().get(row));
         modelo.commit();        

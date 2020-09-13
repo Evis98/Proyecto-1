@@ -46,7 +46,9 @@ public class Servicio {
     public Servicio() {
        datos =  new Datos();
     }
-
+    public List<Factura> getFacturas() {
+        return datos.getFacturas();
+    }
     public List<Producto> getProductos() {
         return datos.getProductos();
     }
@@ -69,6 +71,9 @@ public class Servicio {
     
      public void add(Cliente c){
         datos.getClientes().add(c);
+    } 
+       public void add(Factura f){
+        datos.getFacturas().add(f);
     } 
      
      public Datos load() throws Exception{

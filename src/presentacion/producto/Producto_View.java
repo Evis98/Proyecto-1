@@ -5,11 +5,13 @@
  */
 package presentacion.producto;
 
+import Datos.Datos;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Producto;
+import presentacion.Cliente_TableModel;
 import presentacion.Producto_TableModel;
 import presentacion.cliente.Cliente_View;
 
@@ -52,6 +54,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Productos = new javax.swing.JTable();
         store = new javax.swing.JButton();
+        load = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -136,6 +139,13 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
             }
         });
 
+        load.setText("load");
+        load.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,7 +162,9 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
                                 .addGap(60, 60, 60)
                                 .addComponent(Button_Agregar)
                                 .addGap(18, 18, 18)
-                                .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(load, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -212,9 +224,12 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Button_Agregar)
-                            .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(load)
+                        .addGap(73, 73, 73))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,6 +270,17 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
             Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_storeActionPerformed
+
+    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
+      try { 
+          
+            Datos c = control.load();
+        Table_Productos.setModel(new Producto_TableModel( c.getProductos()));
+        } catch (Exception ex) {
+            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_loadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,6 +362,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     private javax.swing.JTextField Textfield_Precio;
     private javax.swing.JTextField Textfield_Unidad;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton load;
     private javax.swing.JButton store;
     private javax.swing.JLabel tituloJLabel;
     // End of variables declaration//GEN-END:variables

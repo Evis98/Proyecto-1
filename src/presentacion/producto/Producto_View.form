@@ -38,7 +38,10 @@
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="Button_Agregar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="store" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="load" max="32767" attributes="0"/>
+                                  <Component id="store" pref="84" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -122,10 +125,13 @@
                           <Component id="Button_Agregar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="store" alignment="3" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="load" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -270,6 +276,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="storeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="load">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="load"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
