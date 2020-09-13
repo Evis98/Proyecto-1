@@ -37,6 +37,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="Button_Agregar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="store" min="-2" pref="84" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -60,7 +62,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="62" max="32767" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="Label_Buscar" min="-2" pref="75" max="-2" attributes="0"/>
@@ -115,12 +117,15 @@
                           <Component id="Label_Precio" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Textfield_Precio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="Button_Agregar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Button_Agregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="store" alignment="3" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -259,5 +264,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="store">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="store"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="storeActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

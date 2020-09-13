@@ -4,19 +4,28 @@
  * and open the template in the editor.
  */
 package logica;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlID;
 
+import javax.xml.bind.annotation.XmlIDREF;
+
+import javax.xml.bind.annotation.XmlAccessType;
 /**
  *
  * @author Ivan
  */
+ @XmlAccessorType(XmlAccessType.FIELD)
 public class Producto {
+    @XmlID
     private String detalle;
     private int capacidad;
     private String medida;
     private String codigo;
     private double precio_unitario;
     public double setPrecio_unitario;
-    
+@XmlIDREF
+private List<Producto> productos;
     public Producto(String detalle, int capacidad, String medida, String codigo, double precio_unitario) {
         this.detalle = detalle;
         this.capacidad = capacidad;

@@ -44,6 +44,15 @@ public class Empresa_Control {
     }    
     
     
+      public void load() throws Exception {
+        logica.Servicio.instance().load();
+         modelo.commit();
+    }
+
+    public void store() throws Exception {
+        logica.Servicio.instance().store();
+        modelo.commit();
+    }
     
     
 }

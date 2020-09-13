@@ -5,12 +5,19 @@
  */
 package logica;
 
+
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlIDREF;
 /**
  *
  * @author Daniel
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Empresa {
-    
+@XmlID    
 private String codigoActividad;
 private String nombreComercial;
 private String id;
@@ -18,6 +25,7 @@ private String ubicacion;
 private String correo;
 private String telefono; 
 private String fax;
+
 
     public Empresa(String codigoActividad, String nombreComercial, String id, String ubicacion, String correo, String telefono, String fax) {
         this.codigoActividad = codigoActividad;

@@ -12,11 +12,17 @@ import javafx.scene.chart.PieChart.Data;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-
+import javax.xml.bind.PropertyException;
+import  javax.xml.bind.annotation.XmlAccessType;
+import  javax.xml.bind.annotation.XmlAccessOrder;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author Daniel
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class XmlPersister {
      private String path;
     private static XmlPersister theInstanceXml;
@@ -35,17 +41,17 @@ public class XmlPersister {
         this.path = path;
     }
 
-    public Data load() throws Exception {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Data.class);
+    public Datos load() throws Exception {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Datos.class);
         FileInputStream is = new FileInputStream(path);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        Data result = (Data) unmarshaller.unmarshal(is);
+        Datos result = (Datos) unmarshaller.unmarshal(is);
         is.close();
         return result;
     }
 
     public void store(Datos d) throws Exception {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Data.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Datos.class);
         FileOutputStream os = new FileOutputStream(path);
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.marshal(d, os);

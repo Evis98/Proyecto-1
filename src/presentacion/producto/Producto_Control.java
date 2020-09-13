@@ -42,5 +42,15 @@ public class Producto_Control {
     
     public void show(){
         view.setVisible(true);
-    }    
+    }  
+      public void load() throws Exception {
+        logica.Servicio.instance().load();
+         modelo.commit();
+    }
+
+    public void store() throws Exception {
+        logica.Servicio.instance().store();
+        modelo.commit();
+    }
+    
 }

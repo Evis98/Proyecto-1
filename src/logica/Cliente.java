@@ -5,13 +5,21 @@
  */
 package logica;
 
+
+import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
  * @author Eva
  */
+ @XmlAccessorType(XmlAccessType.FIELD)
 public class Cliente {
+     @XmlID
     String nombre;
     String id;
     String correo;
@@ -19,7 +27,9 @@ public class Cliente {
     String canton;
     String distrito;
     String telefono;
-
+    
+@XmlIDREF
+private List<Cliente> clientes;
     public Cliente() {
         
     }

@@ -7,8 +7,11 @@ package presentacion.producto;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Producto;
 import presentacion.Producto_TableModel;
+import presentacion.cliente.Cliente_View;
 
 /**
  *
@@ -48,6 +51,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         Textfield_Buscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Productos = new javax.swing.JTable();
+        store = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -125,6 +129,13 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         });
         jScrollPane1.setViewportView(Table_Productos);
 
+        store.setText("store");
+        store.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                storeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,7 +150,9 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
                             .addComponent(tituloJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
-                                .addComponent(Button_Agregar))))
+                                .addComponent(Button_Agregar)
+                                .addGap(18, 18, 18)
+                                .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -154,7 +167,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
                             .addComponent(Textfield_Unidad, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Textfield_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Textfield_Detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Label_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,10 +209,12 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Precio)
                             .addComponent(Textfield_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(Button_Agregar))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Button_Agregar)
+                            .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         pack();
@@ -231,6 +246,15 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         filtro.setDetalle(Textfield_Buscar.getText());
         control.buscar(filtro);        // TODO add your handling code here:
     }//GEN-LAST:event_Textfield_BuscarActionPerformed
+
+    private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
+        try {
+            
+            control.store();        // TODO add your handling code here:
+        } catch (Exception ex) {
+            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_storeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +336,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     private javax.swing.JTextField Textfield_Precio;
     private javax.swing.JTextField Textfield_Unidad;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton store;
     private javax.swing.JLabel tituloJLabel;
     // End of variables declaration//GEN-END:variables
 }
