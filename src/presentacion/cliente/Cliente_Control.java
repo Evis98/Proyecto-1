@@ -46,13 +46,15 @@ public class Cliente_Control {
     }
     
     
-     public Datos load() throws Exception {       
+     public Datos load(String u) throws Exception {       
          modelo.commit();         
-         return  logica.Servicio.instance().load();
+         logica.Servicio.instance().setPath(u);
+         return  logica.Servicio.instance().load(u);
     }
 
-    public void store() throws Exception {
-        logica.Servicio.instance().store();
+    public void store(String u) throws Exception {
+        logica.Servicio.instance().store(u);
+        logica.Servicio.instance().setPath(u);
         modelo.commit();
     }
     

@@ -30,8 +30,7 @@ public class Cliente {
     
 @XmlIDREF
 private List<Cliente> clientes;
-    public Cliente() {
-        
+    public Cliente() {    
     }
     
    

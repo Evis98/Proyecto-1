@@ -31,7 +31,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         this.setLocation(100, 100);
         
     }
-
+public String ruta="Clientes.xml";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +65,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         cargar = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 153));
         jLabel1.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
@@ -103,7 +104,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         jLabel2.setText("Buscar por identificación: ");
 
-        jTable_Clientes.setBackground(new java.awt.Color(255, 255, 204));
+        jTable_Clientes.setBackground(new java.awt.Color(255, 255, 153));
         jTable_Clientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable_Clientes.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         jTable_Clientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -136,14 +137,18 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
-        store.setText("store");
+        store.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        store.setText("Store");
+        store.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         store.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 storeMouseClicked(evt);
             }
         });
 
-        cargar.setText("load");
+        cargar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        cargar.setText("Load");
+        cargar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cargarMouseClicked(evt);
@@ -198,9 +203,9 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
                                     .addGap(18, 18, 18)
                                     .addComponent(jTextField_Canton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cargar)
-                            .addComponent(store))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -252,15 +257,15 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
                             .addComponent(jLabel_Distrito)
                             .addComponent(jTextField_Distrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_Agregar)
-                            .addComponent(store))
+                            .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cargar))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,7 +307,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
 try { 
-            Datos c = control.load();
+            Datos c = control.load(ruta);
         jTable_Clientes.setModel(new Cliente_TableModel( c.getClientes()));
         } catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -311,7 +316,8 @@ try {
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {
-            control.store();        // TODO add your handling code here:
+            
+            control.store(ruta);        // TODO add your handling code here:
         } catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
         }

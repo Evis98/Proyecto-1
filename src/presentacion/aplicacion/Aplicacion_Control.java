@@ -33,6 +33,10 @@ public class Aplicacion_Control {
     presentacion.empresa.Empresa_Modelo empresa_Modelo;
     presentacion.empresa.Empresa_View empresa_View;
     presentacion.empresa.Empresa_Control empresa_Control;
+       
+    presentacion.factura.Factura_Modelo factura_Modelo;
+    presentacion.factura.Factura_View factura_View;
+    presentacion.factura.Factura_Control factura_Control;
 
     public void initOptions() {
         producto_Modelo = new presentacion.producto.Producto_Modelo();
@@ -47,10 +51,17 @@ public class Aplicacion_Control {
         empresa_View = new presentacion.empresa.Empresa_View();
         empresa_Control = new presentacion.empresa.Empresa_Control(empresa_Modelo, empresa_View);
         
+        
+        factura_Modelo = new presentacion.factura.Factura_Modelo();
+        factura_View = new presentacion.factura.Factura_View();
+        factura_Control = new presentacion.factura.Factura_Control(factura_Modelo, factura_View);
+
         this.view.panel.add(cliente_View);
         this.view.panel.add(producto_View);
         this.view.panel.add(empresa_View);
+        this.view.panel.add(factura_View);
     }
+    
 
     public void productoShow() {
         this.producto_Control.show();
@@ -59,8 +70,11 @@ public class Aplicacion_Control {
     public void clienteShow() {
         this.cliente_Control.show();
     }
-
-    public void empresaShow() {
-     this.empresa_View.show();
+ public void facturaShow() {
+        this.factura_Control.show();
     }
+  public void empresaShow() {
+        this.empresa_Control.show();
+    }
+   
 }

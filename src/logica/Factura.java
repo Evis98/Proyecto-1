@@ -5,7 +5,6 @@
  */
 package logica;
 
-//Holi
 
 import java.util.List;
 import java.util.Objects;
@@ -20,21 +19,21 @@ import javax.xml.bind.annotation.XmlIDREF;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Factura {
     @XmlID   
-    public int cantidad;
-    public String moneda; //metodo de pago
+//    public double cantidad;
+
     public String observaciones;
     public String formadePago;
-    public String plazo= " ";
-    public double TipodeCambio=589.76;
+
+
     
     Producto p;
-    public double Precio_x_Cantidad(){
-        return p.getPrecio_unitario()*cantidad;
-    }
+//    public double Precio_x_Cantidad(){
+//        return p.getPrecio_unitario()*cantidad;
+//    }
   
 
 //   public float subtotal(){
-//    Daniel??   
+//    
 //   }
 //   public double impuesto(){
 //       double i;

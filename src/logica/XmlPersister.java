@@ -24,17 +24,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class XmlPersister {
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
      private String path;
     private static XmlPersister theInstanceXml;
-    public static XmlPersister TheinstanceXml()
+    public static XmlPersister TheinstanceXml(String ruta)
         {
         if (theInstanceXml==null){ 
-            theInstanceXml=new XmlPersister();
+            theInstanceXml=new XmlPersister(ruta);
         }
         return theInstanceXml;
     }
     public XmlPersister() {
-        path="pruebaNuevoXmlTipoCliente.xml";
+        path=" ";
     }    
 
     public XmlPersister(String path) {

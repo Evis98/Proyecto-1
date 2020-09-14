@@ -150,7 +150,7 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_jMenu_EmpresaMouseClicked
 
     private void jMenu_FarturacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_FarturacionMouseClicked
-        // TODO add your handling code here:
+this.control.facturaShow();
     }//GEN-LAST:event_jMenu_FarturacionMouseClicked
 
 

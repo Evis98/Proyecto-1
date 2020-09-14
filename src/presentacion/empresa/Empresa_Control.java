@@ -44,13 +44,13 @@ public class Empresa_Control {
     }    
     
     
-      public void load() throws Exception {
-        logica.Servicio.instance().load();
+      public void load(String u) throws Exception {
+        logica.Servicio.instance().load(u);
          modelo.commit();
     }
 
-    public void store() throws Exception {
-        logica.Servicio.instance().store();
+    public void store(String u) throws Exception {
+        logica.Servicio.instance().store(u);
         modelo.commit();
     }
     

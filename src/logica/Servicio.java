@@ -67,7 +67,9 @@ public class Servicio {
     public void add(Empresa o){
         datos.getEmpresas().add(o);
     }
-    
+    public void setPath(String u){
+        XmlPersister.TheinstanceXml(u).setPath(u);
+    }
     
      public void add(Cliente c){
         datos.getClientes().add(c);
@@ -76,14 +78,14 @@ public class Servicio {
         datos.getFacturas().add(f);
     } 
      
-     public Datos load() throws Exception{
-        return  logica.XmlPersister.TheinstanceXml().load();
+     public Datos load(String u) throws Exception{
+        return  logica.XmlPersister.TheinstanceXml(u).load();
      }
      
      
      
-     public void store() throws Exception{
-          logica.XmlPersister.TheinstanceXml().store(datos);
+     public void store(String u) throws Exception{
+          logica.XmlPersister.TheinstanceXml(u).store(datos);
      }
 
     public List<Producto> buscar(Producto pro){

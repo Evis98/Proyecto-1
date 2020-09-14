@@ -25,7 +25,8 @@ private String ubicacion;
 private String correo;
 private String telefono; 
 private String fax;
-
+@XmlIDREF
+private List<Empresa> empresas;
 
     public Empresa(String codigoActividad, String nombreComercial, String id, String ubicacion, String correo, String telefono, String fax) {
         this.codigoActividad = codigoActividad;
@@ -36,6 +37,7 @@ private String fax;
         this.telefono = telefono;
         this.fax = fax;
     }
+    
 
     public Empresa() {
     }
