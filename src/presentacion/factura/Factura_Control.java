@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.factura;
 
 import Datos.Datos;
 import logica.Factura;
-
 /**
  *
  * @author PC
  */
 public class Factura_Control {
     Factura_Modelo modelo;
-   Factura_View view;
+    Factura_View view;
 
     public Factura_Control(Factura_Modelo modelo, Factura_View view) {
         this.modelo = modelo;
@@ -38,17 +32,15 @@ public class Factura_Control {
     
     public void show(){
         view.setVisible(true);
-    }  
-      public Datos load(String u) throws Exception {
+    }
+    
+    public Datos load(String u) throws Exception {
        modelo.commit();
-         return logica.Servicio.instance().load(u);
+       return logica.Servicio.instance().load(u);
     }
          
-    
-
     public void store(String u) throws Exception {
         logica.Servicio.instance().store(u);
         modelo.commit();
-    }
-    
+    } 
 }

@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.empresa;
 import logica.Empresa;
-
 /**
  *
  * @author Daniel
@@ -20,7 +14,6 @@ public class Empresa_Control {
         view.setModelo(modelo);
         view.setControl(this);
     }
-    
     
     public void agregar(Empresa p){
         logica.Servicio.instance().add(p);
@@ -42,17 +35,14 @@ public class Empresa_Control {
     public void show(){
         view.setVisible(true);
     }    
-    
-    
-      public void load(String u) throws Exception {
+   
+    public void load(String u) throws Exception {
         logica.Servicio.instance().load(u);
-         modelo.commit();
+        modelo.commit();
     }
 
     public void store(String u) throws Exception {
         logica.Servicio.instance().store(u);
         modelo.commit();
-    }
-    
-    
+    }  
 }

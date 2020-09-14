@@ -1,26 +1,23 @@
 package presentacion.factura;
+
 import logica.Factura;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-;
-
 /**
  *
  * @author Ivan
  */
 public class Factura_Modelo extends Observable{
-
+    Factura actual;
+    List<Factura> lista;
+    
     @Override
     public synchronized void addObserver(Observer o) {
         super.addObserver(o); 
         this.commit();
     }
-    
-
-    Factura actual;
-    List<Factura> lista;
 
     public Factura_Modelo() {
         actual = new Factura();
@@ -46,6 +43,5 @@ public class Factura_Modelo extends Observable{
     public void commit(){
         this.setChanged();
         this.notifyObservers();        
-    }
-    
+    }   
 }

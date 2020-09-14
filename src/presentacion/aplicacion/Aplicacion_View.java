@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.aplicacion;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
-
 /**
  *
  * @author Ivan
  */
 public class Aplicacion_View extends javax.swing.JFrame implements java.util.Observer{
-
     /**
      * Creates new form View
      */
@@ -22,7 +15,8 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
         this.LogoIcon();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
-  public void LogoIcon() {
+    
+    public void LogoIcon() {
         ImageIcon ImageIcon = new ImageIcon("F.png");
         Image image = ImageIcon.getImage();
         this.setIconImage(image);
@@ -150,9 +144,8 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_jMenu_EmpresaMouseClicked
 
     private void jMenu_FarturacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_FarturacionMouseClicked
-this.control.facturaShow();
+        this.control.facturaShow();
     }//GEN-LAST:event_jMenu_FarturacionMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Eleccion;
@@ -185,7 +178,7 @@ this.control.facturaShow();
     
     public void setModelo(Aplicacion_Modelo modelo){
         this.modelo = modelo;
-         modelo.addObserver(this);
+        modelo.addObserver(this);
     }
 
     public Aplicacion_Modelo getModelo() {
@@ -193,5 +186,6 @@ this.control.facturaShow();
     }
     
     public void update(java.util.Observable updatedModel,Object parametros){
-   }
+    
+    }
 }

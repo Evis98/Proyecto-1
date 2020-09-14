@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.producto;
 
 import Datos.Datos;
@@ -14,20 +9,16 @@ import logica.Producto;
 import presentacion.Cliente_TableModel;
 import presentacion.Producto_TableModel;
 import presentacion.cliente.Cliente_View;
-
 /**
  *
  * @author Daniel
  */
 public class Producto_View extends javax.swing.JInternalFrame implements Observer {
-
     /**
      * Creates new form NewJFrame
      */
     public Producto_View() {
-       initComponents();
-//       this.setLocation(100, 100);
-//       this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
+    initComponents();
     }
 
     /**
@@ -56,7 +47,6 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         store = new javax.swing.JButton();
         load = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
@@ -239,14 +229,14 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarActionPerformed
-          if( Textfield_Detalle.getText().isEmpty() || Textfield_Codigo.getText().isEmpty() /*|| Textfield_Precio.getText().isEmpty()*/) return; //
-       Producto producto = new Producto();
-       producto.setDetalle(Textfield_Detalle.getText());
-       producto.setMedida(Textfield_Unidad.getText());
-       producto.setCodigo(Textfield_Codigo.getText());
-       double Precio = Double.parseDouble(Textfield_Precio.getText());
-       producto.setPrecio_unitario(Precio);                                                                         //
-       control.agregar(producto);
+        if( Textfield_Detalle.getText().isEmpty() || Textfield_Codigo.getText().isEmpty() || Textfield_Precio.getText().isEmpty()) return; //
+            Producto producto = new Producto();
+            producto.setDetalle(Textfield_Detalle.getText());
+            producto.setMedida(Textfield_Unidad.getText());
+            producto.setCodigo(Textfield_Codigo.getText());
+            double Precio = Double.parseDouble(Textfield_Precio.getText());
+            producto.setPrecio_unitario(Precio);                                                                         
+            control.agregar(producto);
     }//GEN-LAST:event_Button_AgregarActionPerformed
 
     private void Table_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ProductosMouseClicked
@@ -260,29 +250,28 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     }//GEN-LAST:event_Textfield_CodigoActionPerformed
 
     private void Textfield_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_BuscarActionPerformed
-   Producto filtro= new Producto();
+        Producto filtro= new Producto();
         filtro.setDetalle(Textfield_Buscar.getText());
-        control.buscar(filtro);        // TODO add your handling code here:
+        control.buscar(filtro);        
     }//GEN-LAST:event_Textfield_BuscarActionPerformed
 
     private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
         try {
-            
-            control.store("Producto.xml");        // TODO add your handling code here:
-        } catch (Exception ex) {
+            control.store("Producto.xml");        
+        } 
+        catch (Exception ex) {
             Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }
     }//GEN-LAST:event_storeActionPerformed
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
-      try { 
-          
+        try { 
             Datos c = control.load("Producto.xml");
-        Table_Productos.setModel(new Producto_TableModel( c.getProductos()));
-        } catch (Exception ex) {
+            Table_Productos.setModel(new Producto_TableModel( c.getProductos()));
+        } 
+        catch (Exception ex) {
             Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }   
     }//GEN-LAST:event_loadActionPerformed
 
     /**

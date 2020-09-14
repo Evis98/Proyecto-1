@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
-//Holi
-
 import java.util.List;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlIDREF;
-
 /**
  *
  * @author Eva
  */
- @XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Cliente {
-     @XmlID
+    @XmlID
     String nombre;
     String id;
     String correo;
@@ -28,12 +20,11 @@ public class Cliente {
     String distrito;
     String telefono;
     
-@XmlIDREF
-private List<Cliente> clientes;
+    @XmlIDREF
+    private List<Cliente> clientes;
+
     public Cliente() {    
     }
-    
-   
     
     @Override
     public String toString() {
@@ -67,7 +58,6 @@ private List<Cliente> clientes;
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
     
     public Cliente(String nombre, String id, String correo, String provincia, String canton, String distrito, String telefono) {
         this.nombre = nombre;
@@ -107,8 +97,8 @@ private List<Cliente> clientes;
         return telefono;
     }
    
-     @Override
-   public int hashCode() {
+    @Override
+    public int hashCode() {
         int hash = 5;
         hash = 11 * hash + Objects.hashCode(this.id);
         return hash;
@@ -127,6 +117,5 @@ private List<Cliente> clientes;
         }
         final Cliente other = (Cliente) obj;
         return Objects.equals(this.id, other.id);
-    }
-    
+    }   
 }

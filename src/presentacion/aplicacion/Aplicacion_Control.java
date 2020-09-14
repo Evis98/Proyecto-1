@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.aplicacion;
-
 /**
  *
  * @author Ivan
  */
 public class Aplicacion_Control {
-
     Aplicacion_Modelo modelo;
     Aplicacion_View view;
 
@@ -51,7 +44,6 @@ public class Aplicacion_Control {
         empresa_View = new presentacion.empresa.Empresa_View();
         empresa_Control = new presentacion.empresa.Empresa_Control(empresa_Modelo, empresa_View);
         
-        
         factura_Modelo = new presentacion.factura.Factura_Modelo();
         factura_View = new presentacion.factura.Factura_View();
         factura_Control = new presentacion.factura.Factura_Control(factura_Modelo, factura_View);
@@ -62,7 +54,6 @@ public class Aplicacion_Control {
         this.view.panel.add(factura_View);
     }
     
-
     public void productoShow() {
         this.producto_Control.show();
     }
@@ -70,11 +61,12 @@ public class Aplicacion_Control {
     public void clienteShow() {
         this.cliente_Control.show();
     }
- public void facturaShow() {
+    
+    public void facturaShow() {
         this.factura_Control.show();
     }
-  public void empresaShow() {
+    
+    public void empresaShow() {
         this.empresa_Control.show();
-    }
-   
+    }  
 }

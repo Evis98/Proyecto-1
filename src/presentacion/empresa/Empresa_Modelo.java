@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.empresa;
 
 import java.util.ArrayList;
@@ -15,18 +10,17 @@ import logica.Empresa;
  * @author Daniel
  */
 public class Empresa_Modelo  extends Observable{
+    Empresa actual;
+    List<Empresa> lista;
     
     @Override
     public synchronized void addObserver(Observer o) {
         super.addObserver(o); 
         this.commit();
     }
-    
-     Empresa actual;
-    List<Empresa> lista;
 
     public Empresa_Modelo() {
-          actual = new Empresa();
+        actual = new Empresa();
         lista = new ArrayList<>();
     }
 
@@ -35,7 +29,7 @@ public class Empresa_Modelo  extends Observable{
         this.lista = lista;
     }
     
-       public Empresa getCurrent() {
+    public Empresa getCurrent() {
         return actual;
     }
     
@@ -50,11 +44,9 @@ public class Empresa_Modelo  extends Observable{
     public void setLista(List<Empresa> lista) {
         this.lista = lista;
     }
-    
-    
-      public void commit(){
+       
+    public void commit(){
         this.setChanged();
         this.notifyObservers();        
-    }
-    
+    }   
 }

@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import logica.Producto;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-
 /**
  *
  * @author Ivan
  */
 public class Producto_TableModel extends AbstractTableModel implements TableModel {
-
-    String[] cols = {"Descripción", "Código", "Tipo de unidad", "Precio"};               //
+    String[] cols = {"Descripción", "Tipo de unidad", "Código", "Precio"};               
     List<Producto> rows;
 
     public Producto_TableModel(List<Producto> rows) {

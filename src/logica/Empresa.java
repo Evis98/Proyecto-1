@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
-
 
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,16 +11,16 @@ import javax.xml.bind.annotation.XmlIDREF;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Empresa {
-@XmlID    
-private String codigoActividad;
-private String nombreComercial;
-private String id;
-private String ubicacion;
-private String correo;
-private String telefono; 
-private String fax;
-@XmlIDREF
-private List<Empresa> empresas;
+    @XmlID    
+    private String codigoActividad;
+    private String nombreComercial;
+    private String id;
+    private String ubicacion;
+    private String correo;
+    private String telefono; 
+    private String fax;
+    @XmlIDREF
+    private List<Empresa> empresas;
 
     public Empresa(String codigoActividad, String nombreComercial, String id, String ubicacion, String correo, String telefono, String fax) {
         this.codigoActividad = codigoActividad;
@@ -38,7 +32,6 @@ private List<Empresa> empresas;
         this.fax = fax;
     }
     
-
     public Empresa() {
     }
 
@@ -102,6 +95,4 @@ private List<Empresa> empresas;
     public void setFax(String fax) {
         this.fax = fax;
     }
-
-
 }

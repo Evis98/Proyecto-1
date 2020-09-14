@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.cliente;
 
 import Datos.Datos;
@@ -15,23 +10,19 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import logica.Cliente;
 import presentacion.Cliente_TableModel;
-
 /**
  *
  * @author Eva
  */
 public class Cliente_View extends javax.swing.JInternalFrame implements Observer {
-
     /**
      * Creates new form View
      */
-    public Cliente_View() {
-        
-        initComponents();
-        this.setLocation(100, 100);
-        
+    public Cliente_View() {      
+        initComponents();    
     }
-public String ruta="Clientes.xml";
+    
+    public String ruta="Clientes.xml";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -277,11 +268,8 @@ public String ruta="Clientes.xml";
 
     private void jTable_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ClientesMouseClicked
         if (evt.getClickCount() == 7) {
-                       control.seleccionar(jTable_Clientes.getSelectedRow());
-     }
-    
-           
-           
+            control.seleccionar(jTable_Clientes.getSelectedRow());
+        }           
     }//GEN-LAST:event_jTable_ClientesMouseClicked
 
     private void jButton_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AgregarActionPerformed
@@ -295,7 +283,7 @@ public String ruta="Clientes.xml";
         cliente.setTelefono(jTextField_Numero.getText());
         cliente.setCanton(jTextField_Canton.getText());
         cliente.setDistrito(jTextField_Distrito.getText());
-         control.agregar(cliente);
+        control.agregar(cliente);
     }//GEN-LAST:event_jButton_AgregarActionPerformed
 
     private void jTextField_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BuscarActionPerformed
@@ -306,19 +294,20 @@ public String ruta="Clientes.xml";
     }//GEN-LAST:event_jTextField_BuscarActionPerformed
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-try { 
+        try { 
             Datos c = control.load(ruta);
-        jTable_Clientes.setModel(new Cliente_TableModel( c.getClientes()));
-        } catch (Exception ex) {
+            jTable_Clientes.setModel(new Cliente_TableModel( c.getClientes()));
+        } 
+        catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cargarMouseClicked
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
-        try {
-            
+        try {   
             control.store(ruta);        // TODO add your handling code here:
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_storeMouseClicked
@@ -367,10 +356,6 @@ try {
     public Cliente_Control getControl() {
         return control;
     }
-    
-    
- 
-    
 
     public void setModelo(Cliente_Modelo modelo) {
         this.modelo = modelo;
@@ -393,7 +378,6 @@ try {
         jTextField_Canton.setText(current.getCanton());        
         jTextField_Distrito.setText(current.getDistrito());
         jTable_Clientes.setModel(new Cliente_TableModel(modelo.getLista()));
-        
           }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -420,6 +404,5 @@ try {
     private javax.swing.JTextField jTextField_Provincia;
     private javax.swing.JButton store;
     // End of variables declaration//GEN-END:variables
-
-   
+ 
 }

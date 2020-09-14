@@ -1,31 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
-
 import javax.xml.bind.annotation.XmlIDREF;
-
 import javax.xml.bind.annotation.XmlAccessType;
 /**
  *
  * @author Ivan
  */
- @XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Producto {
     @XmlID
     private String detalle;
-
     private String medida;
     private String codigo;
     private double precio_unitario;
-   
-@XmlIDREF
-private List<Producto> productos;
+    @XmlIDREF
+    private List<Producto> productos;
+    
     public Producto(String detalle,  String medida, String codigo, double precio_unitario) {
         this.detalle = detalle;
         this.medida = medida;
@@ -75,5 +67,4 @@ private List<Producto> productos;
         String stringPrecio = String.valueOf(precio_unitario);
         return stringPrecio;
     }
-  
 }

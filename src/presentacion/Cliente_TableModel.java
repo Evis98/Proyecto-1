@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import logica.Cliente;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-
 /**
  *
  * @author Ivan
  */
 public class Cliente_TableModel extends AbstractTableModel implements TableModel {
-
-    String[] cols = {"Nombre", "Id", "Correo", "Provincia", "Canton", "Distrito", "Telefono"};               //
+    String[] cols = {"Nombre", "Id", "Correo", "Provincia", "Canton", "Distrito", "Telefono"};               
     List<Cliente> rows;
 
     public Cliente_TableModel(List<Cliente> rows) {
@@ -37,7 +30,6 @@ public class Cliente_TableModel extends AbstractTableModel implements TableModel
     public int getRowCount() {
         return rows.size();
     }
-    
     
     @Override
     public Object getValueAt(int rowc, int col) {

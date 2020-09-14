@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import java.util.ArrayList;
@@ -10,16 +5,14 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.JAXBContext;
-//import javax.xml.bind.JAXBException;
-//import javax.xml.bind.Marshaller;
-//import javax.xml.bind.PropertyException;
 import logica.Cliente;
 import logica.Producto;
 import logica.Empresa;
 import logica.Factura;
-
-
+//import javax.xml.bind.JAXBContext;
+//import javax.xml.bind.JAXBException;
+//import javax.xml.bind.Marshaller;
+//import javax.xml.bind.PropertyException;
 /**
  *
  * @author Ivan
@@ -46,6 +39,7 @@ public class Datos {
     public void setEmpresas(List<Empresa> empresas) {
         this.empresas = empresas;
     }
+    
     public List<Factura> getFacturas() {
         return facturas;
     }
@@ -53,6 +47,7 @@ public class Datos {
     public void setFacturas(List<Factura> facturas) {
         this.facturas = facturas;
     }
+    
     public List<Producto> getProductos() {
         return productos;
     }
@@ -60,11 +55,12 @@ public class Datos {
     public List<Cliente> getClientes(){
         return clientes;
     }
+    
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
+    
     public void setClientes(List<Cliente> clientes) {
         this.clientes =clientes;
-    }
-    
+    }   
 }

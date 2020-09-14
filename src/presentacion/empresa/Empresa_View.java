@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.empresa;
 
 import java.util.Observable;
@@ -13,12 +8,10 @@ import presentacion.Producto_TableModel;
 import logica.Empresa;
 import presentacion.Empresa_TableModel;
 import presentacion.producto.Producto_View;
-
 /**
  * @author Daniel
  */
 public class Empresa_View extends javax.swing.JInternalFrame implements Observer  {
-
     /**
      * Creates new form
      */
@@ -27,7 +20,6 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 //        this.setLocation(100, 100);
 //        this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,9 +272,10 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 
     private void Button_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarActionPerformed
         if (Textfield_CodigoActividad.getText().isEmpty() || Textfield_NombreComercial.getText().isEmpty() || Textfield_Id.getText().isEmpty() || Textfield_Ubicacion.getText().isEmpty() || Textfield_Correo.getText().isEmpty()
-                || Textfield_Telefono.getText().isEmpty() || Textfield_Fax.getText().isEmpty()) {
-            return;
+            || Textfield_Telefono.getText().isEmpty() || Textfield_Fax.getText().isEmpty()) {
+        return;
         }
+        
         Empresa empresa = new Empresa();
         empresa.setCodigoActividad(Textfield_CodigoActividad.getText());
         empresa.setNombreComercial(Textfield_NombreComercial.getText());
@@ -301,22 +294,21 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_Table_EmpresasMouseClicked
 
     private void Textfield_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_BuscarActionPerformed
-          Empresa filtro = new Empresa();
+        Empresa filtro = new Empresa();
         filtro.setNombreComercial(Textfield_Buscar.getText());
         control.buscar(filtro);        
                 
     }//GEN-LAST:event_Textfield_BuscarActionPerformed
 
     private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
-   try {
-            
+        try {
             control.store("Empresa.xml");       
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
-            }     
+        }     
     }//GEN-LAST:event_storeActionPerformed
 
-    
     Empresa_Control control;
     Empresa_Modelo modelo;
 
@@ -336,7 +328,8 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         this.modelo = modelo;        
          modelo.addObserver(this);
     }
-     @Override
+    
+    @Override
     public void update(Observable o, Object o1) {
          Empresa current = modelo.getCurrent();
         Textfield_CodigoActividad.setText(current.getCodigoActividad());
@@ -345,11 +338,9 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         Textfield_Ubicacion.setText(current.getUbicacion());
         Textfield_Correo.setText(current.getCorreo());
         Textfield_Telefono.setText(current.getTelefono());        
-        Textfield_Fax.setText(current.getFax());
-        
+        Textfield_Fax.setText(current.getFax());       
         Table_Empresas.setModel(new Empresa_TableModel(modelo.getLista()));
-    }
-    
+    }   
     /**
      * @param args the command line arguments
      */
@@ -384,10 +375,6 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
             }
         });
     }
-
-    
-    
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Agregar;

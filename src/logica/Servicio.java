@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
 import Datos.Datos;
 import java.io.File;
@@ -26,13 +21,13 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
-
 /**
  *
  * @author Ivan
  */
 public class Servicio {
     private static Servicio theInstance;
+    private Datos datos;
     
     public static Servicio instance(){
         if (theInstance==null){ 
@@ -41,22 +36,23 @@ public class Servicio {
         return theInstance;
     }
     
-    private Datos datos;
-    
     public Servicio() {
        datos =  new Datos();
     }
+    
     public List<Factura> getFacturas() {
         return datos.getFacturas();
     }
+    
     public List<Producto> getProductos() {
         return datos.getProductos();
     }
-     public List<Cliente> getClientes() {
+    
+    public List<Cliente> getClientes() {
         return datos.getClientes();
     }
      
-     public List<Empresa> getEmpresas() {
+    public List<Empresa> getEmpresas() {
         return datos.getEmpresas();
     }
 
@@ -67,40 +63,40 @@ public class Servicio {
     public void add(Empresa o){
         datos.getEmpresas().add(o);
     }
+    
     public void setPath(String u){
         XmlPersister.TheinstanceXml(u).setPath(u);
     }
     
-     public void add(Cliente c){
+    public void add(Cliente c){
         datos.getClientes().add(c);
     } 
-       public void add(Factura f){
+    
+    public void add(Factura f){
         datos.getFacturas().add(f);
     } 
      
-     public Datos load(String u) throws Exception{
-        return  logica.XmlPersister.TheinstanceXml(u).load();
-     }
-     
-     
-     
-     public void store(String u) throws Exception{
-          logica.XmlPersister.TheinstanceXml(u).store(datos);
-     }
+    public Datos load(String u) throws Exception{
+        return logica.XmlPersister.TheinstanceXml(u).load();
+    }
+      
+    public void store(String u) throws Exception{
+        logica.XmlPersister.TheinstanceXml(u).store(datos);
+    }
 
     public List<Producto> buscar(Producto pro){
         List<Producto> result = new ArrayList<>();
-        for(Producto p:datos.getProductos()) {if (p.getDetalle().contains(pro.getDetalle())) result.add(p);};
-        
+        for(Producto p:datos.getProductos()) {if (p.getDetalle().contains(pro.getDetalle())) result.add(p);};        
         return result;
     } 
+    
     public List<Cliente> buscar(Cliente cli){
         List<Cliente> result = new ArrayList<>();
         for(Cliente c:datos.getClientes()) {if (c.getId().contains(cli.getId())) result.add(c);};
         return result;
     } 
     
-      public List<Empresa> buscar(Empresa emp){
+    public List<Empresa> buscar(Empresa emp){
         List<Empresa> result = new ArrayList<>();
         for(Empresa c:datos.getEmpresas()) {if (c.getId().contains(emp.getNombreComercial())) result.add(c);};
         return result;

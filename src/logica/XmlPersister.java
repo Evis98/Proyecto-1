@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
 
 import Datos.Datos;
@@ -24,6 +19,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class XmlPersister {
+    private String path;
+    private static XmlPersister theInstanceXml;
 
     public void setPath(String path) {
         this.path = path;
@@ -32,15 +29,14 @@ public class XmlPersister {
     public String getPath() {
         return path;
     }
-     private String path;
-    private static XmlPersister theInstanceXml;
-    public static XmlPersister TheinstanceXml(String ruta)
-        {
+ 
+    public static XmlPersister TheinstanceXml(String ruta) {
         if (theInstanceXml==null){ 
             theInstanceXml=new XmlPersister(ruta);
         }
         return theInstanceXml;
     }
+    
     public XmlPersister() {
         path=" ";
     }    

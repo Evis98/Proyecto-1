@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion.cliente;
 import Datos.Datos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Cliente;
-
 /**
  *
  * @author Eva
@@ -22,8 +16,7 @@ public class Cliente_Control {
         this.view = view;
         modelo.setLista(logica.Servicio.instance().getClientes());
         view.setModelo(modelo);
-        view.setControl(this);
-        
+        view.setControl(this);    
     }
     
     public void agregar(Cliente c){
@@ -31,8 +24,7 @@ public class Cliente_Control {
             logica.Servicio.instance().add(c);
             modelo.setCurrent(new Cliente());
             modelo.setLista(logica.Servicio.instance().getClientes());
-            modelo.commit();
-       
+            modelo.commit();  
     } 
     
     public void buscar(Cliente c){    
@@ -45,8 +37,7 @@ public class Cliente_Control {
         modelo.commit();        
     }
     
-    
-     public Datos load(String u) throws Exception {       
+    public Datos load(String u) throws Exception {       
          modelo.commit();         
          logica.Servicio.instance().setPath(u);
          return  logica.Servicio.instance().load(u);
