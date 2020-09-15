@@ -72,6 +72,22 @@ public class Servicio {
         datos.getClientes().add(c);
     } 
     
+    public void addAll1(List<Cliente> c) {
+        datos.getClientes().addAll(c);
+    }
+
+    public void addAll2(List<Empresa> c) {
+        datos.getEmpresas().addAll(c);
+    }
+
+    public void addAll3(List<Producto> c) {
+        datos.getProductos().addAll(c);
+    }
+
+    public void addAll4(List<Factura> c) {
+        datos.getFacturas().addAll(c);
+    }
+    
     public void add(Factura f){
         datos.getFacturas().add(f);
     } 

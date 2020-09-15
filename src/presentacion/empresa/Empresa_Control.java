@@ -1,4 +1,5 @@
 package presentacion.empresa;
+import java.util.List;
 import logica.Empresa;
 /**
  *
@@ -14,14 +15,22 @@ public class Empresa_Control {
         view.setModelo(modelo);
         view.setControl(this);
     }
-    
-    public void agregar(Empresa p){
+  
+    public void agregar(Empresa p) {
         logica.Servicio.instance().add(p);
         modelo.setCurrent(new Empresa());
-        modelo.setLista(logica.Servicio.instance().getEmpresas());        
+        modelo.setLista(logica.Servicio.instance().getEmpresas());
         modelo.commit();
     }
-    
+
+    public void agregarTodos(List<Empresa> c) {
+        logica.Servicio.instance().addAll2(c);
+        modelo.setCurrent(new Empresa());
+        modelo.setLista(logica.Servicio.instance().getEmpresas());
+        modelo.commit();
+    }
+
+       
     public void buscar(Empresa p){    
         modelo.setLista(logica.Servicio.instance().buscar(p));
         modelo.commit();        

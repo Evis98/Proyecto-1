@@ -19,6 +19,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
      */
     public Producto_View() {
     initComponents();
+    
     }
 
     /**
@@ -126,6 +127,11 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         store.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         store.setText("Store");
         store.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        store.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                storeMouseClicked(evt);
+            }
+        });
         store.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 storeActionPerformed(evt);
@@ -135,6 +141,11 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         load.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         load.setText("Load");
         load.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        load.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadMouseClicked(evt);
+            }
+        });
         load.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadActionPerformed(evt);
@@ -256,23 +267,31 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     }//GEN-LAST:event_Textfield_BuscarActionPerformed
 
     private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
-        try {
-            control.store("Producto.xml");        
+       
+    }//GEN-LAST:event_storeActionPerformed
+
+    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
+  
+    }//GEN-LAST:event_loadActionPerformed
+
+    private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
+         try {
+            control.store(ruta);        
         } 
         catch (Exception ex) {
             Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_storeActionPerformed
+    }//GEN-LAST:event_storeMouseClicked
 
-    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
-        try { 
-            Datos c = control.load("Producto.xml");
-            Table_Productos.setModel(new Producto_TableModel( c.getProductos()));
-        } 
-        catch (Exception ex) {
-            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-    }//GEN-LAST:event_loadActionPerformed
+    private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
+         try {
+            Datos c = control.load(ruta);
+            control.agregarTodos(c.getProductos());
+            Table_Productos.setModel(new Producto_TableModel(c.getProductos()));
+        } catch (Exception ex) {
+            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_loadMouseClicked
 
     /**
      * @param args the command line arguments
@@ -320,7 +339,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     public Producto_Control getControl() {
         return control;
     }
-    
+     public String ruta="Producto.xml";
     public void setModelo(Producto_Modelo modelo){
         this.modelo = modelo;
          modelo.addObserver(this);

@@ -1,6 +1,7 @@
 package presentacion.producto;
 
 import Datos.Datos;
+import java.util.List;
 import logica.Producto;
 /**
  *
@@ -22,6 +23,14 @@ public class Producto_Control {
         logica.Servicio.instance().add(p);
         modelo.setCurrent(new Producto());
         modelo.setLista(logica.Servicio.instance().getProductos());        
+        modelo.commit();
+    }
+    
+    public void agregarTodos(List<Producto> c) {
+        
+        logica.Servicio.instance().addAll3(c);
+        modelo.setCurrent(new Producto());
+        modelo.setLista(logica.Servicio.instance().getProductos());
         modelo.commit();
     }
     

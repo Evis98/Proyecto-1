@@ -1,6 +1,7 @@
 package presentacion.factura;
 
 import Datos.Datos;
+import java.util.List;
 import logica.Factura;
 /**
  *
@@ -22,6 +23,13 @@ public class Factura_Control {
         logica.Servicio.instance().add(f);
         modelo.setCurrent(new Factura());
         modelo.setLista(logica.Servicio.instance().getFacturas());        
+        modelo.commit();
+    }
+    
+        public void agregarTodos(List<Factura> c) {
+        logica.Servicio.instance().addAll4(c);
+        modelo.setCurrent(new Factura());
+        modelo.setLista(logica.Servicio.instance().getFacturas());
         modelo.commit();
     }
     

@@ -1,12 +1,15 @@
 package presentacion.empresa;
 
+import Datos.Datos;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import presentacion.Producto_TableModel;
 import logica.Empresa;
+import presentacion.Cliente_TableModel;
 import presentacion.Empresa_TableModel;
+import presentacion.cliente.Cliente_View;
 import presentacion.producto.Producto_View;
 /**
  * @author Daniel
@@ -50,6 +53,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         Table_Empresas = new javax.swing.JTable();
         Button_Agregar = new javax.swing.JButton();
         store = new javax.swing.JButton();
+        jButtonLoad = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setClosable(true);
@@ -145,9 +149,22 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         store.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         store.setText("Store");
         store.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        store.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                storeMouseClicked(evt);
+            }
+        });
         store.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 storeActionPerformed(evt);
+            }
+        });
+
+        jButtonLoad.setText("Load");
+        jButtonLoad.setActionCommand("Load");
+        jButtonLoad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonLoadMouseClicked(evt);
             }
         });
 
@@ -186,11 +203,15 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addComponent(Label_Fax)
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Textfield_Fax, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(Textfield_Fax, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonLoad)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -243,7 +264,9 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonLoad))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(Label_Buscar)
@@ -301,14 +324,28 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_Textfield_BuscarActionPerformed
 
     private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
+  
+    }//GEN-LAST:event_storeActionPerformed
+
+    private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {
-            control.store("Empresa.xml");       
+            control.store(ruta);       
         } 
         catch (Exception ex) {
             Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
-        }     
-    }//GEN-LAST:event_storeActionPerformed
+        }           // TODO add your handling code here:
+    }//GEN-LAST:event_storeMouseClicked
 
+    private void jButtonLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoadMouseClicked
+//           try {
+//            Datos c = control.load(ruta);
+//            control.agregarTodos(c.getEmpresas());
+//            this.Table_Empresas.setModel(new Empresa_TableModel(c.getEmpresas()));
+//        } catch (Exception ex) {
+//            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_jButtonLoadMouseClicked
+public String ruta="BaseData.xml";
     Empresa_Control control;
     Empresa_Modelo modelo;
 
@@ -395,6 +432,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JTextField Textfield_NombreComercial;
     private javax.swing.JTextField Textfield_Telefono;
     private javax.swing.JTextField Textfield_Ubicacion;
+    private javax.swing.JButton jButtonLoad;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton store;
     private javax.swing.JLabel tituloJLabel;

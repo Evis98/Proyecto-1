@@ -19,10 +19,11 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
      * Creates new form View
      */
     public Cliente_View() {      
-        initComponents();    
+        initComponents();   
+        
     }
     
-    public String ruta="Clientes.xml";
+    public String ruta="Cliente.xml";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -294,11 +295,11 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_jTextField_BuscarActionPerformed
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
-        try { 
+        try {
             Datos c = control.load(ruta);
-            jTable_Clientes.setModel(new Cliente_TableModel( c.getClientes()));
-        } 
-        catch (Exception ex) {
+            control.agregarTodos(c.getClientes());
+            jTable_Clientes.setModel(new Cliente_TableModel(c.getClientes()));
+        } catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cargarMouseClicked

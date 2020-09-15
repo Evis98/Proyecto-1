@@ -1,5 +1,6 @@
 package presentacion.cliente;
 import Datos.Datos;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Cliente;
@@ -26,6 +27,14 @@ public class Cliente_Control {
             modelo.setLista(logica.Servicio.instance().getClientes());
             modelo.commit();  
     } 
+    public void agregarTodos(List<Cliente> c){
+    
+            logica.Servicio.instance().addAll1(c);
+            modelo.setCurrent(new Cliente());
+            modelo.setLista(logica.Servicio.instance().getClientes());
+            modelo.commit();  
+    } 
+    
     
     public void buscar(Cliente c){    
         modelo.setLista(logica.Servicio.instance().buscar(c));
