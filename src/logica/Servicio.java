@@ -56,65 +56,118 @@ public class Servicio {
         return datos.getEmpresas();
     }
 
-    public void add(Producto o){
-        datos.getProductos().add(o);
+    public void add(Producto o) {
+        if (!this.EliminaRepeP(o)) 
+            datos.getProductos().add(o);
     }
-    
-    public void add(Empresa o){
-        datos.getEmpresas().add(o);
+
+    public void add(Empresa o) {
+         if (!this.EliminaRepeE(o))
+             datos.getEmpresas().add(o);
     }
-    
-    public void setPath(String u){
+
+    public void setPath(String u) {
         XmlPersister.TheinstanceXml(u).setPath(u);
     }
-    
-    public void add(Cliente c){
-        datos.getClientes().add(c);
-    } 
-    
+
+    public void add(Cliente cli) {
+        if (!this.EliminaRepeC(cli)) 
+            datos.getClientes().add(cli);
+        
+    }
+
     public void addAll1(List<Cliente> c) {
-        datos.getClientes().addAll(c);
+        if (!datos.getClientes().equals(c)) 
+            datos.getClientes().addAll(c);        
     }
 
     public void addAll2(List<Empresa> c) {
+        if (!datos.getEmpresas().equals(c))
         datos.getEmpresas().addAll(c);
     }
 
     public void addAll3(List<Producto> c) {
+        if (!datos.getProductos().equals(c))
         datos.getProductos().addAll(c);
     }
 
     public void addAll4(List<Factura> c) {
+         if (!datos.getFacturas().equals(c))
         datos.getFacturas().addAll(c);
     }
-    
-    public void add(Factura f){
+
+    public void add(Factura f) {
+        
         datos.getFacturas().add(f);
-    } 
-     
-    public Datos load(String u) throws Exception{
+    }
+
+    public Datos load(String u) throws Exception {
         return logica.XmlPersister.TheinstanceXml(u).load();
     }
-      
-    public void store(String u) throws Exception{
+
+    public void store(String u) throws Exception {
         logica.XmlPersister.TheinstanceXml(u).store(datos);
     }
 
-    public List<Producto> buscar(Producto pro){
+    public List<Producto> buscar(Producto pro) {
         List<Producto> result = new ArrayList<>();
-        for(Producto p:datos.getProductos()) {if (p.getDetalle().contains(pro.getDetalle())) result.add(p);};        
+        for (Producto p : datos.getProductos()) {
+            if (p.getDetalle().contains(pro.getDetalle())) {
+                result.add(p);
+            }
+        };
         return result;
-    } 
-    
-    public List<Cliente> buscar(Cliente cli){
+    }
+
+    public List<Cliente> buscar(Cliente cli) {
         List<Cliente> result = new ArrayList<>();
-        for(Cliente c:datos.getClientes()) {if (c.getId().contains(cli.getId())) result.add(c);};
+        for (Cliente c : datos.getClientes()) {
+            if (c.getId().contains(cli.getId())) {
+                result.add(c);
+            }
+        };
         return result;
-    } 
-    
-    public List<Empresa> buscar(Empresa emp){
+    }
+
+    public List<Empresa> buscar(Empresa emp) {
         List<Empresa> result = new ArrayList<>();
-        for(Empresa c:datos.getEmpresas()) {if (c.getId().contains(emp.getNombreComercial())) result.add(c);};
+        for (Empresa c : datos.getEmpresas()) {
+            if (c.getId().contains(emp.getNombreComercial())) {
+                result.add(c);
+            }
+        };
         return result;
-    } 
+    }
+
+    //---------------------------------------------------------------------------
+    public boolean EliminaRepeC(Cliente cli) {
+        List<Cliente> result = new ArrayList<>();
+        for (Cliente c : datos.getClientes()) {
+            if (c.getId().contains(cli.getId())) {
+                return true;
+            }
+        };
+        return false;
+    }
+
+    public boolean EliminaRepeP(Producto pro) {
+        List<Producto> result = new ArrayList<>();
+        for (Producto p : datos.getProductos()) {
+            if (p.getDetalle().contains(pro.getDetalle())) {
+                return true;
+            }
+        };
+        return false;
+    }
+
+    public boolean EliminaRepeE(Empresa emp) {
+        List<Empresa> result = new ArrayList<>();
+        for (Empresa c : datos.getEmpresas()) {
+            if (c.getId().contains(emp.getNombreComercial())) {
+                return true;
+            }
+        };
+        return false;
+    }
+      
 }
