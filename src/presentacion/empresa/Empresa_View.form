@@ -349,10 +349,10 @@
     <Component class="javax.swing.JButton" name="jButtonLoad">
       <Properties>
         <Property name="text" type="java.lang.String" value="Load"/>
-        <Property name="actionCommand" type="java.lang.String" value="Load"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonLoadMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLoadActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

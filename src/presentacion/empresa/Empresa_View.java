@@ -161,10 +161,14 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         });
 
         jButtonLoad.setText("Load");
-        jButtonLoad.setActionCommand("Load");
         jButtonLoad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonLoadMouseClicked(evt);
+            }
+        });
+        jButtonLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoadActionPerformed(evt);
             }
         });
 
@@ -345,6 +349,10 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 //            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }//GEN-LAST:event_jButtonLoadMouseClicked
+
+    private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLoadActionPerformed
 public String ruta="BaseData.xml";
     Empresa_Control control;
     Empresa_Modelo modelo;

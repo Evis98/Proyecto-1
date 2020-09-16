@@ -44,7 +44,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         jComboBox_Moneda = new javax.swing.JComboBox<>();
         jButton_Facturar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        CambiarAtributosEmpresaButton = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -153,9 +153,19 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
-        jButton1.setText("Cambiar atributos");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        CambiarAtributosEmpresaButton.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        CambiarAtributosEmpresaButton.setText("Cambiar atributos");
+        CambiarAtributosEmpresaButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        CambiarAtributosEmpresaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CambiarAtributosEmpresaButtonMouseClicked(evt);
+            }
+        });
+        CambiarAtributosEmpresaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CambiarAtributosEmpresaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,7 +181,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                                 .addGap(38, 38, 38)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CambiarAtributosEmpresaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Label_Observaciones)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +234,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Empresa)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(CambiarAtributosEmpresaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Cliente)
@@ -285,6 +295,14 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     private void jComboBox_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox_ClienteMouseClicked
       
     }//GEN-LAST:event_jComboBox_ClienteMouseClicked
+
+    private void CambiarAtributosEmpresaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarAtributosEmpresaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CambiarAtributosEmpresaButtonActionPerformed
+
+    private void CambiarAtributosEmpresaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CambiarAtributosEmpresaButtonMouseClicked
+
+    }//GEN-LAST:event_CambiarAtributosEmpresaButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -353,6 +371,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Button_AgregarProducto;
+    private javax.swing.JButton CambiarAtributosEmpresaButton;
     private javax.swing.JLabel Label_Cantidad;
     private javax.swing.JLabel Label_Cliente;
     private javax.swing.JLabel Label_Cliente1;
@@ -360,7 +379,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JLabel Label_FormaPago;
     private javax.swing.JLabel Label_Moneda;
     private javax.swing.JLabel Label_Observaciones;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_Facturar;
     private javax.swing.JComboBox<String> jComboBox_Cliente;
     private javax.swing.JComboBox<String> jComboBox_FormaPago;
