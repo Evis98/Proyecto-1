@@ -9,7 +9,6 @@ import presentacion.Producto_TableModel;
 import logica.Empresa;
 import presentacion.Cliente_TableModel;
 import presentacion.Empresa_TableModel;
-import presentacion.cliente.Cliente_View;
 import presentacion.producto.Producto_View;
 /**
  * @author Daniel
@@ -333,7 +332,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {
-            control.store(ruta);       
+            control.store("DataBase");       
         } 
         catch (Exception ex) {
             Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,19 +340,19 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_storeMouseClicked
 
     private void jButtonLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoadMouseClicked
-//           try {
-//            Datos c = control.load(ruta);
-//            control.agregarTodos(c.getEmpresas());
-//            this.Table_Empresas.setModel(new Empresa_TableModel(c.getEmpresas()));
-//        } catch (Exception ex) {
-//            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+           try {
+            Datos c = control.load("DataBase");
+            control.agregarTodos(c.getEmpresas());
+            this.Table_Empresas.setModel(new Empresa_TableModel(c.getEmpresas()));
+        } catch (Exception ex) {
+            Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonLoadMouseClicked
 
     private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLoadActionPerformed
-public String ruta="BaseData.xml";
+
     Empresa_Control control;
     Empresa_Modelo modelo;
 
@@ -420,6 +419,16 @@ public String ruta="BaseData.xml";
             }
         });
     }
+    
+//    public void cargaDatosEmpresa(){
+//        try {
+//            Datos c = control.load("DataBase");
+//            control.agregarTodos(c.getEmpresas());
+//            Table_Empresas.setModel(new Empresa_TableModel(c.getEmpresas()));
+//        } catch (Exception ex) {
+//            Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Agregar;

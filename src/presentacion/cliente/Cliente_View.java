@@ -23,7 +23,6 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         
     }
     
-    public String ruta="Cliente.xml";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -296,7 +295,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
         try {
-            Datos c = control.load(ruta);
+            Datos c = control.load("DataBase");
             control.agregarTodos(c.getClientes());
             jTable_Clientes.setModel(new Cliente_TableModel(c.getClientes()));
         } catch (Exception ex) {
@@ -306,7 +305,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {   
-            control.store(ruta);        // TODO add your handling code here:
+            control.store("DataBase");        // TODO add your handling code here:
         } 
         catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -379,7 +378,17 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         jTextField_Canton.setText(current.getCanton());        
         jTextField_Distrito.setText(current.getDistrito());
         jTable_Clientes.setModel(new Cliente_TableModel(modelo.getLista()));
-          }
+        }
+    
+//    public void cargaDatosCliente(){
+//        try {
+//            Datos c = control.load("DataBase");
+//            control.agregarTodos(c.getClientes());
+//            jTable_Clientes.setModel(new Cliente_TableModel(c.getClientes()));
+//        } catch (Exception ex) {
+//            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargar;

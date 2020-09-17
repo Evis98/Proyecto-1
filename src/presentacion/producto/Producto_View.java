@@ -21,6 +21,16 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     initComponents();
     
     }
+    
+//    public void cargaDatosProducto(){
+//        try {
+//            Datos c = control.load("DataBase");
+//            control.agregarTodos(c.getProductos());
+//            Table_Productos.setModel(new Producto_TableModel(c.getProductos()));
+//        } catch (Exception ex) {
+//            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -276,7 +286,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
          try {
-            control.store(ruta);        
+            control.store("DataBase");        
         } 
         catch (Exception ex) {
             Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -285,11 +295,11 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
 
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
          try {
-            Datos c = control.load(ruta);
+            Datos c = control.load("DataBase");
             control.agregarTodos(c.getProductos());
             Table_Productos.setModel(new Producto_TableModel(c.getProductos()));
         } catch (Exception ex) {
-            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_loadMouseClicked
 
@@ -358,6 +368,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         Textfield_Precio.setText(current.getString_Precio_unitario());
         Table_Productos.setModel(new Producto_TableModel(modelo.getLista()));
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Agregar;

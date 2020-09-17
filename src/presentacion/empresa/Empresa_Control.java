@@ -1,4 +1,5 @@
 package presentacion.empresa;
+import Datos.Datos;
 import java.util.List;
 import logica.Empresa;
 /**
@@ -45,9 +46,10 @@ public class Empresa_Control {
         view.setVisible(true);
     }    
    
-    public void load(String u) throws Exception {
+    public Datos load(String u) throws Exception {
         logica.Servicio.instance().load(u);
         modelo.commit();
+        return  logica.Servicio.instance().load(u);
     }
 
     public void store(String u) throws Exception {

@@ -19,12 +19,16 @@ import javax.xml.bind.annotation.XmlIDREF;
 public class Factura {
 
     @XmlID
-
     public Date FechaEmision;
     public Cliente Cliente;
     public Empresa empresa;
-       
-    List<Producto> productos;    
+    
+    @XmlIDREF
+    List<Producto> productos;
+    @XmlIDREF
+    List<Cliente> clientes;
+    @XmlIDREF
+    List<Empresa> empresas;
     
     String observaciones;
     String formadePago;
@@ -70,7 +74,6 @@ public class Factura {
     }
 
     public double totalNeto(){
-        //return (double)this.subtotal()-this.impuestos() -this.descuento();
         return (double)this.subtotal()-this.impuestos() ;
     }
     

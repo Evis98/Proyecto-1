@@ -2,6 +2,9 @@ package presentacion.aplicacion;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import presentacion.producto.Producto_View;
+import presentacion.cliente.Cliente_View;
+import presentacion.empresa.Empresa_View;
 /**
  *
  * @author Ivan
