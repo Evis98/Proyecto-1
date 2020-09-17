@@ -286,7 +286,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
          try {
-            control.store("DataBase");        
+            control.store("DataBase.xml");        
         } 
         catch (Exception ex) {
             Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -295,7 +295,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
 
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
          try {
-            Datos c = control.load("DataBase");
+            Datos c = control.load("DataBase.xml");
             control.agregarTodos(c.getProductos());
             Table_Productos.setModel(new Producto_TableModel(c.getProductos()));
         } catch (Exception ex) {

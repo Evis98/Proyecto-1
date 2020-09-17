@@ -332,7 +332,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {
-            control.store("DataBase");       
+            control.store("DataBase.xml");       
         } 
         catch (Exception ex) {
             Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,7 +341,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 
     private void jButtonLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoadMouseClicked
            try {
-            Datos c = control.load("DataBase");
+            Datos c = control.load("DataBase.xml");
             control.agregarTodos(c.getEmpresas());
             this.Table_Empresas.setModel(new Empresa_TableModel(c.getEmpresas()));
         } catch (Exception ex) {

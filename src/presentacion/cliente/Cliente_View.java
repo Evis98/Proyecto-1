@@ -295,7 +295,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
 
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
         try {
-            Datos c = control.load("DataBase");
+            Datos c = control.load("DataBase.xml");
             control.agregarTodos(c.getClientes());
             jTable_Clientes.setModel(new Cliente_TableModel(c.getClientes()));
         } catch (Exception ex) {
@@ -305,7 +305,7 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
 
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {   
-            control.store("DataBase");        // TODO add your handling code here:
+            control.store("DataBase.xml");        // TODO add your handling code here:
         } 
         catch (Exception ex) {
             Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);

@@ -3,6 +3,7 @@ package presentacion.factura;
 import java.util.Observable;
 import java.util.Observer;
 import logica.Factura;
+import presentacion.Factura_TableModel;
 import presentacion.factura.Factura_Control;
 import presentacion.factura.Factura_Modelo;
 /**
@@ -26,7 +27,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Table_Facturas = new javax.swing.JTable();
         tituloJLabel = new javax.swing.JLabel();
         Label_Cliente = new javax.swing.JLabel();
         jComboBox_Cliente = new javax.swing.JComboBox<>();
@@ -45,12 +46,14 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         jButton_Facturar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         CambiarAtributosEmpresaButton = new javax.swing.JButton();
+        Label_FechaEmision = new javax.swing.JLabel();
+        FechaemiciosnTextField = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
-        jTable1.setBackground(new java.awt.Color(153, 255, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table_Facturas.setBackground(new java.awt.Color(153, 255, 204));
+        Table_Facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,8 +64,8 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setOpaque(false);
-        jScrollPane1.setViewportView(jTable1);
+        Table_Facturas.setOpaque(false);
+        jScrollPane1.setViewportView(Table_Facturas);
 
         tituloJLabel.setBackground(new java.awt.Color(51, 255, 204));
         tituloJLabel.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
@@ -167,12 +170,19 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
+        Label_FechaEmision.setText("FechaEmision");
+
+        FechaemiciosnTextField.setText("yy/mm/dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(tituloJLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -182,15 +192,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(CambiarAtributosEmpresaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Label_Observaciones)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jTextField_Observaciones))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Label_Cantidad)
                                 .addGap(68, 68, 68)
@@ -212,10 +213,18 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Label_Moneda)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox_Moneda, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(tituloJLabel)))
+                                .addComponent(jComboBox_Moneda, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Label_Observaciones)
+                                    .addComponent(Label_FechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jTextField_Observaciones)
+                                    .addComponent(FechaemiciosnTextField))))))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -235,7 +244,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                             .addComponent(Label_Empresa)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CambiarAtributosEmpresaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 32, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Cliente)
                             .addComponent(jComboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -260,9 +269,14 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(55, 55, 55))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_FechaEmision)
+                            .addComponent(FechaemiciosnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)))
+                .addGap(12, 12, 12)
+                .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -361,24 +375,26 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
 
     @Override
     public void update(Observable o, Object o1) {
-//        Producto current = modelo.getCurrent();
-//        Textfield_Detalle.setText(current.getDetalle());
-//        Textfield_Codigo.setText(current.getCodigo());
-//        Textfield_Unidad.setText(current.getMedida());
-//        Textfield_Precio.setText(current.getString_Precio_unitario());
-//        Table_Productos.setModel(new Producto_TableModel(modelo.getLista()));
+        Factura current = modelo.getCurrent();
+        jTextField_Observaciones.setText(current.getObservaciones());
+        FechaemiciosnTextField.setText(current.getFechaEmision());
+       // jComboBox_FormaPago.setText(current.getMedida());
+        Table_Facturas.setModel(new Factura_TableModel(modelo.getLista()));
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Button_AgregarProducto;
     private javax.swing.JButton CambiarAtributosEmpresaButton;
+    private javax.swing.JTextField FechaemiciosnTextField;
     private javax.swing.JLabel Label_Cantidad;
     private javax.swing.JLabel Label_Cliente;
     private javax.swing.JLabel Label_Cliente1;
     private javax.swing.JLabel Label_Empresa;
+    private javax.swing.JLabel Label_FechaEmision;
     private javax.swing.JLabel Label_FormaPago;
     private javax.swing.JLabel Label_Moneda;
     private javax.swing.JLabel Label_Observaciones;
+    private javax.swing.JTable Table_Facturas;
     private javax.swing.JButton jButton_Facturar;
     private javax.swing.JComboBox<String> jComboBox_Cliente;
     private javax.swing.JComboBox<String> jComboBox_FormaPago;
@@ -386,7 +402,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JComboBox<String> jComboBox_Producto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField_CantidadProductos;
     private javax.swing.JTextField jTextField_Observaciones;
     private javax.swing.JLabel tituloJLabel;

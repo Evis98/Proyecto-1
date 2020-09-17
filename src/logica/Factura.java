@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlIDREF;
 public class Factura {
 
     @XmlID
-    public Date FechaEmision;
-    public Cliente Cliente;
-    public Empresa empresa;
+     String FechaEmision;
+     Cliente Cliente;
+     Empresa empresa;
     
     @XmlIDREF
     List<Producto> productos;
@@ -34,7 +34,7 @@ public class Factura {
     String formadePago;
     int numeroFactura;
 
-    public Factura(Date FechaEmision, Cliente Cliente, Empresa empresa,  String observaciones, String formadePago, int numeroFactura) {
+    public Factura(String FechaEmision, Cliente Cliente, Empresa empresa,  String observaciones, String formadePago, int numeroFactura) {
         this.FechaEmision = FechaEmision;
         this.Cliente = Cliente;
         this.empresa = empresa;
@@ -68,7 +68,22 @@ public class Factura {
             return (double) newImpuestos;
         }
     }
+      public String getString_impuestos(){
+        String stringPrecio = String.valueOf(this.impuestos());
+        return stringPrecio;
+    }
+     
+      
+    public String getString_subtotal(){
+        String stringPrecio = String.valueOf(this.subtotal());
+        return stringPrecio;
+    }
 
+     public String getString_totalNeto(){
+        String stringPrecio = String.valueOf(this.totalNeto());
+        return stringPrecio;
+    }
+    
     public double descuento(double desc) {
         return (double) this.subtotal() * (100 / desc);
     }
@@ -82,20 +97,20 @@ public class Factura {
         return this.productos.add(p);
     }
 
-    public Cliente getCliente() {
-        return Cliente;
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 
-    public void setCliente(Cliente Cliente) {
-        this.Cliente = Cliente;
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public List<Empresa> getEmpresas() {
+        return empresas;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setEmpresas(List<Empresa> empresas) {
+        this.empresas = empresas;
     }
 
     public List<Producto> getProductos() {
@@ -130,32 +145,23 @@ public class Factura {
         this.numeroFactura = numeroFactura;
     }
 
-   
-    public String getFechaEmisionString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(FechaEmision);
-    }
-
-    public Date ParseFecha(String fecha) {
-        if (!fecha.equals("")) {
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            Date fechaDate = null;
-            try {
-                fechaDate = formato.parse(fecha);
-            } catch (ParseException ex) {
-                System.out.println(ex);
-            }
-            return fechaDate;
-        }
-        return null;
-    }
-
-    public Date getFechaEmision() {
+    public String getFechaEmision() {
         return FechaEmision;
     }
 
-    public void setFechaEmision(Date FechaEmision) {
+    public void setFechaEmision(String FechaEmision) {
         this.FechaEmision = FechaEmision;
+    }
+
+   
+ 
+
+    public Cliente getCliente() {
+        return Cliente;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
 }

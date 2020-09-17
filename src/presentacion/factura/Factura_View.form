@@ -26,6 +26,10 @@
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="tituloJLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -34,19 +38,6 @@
                               <Component id="jLabel1" min="-2" pref="134" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="CambiarAtributosEmpresaButton" min="-2" pref="129" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="Label_Observaciones" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Component id="jButton_Facturar" min="-2" pref="116" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="jTextField_Observaciones" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="Label_Cantidad" min="-2" max="-2" attributes="0"/>
@@ -75,11 +66,22 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jComboBox_Moneda" min="-2" pref="226" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Label_Observaciones" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_FechaEmision" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButton_Facturar" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jTextField_Observaciones" max="32767" attributes="0"/>
+                                  <Component id="FechaemiciosnTextField" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="tituloJLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -105,7 +107,7 @@
                           <Component id="jLabel1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="CambiarAtributosEmpresaButton" alignment="3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" pref="31" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" pref="32" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Cliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBox_Cliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -136,11 +138,17 @@
                           <Component id="Label_Observaciones" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jTextField_Observaciones" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton_Facturar" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Label_FechaEmision" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FechaemiciosnTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="jButton_Facturar" min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -153,7 +161,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="Table_Facturas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="99" type="rgb"/>
@@ -395,6 +403,16 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CambiarAtributosEmpresaButtonMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CambiarAtributosEmpresaButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label_FechaEmision">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="FechaEmision"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="FechaemiciosnTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="yy/mm/dd"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
