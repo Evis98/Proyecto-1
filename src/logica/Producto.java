@@ -37,7 +37,12 @@ public class Producto {
         this.detalle = detalle;
     }
 
-
+    
+    
+       @Override
+    public String toString() {
+        return  codigo ;
+    }
 
     public String getMedida() {
         return medida;

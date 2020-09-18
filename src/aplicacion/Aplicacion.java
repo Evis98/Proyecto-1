@@ -26,6 +26,6 @@ public class Aplicacion {
         
         aplicacion_View.setVisible(true);
         
-        crearPdf(DEST);
+        //crearPdf(DEST);
     }   
 }

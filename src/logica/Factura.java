@@ -19,20 +19,21 @@ import javax.xml.bind.annotation.XmlIDREF;
 public class Factura {
 
     @XmlID
-     String FechaEmision;
-     Cliente Cliente;
-     Empresa empresa;
-    
-    @XmlIDREF
-    List<Producto> productos;
-    @XmlIDREF
-    List<Cliente> clientes;
-    @XmlIDREF
-    List<Empresa> empresas;
-    
+    String FechaEmision;
+    Cliente Cliente;
+    Empresa empresa;
     String observaciones;
     String formadePago;
     int numeroFactura;
+
+    @XmlIDREF
+    List<Producto> productos;
+//    @XmlIDREF
+//    List<Cliente> clientes;
+//    @XmlIDREF
+//    List<Empresa> empresas;
+
+
 
     public Factura(String FechaEmision, Cliente Cliente, Empresa empresa,  String observaciones, String formadePago, int numeroFactura) {
         this.FechaEmision = FechaEmision;
@@ -97,21 +98,7 @@ public class Factura {
         return this.productos.add(p);
     }
 
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    public List<Empresa> getEmpresas() {
-        return empresas;
-    }
-
-    public void setEmpresas(List<Empresa> empresas) {
-        this.empresas = empresas;
-    }
+ 
 
     public List<Producto> getProductos() {
         return productos;

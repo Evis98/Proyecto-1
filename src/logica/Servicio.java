@@ -51,6 +51,9 @@ public class Servicio {
     public List<Cliente> getClientes() {
         return datos.getClientes();
     }
+      public Cliente consultarCliente(int index) {
+        return datos.getClientes().get(index);
+    }
      
     public List<Empresa> getEmpresas() {
         return datos.getEmpresas();

@@ -63,4 +63,15 @@ public class Datos {
     public void setClientes(List<Cliente> clientes) {
         this.clientes =clientes;
     }   
+    
+//     public Cliente consultarCliente(int index) {
+//        return clientes.get(index);
+//    }
+//      public Producto consultarProducto(int index) {
+//        return productos.get(index);
+//    }
+//       public Empresa consultarEmpresa(int index) {
+//        return clientes.get(index);
+//    }
+       
 }

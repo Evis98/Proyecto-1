@@ -28,7 +28,7 @@ public class Cliente {
     
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", id=" + id + ", correo=" + correo + ", provincia=" + provincia + ", canton=" + canton + ", distrito=" + distrito + ", telefono=" + telefono + '}';
+        return  nombre ;
     }
 
     public void setNombre(String nombre) {
