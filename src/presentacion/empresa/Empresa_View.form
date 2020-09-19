@@ -34,22 +34,22 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="Label_Id" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Textfield_Id" max="32767" attributes="0"/>
+                      <Component id="TextfieldId" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="Label_Correo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Textfield_Correo" max="32767" attributes="0"/>
+                      <Component id="TextfieldCorreo" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="Label_Telefono" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Textfield_Telefono" max="32767" attributes="0"/>
+                      <Component id="TextfieldTelefono" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="Label_Ubicacion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="Textfield_Ubicacion" max="32767" attributes="0"/>
+                      <Component id="TextfieldUbicacion" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -58,15 +58,15 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Textfield_NombreComercial" max="32767" attributes="0"/>
-                          <Component id="Textfield_CodigoActividad" max="32767" attributes="0"/>
+                          <Component id="TextfieldNombreComercial" max="32767" attributes="0"/>
+                          <Component id="TextfieldCodigoActividad" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="Label_Fax" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Textfield_Fax" max="32767" attributes="0"/>
+                          <Component id="TextfieldFax" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -90,7 +90,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="Label_Buscar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="Textfield_Buscar" min="-2" pref="161" max="-2" attributes="0"/>
+              <Component id="TextfieldBuscar" min="-2" pref="161" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -110,37 +110,37 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_CodigoActividad" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_CodigoActividad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldCodigoActividad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_NombreComercial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldNombreComercial" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Id" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Id" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Ubicacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Ubicacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Correo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Correo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Telefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Telefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Fax" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Fax" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldFax" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -158,7 +158,7 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="Textfield_Buscar" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="TextfieldBuscar" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="50" max="32767" attributes="0"/>
@@ -240,28 +240,28 @@
         <Property name="text" type="java.lang.String" value="Fax:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_CodigoActividad">
+    <Component class="javax.swing.JTextField" name="TextfieldCodigoActividad">
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_NombreComercial">
+    <Component class="javax.swing.JTextField" name="TextfieldNombreComercial">
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Id">
+    <Component class="javax.swing.JTextField" name="TextfieldId">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Textfield_IdActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextfieldIdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Ubicacion">
+    <Component class="javax.swing.JTextField" name="TextfieldUbicacion">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Textfield_UbicacionActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextfieldUbicacionActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Correo">
+    <Component class="javax.swing.JTextField" name="TextfieldCorreo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Textfield_CorreoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextfieldCorreoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Telefono">
+    <Component class="javax.swing.JTextField" name="TextfieldTelefono">
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Fax">
+    <Component class="javax.swing.JTextField" name="TextfieldFax">
     </Component>
     <Component class="javax.swing.JLabel" name="Label_Buscar">
       <Properties>
@@ -271,9 +271,9 @@
         <Property name="text" type="java.lang.String" value="Buscar:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Buscar">
+    <Component class="javax.swing.JTextField" name="TextfieldBuscar">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Textfield_BuscarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextfieldBuscarActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

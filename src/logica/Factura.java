@@ -18,14 +18,20 @@ import javax.xml.bind.annotation.XmlIDREF;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Factura {
 
+   
+
     @XmlID
     String FechaEmision;
-    Cliente Cliente;
+    int numeroFactura;
     Empresa empresa;
+    Cliente Cliente;
+    Producto producto;
+    double cantidad;
     String observaciones;
     String formadePago;
-    int numeroFactura;
-
+    double impuestos;
+    double subtotal;
+    double totalNeto;
     @XmlIDREF
     List<Producto> productos;
 //    @XmlIDREF
@@ -33,22 +39,73 @@ public class Factura {
 //    @XmlIDREF
 //    List<Empresa> empresas;
 
-
-
-    public Factura(String FechaEmision, Cliente Cliente, Empresa empresa,  String observaciones, String formadePago, int numeroFactura) {
+    public Factura(String FechaEmision, int numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, double cantidad, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
         this.FechaEmision = FechaEmision;
-        this.Cliente = Cliente;
+        this.numeroFactura = numeroFactura;
         this.empresa = empresa;
+        this.Cliente = Cliente;
+        this.producto = producto;
+        this.cantidad = cantidad;
         this.observaciones = observaciones;
         this.formadePago = formadePago;
-        this.numeroFactura = numeroFactura;
-        productos = new ArrayList<>();
+        this.impuestos = impuestos;
+        this.subtotal = subtotal;
+        this.totalNeto = totalNeto;
+         productos = new ArrayList<>();
+    }
+   
+
+    
+
+    public Factura() {   productos = new ArrayList<>();  }
+      
+    public Producto getProducto() {
+        return producto;
     }
 
-    public Factura() {   productos = new ArrayList<>();
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
-    
-    public double subtotal() {
+        public double getCantidad() {
+        return cantidad;
+    }
+
+    public double getImpuestos() {
+        return impuestos;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public double getTotalNeto() {
+        return totalNeto;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public void setCliente(Cliente Cliente) {
+        this.Cliente = Cliente;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setImpuestos(double impuestos) {
+        this.impuestos = impuestos;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public void setTotalNeto(double totalNeto) {
+        this.totalNeto = totalNeto;
+    }
+    public double subtotal(List<Producto> productos) {
         double newSubtotal = 0;
         if (this.productos.isEmpty()) 
             return (double) 0.0;
@@ -59,7 +116,7 @@ public class Factura {
         }
     }
     
-     public double impuestos() {
+     public double impuestos(List<Producto> productos) {
         double newImpuestos = 0;
         if (this.productos.isEmpty()) 
             return (double) 0.0;
@@ -70,27 +127,30 @@ public class Factura {
         }
     }
       public String getString_impuestos(){
-        String stringPrecio = String.valueOf(this.impuestos());
+        String stringPrecio = String.valueOf(this.impuestos(productos));
         return stringPrecio;
     }
      
-      
+      public String getString_Cantidad(){
+        String stringCantidad = String.valueOf(this.getCantidad());
+        return stringCantidad;
+    }
     public String getString_subtotal(){
-        String stringPrecio = String.valueOf(this.subtotal());
+        String stringPrecio = String.valueOf(this.subtotal(productos));
         return stringPrecio;
     }
 
      public String getString_totalNeto(){
-        String stringPrecio = String.valueOf(this.totalNeto());
+        String stringPrecio = String.valueOf(this.totalNeto(productos));
         return stringPrecio;
     }
     
     public double descuento(double desc) {
-        return (double) this.subtotal() * (100 / desc);
+        return (double) this.subtotal(productos) * (100 / desc);
     }
 
-    public double totalNeto(){
-        return (double)this.subtotal()-this.impuestos() ;
+    public double totalNeto(List<Producto> productos){
+        return (double)this.subtotal(productos)-this.impuestos(productos) ;
     }
     
     
@@ -139,9 +199,6 @@ public class Factura {
     public void setFechaEmision(String FechaEmision) {
         this.FechaEmision = FechaEmision;
     }
-
-   
- 
 
     public Cliente getCliente() {
         return Cliente;

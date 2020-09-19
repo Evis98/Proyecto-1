@@ -33,12 +33,11 @@ public class Empresa {
         this.fax = fax;
     }
     
-    public Empresa() {
-    }
+    public Empresa() {   }
 
     @Override
     public String toString() {
-        return "Empresa{" + "codigoActividad=" + codigoActividad + ", nombreComercial=" + nombreComercial + ", id=" + id + ", ubicacion=" + ubicacion + ", correo=" + correo + ", telefono=" + telefono + ", fax=" + fax + '}';
+        return  nombreComercial;
     }
 
     public String getCodigoActividad() {
@@ -115,7 +114,7 @@ public class Empresa {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Cliente other = (Cliente) obj;
+        final Empresa other = (Empresa) obj;
         return Objects.equals(this.id, other.id);
     }  
 }

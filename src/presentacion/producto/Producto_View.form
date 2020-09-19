@@ -24,44 +24,47 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Label_Detalle" min="-2" max="-2" attributes="0"/>
-                              <Component id="Label_Codigo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="tituloJLabel" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Label_Detalle" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_Codigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tituloJLabel" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Component id="Label_Precio" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Label_Unidad" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="TextfieldPrecio" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="TextfieldUnidad" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="TextfieldCodigo" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="TextfieldDetalle" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="Label_Precio" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="Label_Unidad" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="Button_Agregar" min="-2" pref="93" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Textfield_Precio" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="Textfield_Unidad" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="Textfield_Codigo" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="Textfield_Detalle" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="store" min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="Button_Agregar" min="-2" pref="93" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="load" max="32767" attributes="0"/>
-                          <Component id="store" pref="87" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="load" min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="62" max="32767" attributes="0"/>
@@ -69,7 +72,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="Label_Buscar" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Textfield_Buscar" min="-2" pref="128" max="-2" attributes="0"/>
+                      <Component id="TextfieldBuscar" min="-2" pref="128" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -87,7 +90,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Textfield_Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Label_Buscar" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -99,22 +102,22 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Detalle" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Detalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldDetalle" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Unidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Unidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldUnidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Label_Precio" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Textfield_Precio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextfieldPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -203,16 +206,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_AgregarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Detalle">
+    <Component class="javax.swing.JTextField" name="TextfieldDetalle">
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Unidad">
+    <Component class="javax.swing.JTextField" name="TextfieldUnidad">
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Codigo">
+    <Component class="javax.swing.JTextField" name="TextfieldCodigo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Textfield_CodigoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextfieldCodigoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Precio">
+    <Component class="javax.swing.JTextField" name="TextfieldPrecio">
     </Component>
     <Component class="javax.swing.JLabel" name="Label_Buscar">
       <Properties>
@@ -222,9 +225,9 @@
         <Property name="text" type="java.lang.String" value="Buscar:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Textfield_Buscar">
+    <Component class="javax.swing.JTextField" name="TextfieldBuscar">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Textfield_BuscarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextfieldBuscarActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

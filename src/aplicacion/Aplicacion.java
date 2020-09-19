@@ -24,8 +24,8 @@ public class Aplicacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, Exception {
-        Factura F = new Factura();
-        F.impuestos();
+//        Factura F = new Factura();
+//        F.impuestos();
         presentacion.aplicacion.Aplicacion_Modelo aplicacion_Modelo;
         presentacion.aplicacion.Aplicacion_View aplicacion_View;
         presentacion.aplicacion.Aplicacion_Control aplicacion_Control;

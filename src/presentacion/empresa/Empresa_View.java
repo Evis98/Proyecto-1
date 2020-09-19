@@ -38,15 +38,15 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         Label_Correo = new javax.swing.JLabel();
         Label_Telefono = new javax.swing.JLabel();
         Label_Fax = new javax.swing.JLabel();
-        Textfield_CodigoActividad = new javax.swing.JTextField();
-        Textfield_NombreComercial = new javax.swing.JTextField();
-        Textfield_Id = new javax.swing.JTextField();
-        Textfield_Ubicacion = new javax.swing.JTextField();
-        Textfield_Correo = new javax.swing.JTextField();
-        Textfield_Telefono = new javax.swing.JTextField();
-        Textfield_Fax = new javax.swing.JTextField();
+        TextfieldCodigoActividad = new javax.swing.JTextField();
+        TextfieldNombreComercial = new javax.swing.JTextField();
+        TextfieldId = new javax.swing.JTextField();
+        TextfieldUbicacion = new javax.swing.JTextField();
+        TextfieldCorreo = new javax.swing.JTextField();
+        TextfieldTelefono = new javax.swing.JTextField();
+        TextfieldFax = new javax.swing.JTextField();
         Label_Buscar = new javax.swing.JLabel();
-        Textfield_Buscar = new javax.swing.JTextField();
+        TextfieldBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Empresas = new javax.swing.JTable();
         Button_Agregar = new javax.swing.JButton();
@@ -84,30 +84,30 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         Label_Fax.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Fax.setText("Fax:");
 
-        Textfield_Id.addActionListener(new java.awt.event.ActionListener() {
+        TextfieldId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Textfield_IdActionPerformed(evt);
+                TextfieldIdActionPerformed(evt);
             }
         });
 
-        Textfield_Ubicacion.addActionListener(new java.awt.event.ActionListener() {
+        TextfieldUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Textfield_UbicacionActionPerformed(evt);
+                TextfieldUbicacionActionPerformed(evt);
             }
         });
 
-        Textfield_Correo.addActionListener(new java.awt.event.ActionListener() {
+        TextfieldCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Textfield_CorreoActionPerformed(evt);
+                TextfieldCorreoActionPerformed(evt);
             }
         });
 
         Label_Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_Buscar.setText("Buscar:");
 
-        Textfield_Buscar.addActionListener(new java.awt.event.ActionListener() {
+        TextfieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Textfield_BuscarActionPerformed(evt);
+                TextfieldBuscarActionPerformed(evt);
             }
         });
 
@@ -180,32 +180,32 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_Id)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Textfield_Id))
+                        .addComponent(TextfieldId))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_Correo)
                         .addGap(30, 30, 30)
-                        .addComponent(Textfield_Correo))
+                        .addComponent(TextfieldCorreo))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_Telefono)
                         .addGap(18, 18, 18)
-                        .addComponent(Textfield_Telefono))
+                        .addComponent(TextfieldTelefono))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_Ubicacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Textfield_Ubicacion))
+                        .addComponent(TextfieldUbicacion))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_Nombre)
                             .addComponent(Label_CodigoActividad))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Textfield_NombreComercial)
-                            .addComponent(Textfield_CodigoActividad)))
+                            .addComponent(TextfieldNombreComercial)
+                            .addComponent(TextfieldCodigoActividad)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_Fax)
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Textfield_Fax)
+                            .addComponent(TextfieldFax)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -222,7 +222,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Label_Buscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextfieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(280, 280, 280))
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
@@ -239,31 +239,31 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_CodigoActividad)
-                            .addComponent(Textfield_CodigoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldCodigoActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Nombre)
-                            .addComponent(Textfield_NombreComercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldNombreComercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Id)
-                            .addComponent(Textfield_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Ubicacion)
-                            .addComponent(Textfield_Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Correo)
-                            .addComponent(Textfield_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Telefono)
-                            .addComponent(Textfield_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_Fax)
-                            .addComponent(Textfield_Fax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextfieldFax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,36 +277,36 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextfieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Textfield_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_IdActionPerformed
+    private void TextfieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Textfield_IdActionPerformed
+    }//GEN-LAST:event_TextfieldIdActionPerformed
 
-    private void Textfield_UbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_UbicacionActionPerformed
+    private void TextfieldUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldUbicacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Textfield_UbicacionActionPerformed
+    }//GEN-LAST:event_TextfieldUbicacionActionPerformed
 
-    private void Textfield_CorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_CorreoActionPerformed
+    private void TextfieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Textfield_CorreoActionPerformed
+    }//GEN-LAST:event_TextfieldCorreoActionPerformed
 
     private void Button_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarActionPerformed
-        if (Textfield_CodigoActividad.getText().isEmpty() || Textfield_NombreComercial.getText().isEmpty() || Textfield_Id.getText().isEmpty() || Textfield_Ubicacion.getText().isEmpty() || Textfield_Correo.getText().isEmpty()
-            || Textfield_Telefono.getText().isEmpty() || Textfield_Fax.getText().isEmpty()) return;            
+        if (TextfieldCodigoActividad.getText().isEmpty() || TextfieldNombreComercial.getText().isEmpty() || TextfieldId.getText().isEmpty() || TextfieldUbicacion.getText().isEmpty() || TextfieldCorreo.getText().isEmpty()
+            || TextfieldTelefono.getText().isEmpty() || TextfieldFax.getText().isEmpty()) return;            
         Empresa empresa = new Empresa();
-        empresa.setCodigoActividad(Textfield_CodigoActividad.getText());
-        empresa.setNombreComercial(Textfield_NombreComercial.getText());
-        empresa.setId(Textfield_Id.getText());
-        empresa.setUbicacion(Textfield_Ubicacion.getText());
-        empresa.setCorreo(Textfield_Correo.getText());
-        empresa.setTelefono(Textfield_Telefono.getText());
-        empresa.setFax(Textfield_Fax.getText());
+        empresa.setCodigoActividad(TextfieldCodigoActividad.getText());
+        empresa.setNombreComercial(TextfieldNombreComercial.getText());
+        empresa.setId(TextfieldId.getText());
+        empresa.setUbicacion(TextfieldUbicacion.getText());
+        empresa.setCorreo(TextfieldCorreo.getText());
+        empresa.setTelefono(TextfieldTelefono.getText());
+        empresa.setFax(TextfieldFax.getText());
         try {
             control.agregar(empresa);
         } catch (Exception ex) {
@@ -320,12 +320,12 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         }
     }//GEN-LAST:event_Table_EmpresasMouseClicked
 
-    private void Textfield_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_BuscarActionPerformed
+    private void TextfieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldBuscarActionPerformed
         Empresa filtro = new Empresa();
-        filtro.setNombreComercial(Textfield_Buscar.getText());
+        filtro.setNombreComercial(TextfieldBuscar.getText());
         control.buscar(filtro);        
                 
-    }//GEN-LAST:event_Textfield_BuscarActionPerformed
+    }//GEN-LAST:event_TextfieldBuscarActionPerformed
 
     private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
   
@@ -407,13 +407,13 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     @Override
     public void update(Observable o, Object arg) {
         Empresa current = modelo.getCurrent();
-        Textfield_CodigoActividad.setText(current.getCodigoActividad());
-        Textfield_NombreComercial.setText(current.getNombreComercial());
-        Textfield_Id.setText(current.getId());
-        Textfield_Ubicacion.setText(current.getUbicacion());
-        Textfield_Correo.setText(current.getCorreo());
-        Textfield_Telefono.setText(current.getTelefono());        
-        Textfield_Fax.setText(current.getFax());       
+        TextfieldCodigoActividad.setText(current.getCodigoActividad());
+        TextfieldNombreComercial.setText(current.getNombreComercial());
+        TextfieldId.setText(current.getId());
+        TextfieldUbicacion.setText(current.getUbicacion());
+        TextfieldCorreo.setText(current.getCorreo());
+        TextfieldTelefono.setText(current.getTelefono());        
+        TextfieldFax.setText(current.getFax());       
         Table_Empresas.setModel(new Empresa_TableModel(modelo.getLista()));
     }
     
@@ -428,14 +428,14 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JLabel Label_Telefono;
     private javax.swing.JLabel Label_Ubicacion;
     private javax.swing.JTable Table_Empresas;
-    private javax.swing.JTextField Textfield_Buscar;
-    private javax.swing.JTextField Textfield_CodigoActividad;
-    private javax.swing.JTextField Textfield_Correo;
-    private javax.swing.JTextField Textfield_Fax;
-    private javax.swing.JTextField Textfield_Id;
-    private javax.swing.JTextField Textfield_NombreComercial;
-    private javax.swing.JTextField Textfield_Telefono;
-    private javax.swing.JTextField Textfield_Ubicacion;
+    private javax.swing.JTextField TextfieldBuscar;
+    private javax.swing.JTextField TextfieldCodigoActividad;
+    private javax.swing.JTextField TextfieldCorreo;
+    private javax.swing.JTextField TextfieldFax;
+    private javax.swing.JTextField TextfieldId;
+    private javax.swing.JTextField TextfieldNombreComercial;
+    private javax.swing.JTextField TextfieldTelefono;
+    private javax.swing.JTextField TextfieldUbicacion;
     private javax.swing.JButton jButtonLoad;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton store;
