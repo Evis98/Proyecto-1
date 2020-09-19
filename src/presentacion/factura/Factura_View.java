@@ -21,11 +21,14 @@ import presentacion.factura.Factura_Modelo;
 
 public class Factura_View extends javax.swing.JInternalFrame implements Observer {
 
-     List<Producto> productos = new ArrayList<>();
-    Factura factura = new Factura();
+     List<Producto> productos;
+    Factura facturaAux ;
+    
+    
     public Factura_View() {
         initComponents();
-        
+        productos = new ArrayList<>();
+        facturaAux = new Factura();
     }
 
 
@@ -333,14 +336,11 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarProductoActionPerformed
-        double vces = Double.parseDouble(TextFieldCantidadProductos.getText());
-            
+        double vces = Double.parseDouble(TextFieldCantidadProductos.getText());            
         if (vces > 0) {
-            for (int i = 0; i <vces;i++) {
-             
-               factura.setCantidad(vces);
+            for (int i = 0; i <vces;i++) {             
                 productos.add((Producto)ComboBoxProducto.getSelectedItem());    
-              factura.setProductos(productos);
+                facturaAux.setProductos(productos);
             }     
         }
       
@@ -351,34 +351,30 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_TextFieldCantidadProductosActionPerformed
 
     private void jButton_FacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FacturarActionPerformed
-       if(TextFieldObservaciones.getText().isEmpty() ||FechaemisicionTextField.getText().isEmpty() ){
-          return;
-         }
-        double im =0.0;  
-       double sub = 0.0;
-       double to = 0.0;
-      String formapago = "";
-      factura.setFechaEmision(FechaemisicionTextField.getText());
-      factura.setObservaciones(TextFieldObservaciones.getText());
-      factura.setNumeroFactura(1);  
-      if(ComboBoxFormaPago.getSelectedIndex()== 0 ){
-           formapago = "Efectivo";
-      }
-      if(ComboBoxFormaPago.getSelectedIndex()== 1 ){
-           formapago = "Tarjeta";
-      }
-      factura.setFormadePago(formapago);
-      factura.setCliente((Cliente)ComboBoxCliente.getSelectedItem());
-      factura.setEmpresa((Empresa)ComboBoxEmpresa.getSelectedItem());
-      factura.setProducto((Producto)ComboBoxProducto.getSelectedItem());
-       im= factura.impuestos(productos);
-       sub = factura.subtotal(productos);
-       to = factura.totalNeto(productos);
-       factura.setImpuestos(im);
-       factura.setSubtotal(sub);
-       factura.setTotalNeto(to);
+        if (TextFieldObservaciones.getText().isEmpty() || FechaemisicionTextField.getText().isEmpty()) {
+            return;
+        }
+       double im = 0.0;
+        double sub = 0.0;
+        double to = 0.0;
+        String formapago = "";
+         List<Producto> productosAux= new ArrayList<>();
+        if (ComboBoxFormaPago.getSelectedIndex() == 0) {
+            formapago = "Efectivo";
+        }
+        if (ComboBoxFormaPago.getSelectedIndex() == 1) {
+            formapago = "Tarjeta";
+        }
+         productos.add((Producto) ComboBoxProducto.getSelectedItem());
+        facturaAux.setProducto((Producto)ComboBoxProducto.getSelectedItem());
+        im = facturaAux.impuestos(productos);
+        sub = facturaAux.subtotal(productos);
+        to = facturaAux.totalNeto(productos);
+        productosAux.addAll(productos);
+        facturaAux = new Factura(FechaemisicionTextField.getText(), 1, (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to, productosAux);
+
       try {
-            control.agregar(factura);
+            control.agregar(facturaAux);
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
         }      
@@ -490,7 +486,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         FechaemisicionTextField.setText(current.getFechaEmision());
         Table_Facturas.setModel(new Factura_TableModel(modelo.getLista()));
         Table_Productos.setModel(new Producto_TableModel(modelo.getListaProducto()));
-        TextFieldCantidadProductos.setText(current.getString_Cantidad());
     }
     
     
@@ -504,9 +499,7 @@ public void CargaEmpresa(){
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-//        
+       
     }
     
     

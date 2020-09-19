@@ -26,7 +26,6 @@ public class Factura {
     Empresa empresa;
     Cliente Cliente;
     Producto producto;
-    double cantidad;
     String observaciones;
     String formadePago;
     double impuestos;
@@ -39,22 +38,33 @@ public class Factura {
 //    @XmlIDREF
 //    List<Empresa> empresas;
 
-    public Factura(String FechaEmision, int numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, double cantidad, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
+//    public Factura(String FechaEmision, int numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
+//        this.FechaEmision = FechaEmision;
+//        this.numeroFactura = numeroFactura;
+//        this.empresa = empresa;
+//        this.Cliente = Cliente;
+//        this.producto = producto;
+//        this.observaciones = observaciones;
+//        this.formadePago = formadePago;
+//        this.impuestos = impuestos;
+//        this.subtotal = subtotal;
+//        this.totalNeto = totalNeto;
+//         productos = new ArrayList<>();
+//    }
+   
+    public Factura(String FechaEmision, int numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
         this.FechaEmision = FechaEmision;
         this.numeroFactura = numeroFactura;
         this.empresa = empresa;
         this.Cliente = Cliente;
         this.producto = producto;
-        this.cantidad = cantidad;
         this.observaciones = observaciones;
         this.formadePago = formadePago;
         this.impuestos = impuestos;
         this.subtotal = subtotal;
         this.totalNeto = totalNeto;
-         productos = new ArrayList<>();
+         this.productos = productos;
     }
-   
-
     
 
     public Factura() {   productos = new ArrayList<>();  }
@@ -66,9 +76,7 @@ public class Factura {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-        public double getCantidad() {
-        return cantidad;
-    }
+   
 
     public double getImpuestos() {
         return impuestos;
@@ -90,9 +98,7 @@ public class Factura {
         this.Cliente = Cliente;
     }
 
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
-    }
+ 
 
     public void setImpuestos(double impuestos) {
         this.impuestos = impuestos;
@@ -131,10 +137,7 @@ public class Factura {
         return stringPrecio;
     }
      
-      public String getString_Cantidad(){
-        String stringCantidad = String.valueOf(this.getCantidad());
-        return stringCantidad;
-    }
+   
     public String getString_subtotal(){
         String stringPrecio = String.valueOf(this.subtotal(productos));
         return stringPrecio;
