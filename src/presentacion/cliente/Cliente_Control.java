@@ -1,8 +1,6 @@
 package presentacion.cliente;
 import Datos.Datos;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import logica.Cliente;
 /**
  *
@@ -20,7 +18,7 @@ public class Cliente_Control {
         view.setControl(this);    
     }
     
-    public void agregar(Cliente c){
+    public void agregar(Cliente c) throws Exception{
     
             logica.Servicio.instance().add(c);
             modelo.setCurrent(new Cliente());

@@ -30,6 +30,14 @@ public class XmlPersister {
         return path;
     }
  
+    
+    public static XmlPersister TheinstanceXml() {
+        if (theInstanceXml==null){ 
+            theInstanceXml=new XmlPersister("DataBase.xml");
+        }
+        return theInstanceXml;
+    }
+    
     public static XmlPersister TheinstanceXml(String ruta) {
         if (theInstanceXml==null){ 
             theInstanceXml=new XmlPersister(ruta);
@@ -63,4 +71,3 @@ public class XmlPersister {
         os.close();
     }
 }
-

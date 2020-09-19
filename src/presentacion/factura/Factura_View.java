@@ -441,9 +441,9 @@ carComboBoxProducto();
 //        } catch (Exception ex) {
 //            Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        
-        
-        jLabel1Empresa
+//        
+//        
+//        jLabel1Empresa
     }
     
     

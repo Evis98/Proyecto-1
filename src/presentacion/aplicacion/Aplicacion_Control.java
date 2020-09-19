@@ -1,4 +1,8 @@
 package presentacion.aplicacion;
+
+import javax.swing.JTable;
+import presentacion.Factura_TableModel;
+
 /**
  *
  * @author Ivan

@@ -283,7 +283,11 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         cliente.setTelefono(jTextField_Numero.getText());
         cliente.setCanton(jTextField_Canton.getText());
         cliente.setDistrito(jTextField_Distrito.getText());
-        control.agregar(cliente);
+        try {
+            control.agregar(cliente);
+        } catch (Exception ex) {
+            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton_AgregarActionPerformed
 
     private void jTextField_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BuscarActionPerformed
@@ -379,16 +383,6 @@ public class Cliente_View extends javax.swing.JInternalFrame implements Observer
         jTextField_Distrito.setText(current.getDistrito());
         jTable_Clientes.setModel(new Cliente_TableModel(modelo.getLista()));
         }
-    
-//    public void cargaDatosCliente(){
-//        try {
-//            Datos c = control.load("DataBase");
-//            control.agregarTodos(c.getClientes());
-//            jTable_Clientes.setModel(new Cliente_TableModel(c.getClientes()));
-//        } catch (Exception ex) {
-//            Logger.getLogger(Cliente_View.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargar;

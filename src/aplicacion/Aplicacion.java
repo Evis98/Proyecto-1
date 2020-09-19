@@ -1,9 +1,19 @@
 package aplicacion;
 
-import static PDF.PDF_Factura.DEST;
-import static PDF.PDF_Factura.crearPdf;
+//import static PDF.PDF_Factura.DEST;
+//import static PDF.PDF_Factura.crearPdf;
+import Datos.Datos;
 import java.io.IOException;
 import logica.Factura;
+import presentacion.Cliente_TableModel;
+import presentacion.Empresa_TableModel;
+import presentacion.Producto_TableModel;
+import presentacion.cliente.Cliente_Control;
+import presentacion.cliente.Cliente_View;
+import presentacion.empresa.Empresa_Control;
+import presentacion.empresa.Empresa_View;
+import presentacion.producto.Producto_Control;
+import presentacion.producto.Producto_View;
 
 /**
  *
@@ -13,8 +23,8 @@ public class Aplicacion {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        Factura F= new Factura();
+    public static void main(String[] args) throws IOException, Exception {
+        Factura F = new Factura();
         F.impuestos();
         presentacion.aplicacion.Aplicacion_Modelo aplicacion_Modelo;
         presentacion.aplicacion.Aplicacion_View aplicacion_View;

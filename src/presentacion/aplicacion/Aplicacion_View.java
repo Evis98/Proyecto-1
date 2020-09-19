@@ -1,15 +1,26 @@
 package presentacion.aplicacion;
 
+import Datos.Datos;
+import logica.Servicio;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import presentacion.Cliente_TableModel;
+import presentacion.Empresa_TableModel;
+import presentacion.Producto_TableModel;
+import presentacion.cliente.Cliente_Control;
 import presentacion.producto.Producto_View;
 import presentacion.cliente.Cliente_View;
+import presentacion.empresa.Empresa_Control;
 import presentacion.empresa.Empresa_View;
+import presentacion.producto.Producto_Control;
 /**
  *
  * @author Ivan
  */
 public class Aplicacion_View extends javax.swing.JFrame implements java.util.Observer{
+
     /**
      * Creates new form View
      */
@@ -138,8 +149,7 @@ public class Aplicacion_View extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_jMenu_ProductoMouseClicked
 
     private void jMenu_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_ClienteMouseClicked
-       this.control.clienteShow();
-       
+       this.control.clienteShow();  
     }//GEN-LAST:event_jMenu_ClienteMouseClicked
 
     private void jMenu_EmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_EmpresaMouseClicked

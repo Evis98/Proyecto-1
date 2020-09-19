@@ -19,8 +19,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
      */
     public Empresa_View() {
         initComponents();
-//        this.setLocation(100, 100);
-//        this.getContentPane().setBackground(new java.awt.Color(204, 255, 204));
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,7 +158,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
-        jButtonLoad.setText("Load");
+        jButtonLoad.setText("Mostrar Empresas Registradas");
         jButtonLoad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonLoadMouseClicked(evt);
@@ -206,16 +205,17 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                         .addComponent(Label_Fax)
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Textfield_Fax, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                            .addComponent(Textfield_Fax)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonLoad)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonLoad)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(store, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                        .addComponent(Button_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 50, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -278,7 +278,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(Textfield_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -298,10 +298,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
 
     private void Button_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarActionPerformed
         if (Textfield_CodigoActividad.getText().isEmpty() || Textfield_NombreComercial.getText().isEmpty() || Textfield_Id.getText().isEmpty() || Textfield_Ubicacion.getText().isEmpty() || Textfield_Correo.getText().isEmpty()
-            || Textfield_Telefono.getText().isEmpty() || Textfield_Fax.getText().isEmpty()) {
-        return;
-        }
-        
+            || Textfield_Telefono.getText().isEmpty() || Textfield_Fax.getText().isEmpty()) return;            
         Empresa empresa = new Empresa();
         empresa.setCodigoActividad(Textfield_CodigoActividad.getText());
         empresa.setNombreComercial(Textfield_NombreComercial.getText());
@@ -310,7 +307,11 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         empresa.setCorreo(Textfield_Correo.getText());
         empresa.setTelefono(Textfield_Telefono.getText());
         empresa.setFax(Textfield_Fax.getText());
-        control.agregar(empresa);
+        try {
+            control.agregar(empresa);
+        } catch (Exception ex) {
+            Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Button_AgregarActionPerformed
 
     private void Table_EmpresasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_EmpresasMouseClicked
@@ -352,39 +353,7 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
     private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLoadActionPerformed
-
-    Empresa_Control control;
-    Empresa_Modelo modelo;
-
-    public Empresa_Control getControl() {
-        return control;
-    }
-
-    public void setControl(Empresa_Control control) {
-        this.control = control;
-    }
-
-    public Empresa_Modelo getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(Empresa_Modelo modelo) {
-        this.modelo = modelo;        
-         modelo.addObserver(this);
-    }
-    
-    @Override
-    public void update(Observable o, Object o1) {
-         Empresa current = modelo.getCurrent();
-        Textfield_CodigoActividad.setText(current.getCodigoActividad());
-        Textfield_NombreComercial.setText(current.getNombreComercial());
-        Textfield_Id.setText(current.getId());
-        Textfield_Ubicacion.setText(current.getUbicacion());
-        Textfield_Correo.setText(current.getCorreo());
-        Textfield_Telefono.setText(current.getTelefono());        
-        Textfield_Fax.setText(current.getFax());       
-        Table_Empresas.setModel(new Empresa_TableModel(modelo.getLista()));
-    }   
+   
     /**
      * @param args the command line arguments
      */
@@ -412,23 +381,41 @@ public class Empresa_View extends javax.swing.JInternalFrame implements Observer
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Empresa_View().setVisible(true);
-            }
-        });
+        /* Create and display the form */  
     }
     
-//    public void cargaDatosEmpresa(){
-//        try {
-//            Datos c = control.load("DataBase");
-//            control.agregarTodos(c.getEmpresas());
-//            Table_Empresas.setModel(new Empresa_TableModel(c.getEmpresas()));
-//        } catch (Exception ex) {
-//            Logger.getLogger(Empresa_View.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    Empresa_Control control;
+    Empresa_Modelo modelo;
+
+    public Empresa_Control getControl() {
+        return control;
+    }
+
+    public void setControl(Empresa_Control control) {
+        this.control = control;
+    }
+
+    public Empresa_Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Empresa_Modelo modelo) {
+        this.modelo = modelo;        
+         modelo.addObserver(this);
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        Empresa current = modelo.getCurrent();
+        Textfield_CodigoActividad.setText(current.getCodigoActividad());
+        Textfield_NombreComercial.setText(current.getNombreComercial());
+        Textfield_Id.setText(current.getId());
+        Textfield_Ubicacion.setText(current.getUbicacion());
+        Textfield_Correo.setText(current.getCorreo());
+        Textfield_Telefono.setText(current.getTelefono());        
+        Textfield_Fax.setText(current.getFax());       
+        Table_Empresas.setModel(new Empresa_TableModel(modelo.getLista()));
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Agregar;

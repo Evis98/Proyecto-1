@@ -257,7 +257,11 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
             producto.setCodigo(Textfield_Codigo.getText());
             double Precio = Double.parseDouble(Textfield_Precio.getText());
             producto.setPrecio_unitario(Precio);                                                                         
+            try {
             control.agregar(producto);
+        } catch (Exception ex) {
+            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Button_AgregarActionPerformed
 
     private void Table_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ProductosMouseClicked
@@ -367,8 +371,7 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
         Textfield_Unidad.setText(current.getMedida());
         Textfield_Precio.setText(current.getString_Precio_unitario());
         Table_Productos.setModel(new Producto_TableModel(modelo.getLista()));
-    }
-    
+    }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Agregar;

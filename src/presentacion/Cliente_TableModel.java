@@ -50,7 +50,6 @@ public class Cliente_TableModel extends AbstractTableModel implements TableModel
                 return c.getDistrito();
             case 6:
                 return c.getTelefono();
-
             default:
                 return "";
         }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.List;
+import logica.XmlPersister;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -27,8 +28,7 @@ import org.w3c.dom.Text;
  */
 public class Servicio {
     private static Servicio theInstance;
-    private Datos datos;
-    
+    private Datos datos;    
     public static Servicio instance(){
         if (theInstance==null){ 
             theInstance=new Servicio();
@@ -37,7 +37,12 @@ public class Servicio {
     }
     
     public Servicio() {
-       datos =  new Datos();
+        try{
+            datos=XmlPersister.TheinstanceXml().load();
+        }
+        catch(Exception e){
+            datos =  new Datos();
+        }
     }
     
     public List<Factura> getFacturas() {
