@@ -10,7 +10,7 @@ import javax.swing.table.TableModel;
  * @author Ivan
  */
 public class Factura_TableModel extends AbstractTableModel implements TableModel {
-    String[] cols = {"Numero", "Cliente", "FormadePago", "subtotal", "impuesto","Total"};               
+    String[] cols = {"Numero", "Cliente", "FormadePago", "Total","Subtotal", "Impuesto"};               
     List<Factura> rows;
 
     public Factura_TableModel(List<Factura> rows) {

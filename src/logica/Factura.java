@@ -22,7 +22,7 @@ public class Factura {
 
     @XmlID
     String FechaEmision;
-    int numeroFactura;
+    String numeroFactura;
     Empresa empresa;
     Cliente Cliente;
     Producto producto;
@@ -31,6 +31,7 @@ public class Factura {
     double impuestos;
     double subtotal;
     double totalNeto;
+    
     @XmlIDREF
     List<Producto> productos;
 //    @XmlIDREF
@@ -52,7 +53,7 @@ public class Factura {
 //         productos = new ArrayList<>();
 //    }
    
-    public Factura(String FechaEmision, int numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
+    public Factura(String FechaEmision, String numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
         this.FechaEmision = FechaEmision;
         this.numeroFactura = numeroFactura;
         this.empresa = empresa;
@@ -187,11 +188,11 @@ public class Factura {
         this.formadePago = formadePago;
     }
 
-    public int getNumeroFactura() {
+    public String getNumeroFactura() {
         return numeroFactura;
     }
 
-    public void setNumeroFactura(int numeroFactura) {
+    public void setNumeroFactura(String numeroFactura) {
         this.numeroFactura = numeroFactura;
     }
 

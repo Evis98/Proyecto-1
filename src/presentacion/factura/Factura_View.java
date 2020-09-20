@@ -54,7 +54,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         Label_Observaciones = new javax.swing.JLabel();
         TextFieldObservaciones = new javax.swing.JTextField();
         jButton_Facturar = new javax.swing.JButton();
-        ButtonCambiarAtributosEmpresa = new javax.swing.JButton();
         Label_FechaEmision = new javax.swing.JLabel();
         FechaemisicionTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -62,6 +61,8 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         ComboBoxEmpresa = new javax.swing.JComboBox<>();
         Load = new javax.swing.JButton();
         store = new javax.swing.JButton();
+        Numero = new javax.swing.JLabel();
+        NumerodeFactura = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -164,20 +165,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
-        ButtonCambiarAtributosEmpresa.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
-        ButtonCambiarAtributosEmpresa.setText("Cambiar atributos");
-        ButtonCambiarAtributosEmpresa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCambiarAtributosEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ButtonCambiarAtributosEmpresaMouseClicked(evt);
-            }
-        });
-        ButtonCambiarAtributosEmpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCambiarAtributosEmpresaActionPerformed(evt);
-            }
-        });
-
         Label_FechaEmision.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Label_FechaEmision.setText("Fecha de emision:");
 
@@ -198,6 +185,11 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         jScrollPane2.setViewportView(Table_Productos);
 
         ComboBoxEmpresa.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        ComboBoxEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxEmpresaActionPerformed(evt);
+            }
+        });
 
         Load.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
         Load.setText("Load");
@@ -217,6 +209,16 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
             }
         });
 
+        Numero.setFont(new java.awt.Font("Segoe UI Emoji", 0, 16)); // NOI18N
+        Numero.setText("Numero de factura:");
+
+        NumerodeFactura.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        NumerodeFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumerodeFacturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -230,50 +232,50 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Label_Empresa)
-                                .addGap(31, 31, 31)
-                                .addComponent(ComboBoxEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButtonCambiarAtributosEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Label_Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Label_FechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(34, 34, 34)
                                         .addComponent(Load, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton_Facturar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27))
-                                    .addComponent(FechaemisicionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(store, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(FechaemisicionTextField)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Label_Cantidad)
-                                    .addComponent(Label_FormaPago)
-                                    .addComponent(Label_Observaciones))
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ComboBoxFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(TextFieldCantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(ButtonAgregarProducto))
-                                    .addComponent(TextFieldObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Label_Cliente)
-                                .addGap(26, 26, 26))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(ComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(171, 171, 171)
-                            .addComponent(ComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Numero)
+                                .addGap(64, 64, 64)
+                                .addComponent(NumerodeFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Label_Empresa)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ComboBoxEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Label_Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Label_Observaciones)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Label_FormaPago, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Label_Cantidad)))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(ComboBoxFormaPago, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(TextFieldObservaciones)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(TextFieldCantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                            .addComponent(ButtonAgregarProducto))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Label_Cliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(44, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -286,30 +288,34 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(tituloJLabel)
-                        .addGap(45, 45, 45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_Empresa)
-                            .addComponent(ButtonCambiarAtributosEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComboBoxEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 27, Short.MAX_VALUE)
+                            .addComponent(Numero)
+                            .addComponent(NumerodeFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_Cliente)
-                            .addComponent(ComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ComboBoxEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Empresa))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldCantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(ComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Cliente))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextFieldCantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ButtonAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_FormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBoxFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -340,23 +346,22 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         if (vces > 0) {
             for (int i = 0; i <vces;i++) {             
                 productos.add((Producto)ComboBoxProducto.getSelectedItem());    
-                facturaAux.setProductos(productos);
-            }     
+            }    
         }
-      
+//         facturaAux.setProducto((Producto)ComboBoxProducto.getSelectedItem());
+//      facturaAux.setProductos(productos);
     }//GEN-LAST:event_ButtonAgregarProductoActionPerformed
 
     private void TextFieldCantidadProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCantidadProductosActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldCantidadProductosActionPerformed
 
     private void jButton_FacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FacturarActionPerformed
         if (TextFieldObservaciones.getText().isEmpty() || FechaemisicionTextField.getText().isEmpty()) {
             return;
-        }
-       double im = 0.0;
-        double sub = 0.0;
-        double to = 0.0;
+        }    
+//        double im = 0.0;
+//        double sub = 0.0;
+//        double to = 0.0;
         String formapago = "";
          List<Producto> productosAux= new ArrayList<>();
         if (ComboBoxFormaPago.getSelectedIndex() == 0) {
@@ -367,17 +372,19 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         }
          productos.add((Producto) ComboBoxProducto.getSelectedItem());
         facturaAux.setProducto((Producto)ComboBoxProducto.getSelectedItem());
-        im = facturaAux.impuestos(productos);
-        sub = facturaAux.subtotal(productos);
-        to = facturaAux.totalNeto(productos);
+        double im = facturaAux.impuestos(productos);
+        double sub = facturaAux.subtotal(productos);
+        double to = facturaAux.totalNeto(productos);
         productosAux.addAll(productos);
-        facturaAux = new Factura(FechaemisicionTextField.getText(), 1, (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to, productosAux);
+        facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to, productosAux);
 
       try {
             control.agregar(facturaAux);
+            
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }   
+      
     }//GEN-LAST:event_jButton_FacturarActionPerformed
 
     private void TextFieldObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldObservacionesActionPerformed
@@ -395,14 +402,6 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     private void ComboBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboBoxClienteMouseClicked
       
     }//GEN-LAST:event_ComboBoxClienteMouseClicked
-
-    private void ButtonCambiarAtributosEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCambiarAtributosEmpresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCambiarAtributosEmpresaActionPerformed
-
-    private void ButtonCambiarAtributosEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonCambiarAtributosEmpresaMouseClicked
-
-    }//GEN-LAST:event_ButtonCambiarAtributosEmpresaMouseClicked
 
     private void ButtonAgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAgregarProductoMouseClicked
 
@@ -423,6 +422,14 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_storeActionPerformed
+
+    private void NumerodeFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumerodeFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumerodeFacturaActionPerformed
+
+    private void ComboBoxEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,7 +493,14 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         FechaemisicionTextField.setText(current.getFechaEmision());
         Table_Facturas.setModel(new Factura_TableModel(modelo.getLista()));
         Table_Productos.setModel(new Producto_TableModel(modelo.getListaProducto()));
-    }
+        ComboBoxCliente.setSelectedItem(current.getCliente());
+        ComboBoxEmpresa.setSelectedItem(current.getEmpresa());
+        ComboBoxProducto.setSelectedItem(current.getProducto());
+        NumerodeFactura.setText(current.getNumeroFactura());
+        this.TextFieldCantidadProductos.setText(" ");
+        ComboBoxFormaPago.setSelectedItem(current.getFormadePago());
+        
+        }
     
     
 public void CargaEmpresa(){
@@ -535,7 +549,6 @@ public void CargaEmpresa(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton ButtonAgregarProducto;
-    private javax.swing.JButton ButtonCambiarAtributosEmpresa;
     private javax.swing.JComboBox<Cliente> ComboBoxCliente;
     private javax.swing.JComboBox<Empresa> ComboBoxEmpresa;
     private javax.swing.JComboBox<String> ComboBoxFormaPago;
@@ -549,6 +562,8 @@ public void CargaEmpresa(){
     private javax.swing.JLabel Label_FormaPago;
     private javax.swing.JLabel Label_Observaciones;
     private javax.swing.JButton Load;
+    private javax.swing.JLabel Numero;
+    private javax.swing.JTextField NumerodeFactura;
     private javax.swing.JTable Table_Facturas;
     private javax.swing.JTable Table_Productos;
     private javax.swing.JTextField TextFieldCantidadProductos;
