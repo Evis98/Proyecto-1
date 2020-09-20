@@ -1,6 +1,7 @@
 package presentacion.factura;
 
 import Datos.Datos;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -9,10 +10,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import logica.Factura;
 import logica.Cliente;
 import logica.Empresa;
 import logica.Producto;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 import presentacion.Factura_TableModel;
 import presentacion.Producto_TableModel;
 import presentacion.cliente.Cliente_View;
@@ -344,12 +360,10 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     private void ButtonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarProductoActionPerformed
         double vces = Double.parseDouble(TextFieldCantidadProductos.getText());            
         if (vces > 0) {
-            for (int i = 0; i <vces;i++) {             
+            for (int i = 1; i <vces;i++) {             
                 productos.add((Producto)ComboBoxProducto.getSelectedItem());    
             }    
         }
-//         facturaAux.setProducto((Producto)ComboBoxProducto.getSelectedItem());
-//      facturaAux.setProductos(productos);
     }//GEN-LAST:event_ButtonAgregarProductoActionPerformed
 
     private void TextFieldCantidadProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCantidadProductosActionPerformed
@@ -380,7 +394,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
 
       try {
             control.agregar(facturaAux);
-            
+            this.crearXmlFactura();
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
         }   
@@ -574,4 +588,170 @@ public void CargaEmpresa(){
     private javax.swing.JButton store;
     private javax.swing.JLabel tituloJLabel;
     // End of variables declaration//GEN-END:variables
+
+
+ public void crearXmlFactura() throws ParserConfigurationException, TransformerConfigurationException {
+        double im = 0.0;
+        double sub = 0.0;
+        double to = 0.0;
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder;
+
+            builder = factory.newDocumentBuilder();
+
+            DOMImplementation implementation = builder.getDOMImplementation();
+            Document documento = implementation.createDocument(null, "Factura", null);
+            documento.setXmlVersion("1.0");
+
+            Element Facturaelectronica = documento.createElement("FacturaElectronica");
+
+            Element emisor = documento.createElement("Emisor");
+            Element receptor = documento.createElement("Receptor");
+            Element factura = documento.createElement("Factura");
+            Element ubicacion = documento.createElement("Ubicacion");
+
+            Element FechaEmision = documento.createElement("FechaEmision");
+            Text textFechaEmision = documento.createTextNode(this.facturaAux.getFechaEmision());
+            FechaEmision.appendChild(textFechaEmision);
+            Facturaelectronica.appendChild(FechaEmision);
+
+            Element FormadePago = documento.createElement("FormadePago");
+            Text textFormadePago = documento.createTextNode(this.facturaAux.getFormadePago());
+            FormadePago.appendChild(textFormadePago);
+            Facturaelectronica.appendChild(FormadePago);
+
+            Element Observaciones = documento.createElement("Observaciones");
+            Text textObservaciones = documento.createTextNode(this.facturaAux.getObservaciones());
+            Observaciones.appendChild(textObservaciones);
+            Facturaelectronica.appendChild(Observaciones);
+
+            //------------------Emisor-------------------------------------
+            Element NombreComercial = documento.createElement("Nombre");
+            Text textNombreComercial = documento.createTextNode(this.facturaAux.getEmpresa().getNombreComercial());
+            NombreComercial.appendChild(textNombreComercial);
+            emisor.appendChild(NombreComercial);
+
+            Element ID = documento.createElement("Identificacion");
+            Text textID = documento.createTextNode(this.facturaAux.getEmpresa().getId());
+            ID.appendChild(textID);
+            emisor.appendChild(ID);
+
+            Element Ubicacion = documento.createElement("Ubicacion");
+            Text textUbicacion = documento.createTextNode(this.facturaAux.getEmpresa().getUbicacion());
+            Ubicacion.appendChild(textUbicacion);
+            emisor.appendChild(Ubicacion);
+
+            Element Correo = documento.createElement("Correo");
+            Text textCorreo = documento.createTextNode(this.facturaAux.getEmpresa().getCorreo());
+            Correo.appendChild(textCorreo);
+            emisor.appendChild(Correo);
+
+            Element Fax = documento.createElement("Fax");
+            Text textFax = documento.createTextNode(this.facturaAux.getEmpresa().getFax());
+            Correo.appendChild(textFax);
+            emisor.appendChild(Fax);
+            Facturaelectronica.appendChild(emisor);
+
+            //-----------------Receptor-------------------------------------
+            Element Nombre1 = documento.createElement("Nombre");
+            Text textNombre1 = documento.createTextNode(this.facturaAux.getCliente().getNombre());
+            Nombre1.appendChild(textNombre1);
+            receptor.appendChild(Nombre1);
+
+            Element Identificacion = documento.createElement("Identificacion");
+            Text textIdentificacion = documento.createTextNode(this.facturaAux.getCliente().getId());
+            Identificacion.appendChild(textIdentificacion);
+            receptor.appendChild(Identificacion);
+
+            Element Correo1 = documento.createElement("Correo");
+            Text textCorreo1 = documento.createTextNode(this.facturaAux.getCliente().getCorreo());
+            Correo1.appendChild(textCorreo1);
+            receptor.appendChild(Correo1);
+
+            Element Provincia = documento.createElement("Provincia");
+            Text textProvincia = documento.createTextNode(this.facturaAux.getCliente().getProvincia());
+            Provincia.appendChild(textProvincia);
+            ubicacion.appendChild(Provincia);
+
+            Element Canton = documento.createElement("Canton");
+            Text textCanton = documento.createTextNode(this.facturaAux.getCliente().getCanton());
+            Canton.appendChild(textCanton);
+            ubicacion.appendChild(Canton);
+
+            Element Distrito = documento.createElement("Distrito");
+            Text textDistrito = documento.createTextNode(this.facturaAux.getCliente().getDistrito());
+            Distrito.appendChild(textDistrito);
+            ubicacion.appendChild(Distrito);
+
+            Element Telefono = documento.createElement("Telefono");
+            Text textTelefono = documento.createTextNode(this.facturaAux.getCliente().getTelefono());
+            Telefono.appendChild(textTelefono);
+            receptor.appendChild(Telefono);
+
+            receptor.appendChild(ubicacion);
+            Facturaelectronica.appendChild(receptor);
+        //------------------------------------------Linea de Detalle
+            for (Producto p : this.facturaAux.getProductos()) {
+                Element Detalle = documento.createElement("Detalle");
+                Text textDetalle = documento.createTextNode(p.getDetalle());
+                Detalle.appendChild(textDetalle);
+                factura.appendChild(Detalle);
+
+                Element Medida = documento.createElement("Medida");
+                Text textMedida = documento.createTextNode(p.getMedida());
+                Medida.appendChild(textMedida);
+                factura.appendChild(Medida);
+
+                Element Codigo = documento.createElement("Codigo");
+                Text textCodigo = documento.createTextNode(p.getCodigo());
+                Codigo.appendChild(textCodigo);
+                factura.appendChild(Codigo);
+
+                Element Precio_unitario = documento.createElement("PrecioUnitario");
+                Text textPrecio_unitario = documento.createTextNode(p.getString_Precio_unitario());
+                Precio_unitario.appendChild(textPrecio_unitario);
+                factura.appendChild(Precio_unitario);
+                
+                Facturaelectronica.appendChild(factura);
+              
+            }
+            im = facturaAux.impuestos(productos);
+            String stringimim = String.valueOf(im);
+            sub = facturaAux.subtotal(productos);
+            String stringsubtotal = String.valueOf(sub);
+            to = facturaAux.totalNeto(productos);
+            String stringtotal = String.valueOf(to);
+            Element impuestos = documento.createElement("Impuestos");
+            Text textimpuestos = documento.createTextNode(stringimim);
+            impuestos.appendChild(textimpuestos);
+            factura.appendChild(impuestos);
+
+            Element Subtotal = documento.createElement("Subtotal");
+            Text textSubtotal = documento.createTextNode(stringsubtotal);
+            Subtotal.appendChild(textSubtotal);
+            factura.appendChild(Subtotal);
+
+            Element total = documento.createElement("Total");
+            Text texttotal = documento.createTextNode(stringtotal);
+            total.appendChild(texttotal);
+            factura.appendChild(total);
+
+            Facturaelectronica.appendChild(factura);
+
+            documento.getDocumentElement().appendChild(Facturaelectronica);
+
+            Source source = new DOMSource(documento);
+            Result result = new StreamResult(new File("FacturaElectronica_" + this.facturaAux.getNumeroFactura()+ ".xml"));
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
+            transformer.transform(source, result);
+        } catch (TransformerException ex) {
+            Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+
 }
