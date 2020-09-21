@@ -393,13 +393,12 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to,productosAux);
 
 
-
-      try {
+        try {
             control.agregar(facturaAux);
-            this.crearXmlFactura();
+            this.crearXmlFactura(im, sub, to);
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
       
     }//GEN-LAST:event_jButton_FacturarActionPerformed
 
@@ -592,11 +591,11 @@ public void CargaEmpresa(){
     // End of variables declaration//GEN-END:variables
 
 
- public void crearXmlFactura() throws ParserConfigurationException, TransformerConfigurationException {
-        double im = 0.0;
-        double sub = 0.0;
-        double to = 0.0;
-        double c = 0.0;
+ 
+ public void crearXmlFactura(double impuesto, double subtotal, double total1) throws ParserConfigurationException, TransformerConfigurationException {
+        double im ;
+        double sub ;
+        double to ;
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder;
@@ -696,11 +695,9 @@ public void CargaEmpresa(){
             Facturaelectronica.appendChild(receptor);
         //------------------------------------------Linea de Detalle
             for (Producto p : this.facturaAux.getProductos()) {
-                c = p.getCantidad();
-                String cs = String.valueOf(c);
-            
+               
                 Element Cantidad = documento.createElement("Cantidad");
-                Text textCantidad = documento.createTextNode(cs);
+                Text textCantidad = documento.createTextNode(facturaAux.getString_Cantidadl());
                 Cantidad.appendChild(textCantidad);
                 factura.appendChild(Cantidad);      
                 
@@ -730,11 +727,16 @@ public void CargaEmpresa(){
               
             }
             im = facturaAux.impuestos(productos);
-            String stringimim = String.valueOf(im);
+            String stringimim = String.valueOf(impuesto);
             sub = facturaAux.subtotal(productos);
-            String stringsubtotal = String.valueOf(sub);
+            String stringsubtotal = String.valueOf(subtotal);
             to = facturaAux.totalNeto(productos);
-            String stringtotal = String.valueOf(to);
+            String stringtotal = String.valueOf(total1);
+           // double impuesto, double subtotal, double total
+            
+            System.out.println(impuesto+ "nn");
+            System.out.println(stringimim + "wwww");
+
             Element impuestos = documento.createElement("Impuestos");
             Text textimpuestos = documento.createTextNode(stringimim);
             impuestos.appendChild(textimpuestos);
