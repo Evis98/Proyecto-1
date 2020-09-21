@@ -10,7 +10,7 @@ import javax.swing.table.TableModel;
  * @author Ivan
  */
 public class Factura_TableModel extends AbstractTableModel implements TableModel {
-    String[] cols = {"Numero", "Cliente", "FormadePago", "Total","Subtotal", "Impuesto"};               
+    String[] cols = {"Numero", "Cliente", "FormadePago", "Impuesto","Total","Subtotal", };               
     List<Factura> rows;
 
     public Factura_TableModel(List<Factura> rows) {
@@ -36,6 +36,11 @@ public class Factura_TableModel extends AbstractTableModel implements TableModel
     public Object getValueAt(int row, int col) {
         Factura f = rows.get(row);
         java.text.DecimalFormat df = new java.text.DecimalFormat("####");
+       
+        String stringImpuesto = String.valueOf(f.getImpuestos());
+         String stringTotal = String.valueOf(f.getTotalNeto());
+          String stringSub = String.valueOf(f.getSubtotal());
+  
         switch (col) {
             case 0:
                 return f.getNumeroFactura();
@@ -44,11 +49,11 @@ public class Factura_TableModel extends AbstractTableModel implements TableModel
             case 2:
                 return f.getFormadePago();
             case 3:
-                return f.getString_subtotal();
+                return stringImpuesto;
             case 4:
-                return f.getString_totalNeto();
+                return stringTotal;
             case 5:
-                return f.getString_impuestos();
+                return stringSub;
             default:
                 return "";
         }

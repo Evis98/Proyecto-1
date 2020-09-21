@@ -36,10 +36,10 @@ import presentacion.factura.Factura_Control;
 import presentacion.factura.Factura_Modelo;
 
 public class Factura_View extends javax.swing.JInternalFrame implements Observer {
-
+    double aux = 0.0;
      List<Producto> productos;
     Factura facturaAux ;
-    
+    double vces = 0.0;
     
     public Factura_View() {
         initComponents();
@@ -47,8 +47,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         facturaAux = new Factura();
     }
 
-
-    
+  
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -358,12 +357,15 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarProductoActionPerformed
-        double vces = Double.parseDouble(TextFieldCantidadProductos.getText());            
-        if (vces > 0) {
-            for (int i = 1; i <vces;i++) {             
-                productos.add((Producto)ComboBoxProducto.getSelectedItem());    
-            }    
-        }
+        vces = Double.parseDouble(TextFieldCantidadProductos.getText());
+        Producto p;
+                 
+                p = (Producto)ComboBoxProducto.getSelectedItem();
+                facturaAux.linea(p,vces);
+                productos.add(p);
+
+                
+       
     }//GEN-LAST:event_ButtonAgregarProductoActionPerformed
 
     private void TextFieldCantidadProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCantidadProductosActionPerformed
@@ -373,9 +375,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         if (TextFieldObservaciones.getText().isEmpty() || FechaemisicionTextField.getText().isEmpty()) {
             return;
         }    
-//        double im = 0.0;
-//        double sub = 0.0;
-//        double to = 0.0;
+
         String formapago = "";
          List<Producto> productosAux= new ArrayList<>();
         if (ComboBoxFormaPago.getSelectedIndex() == 0) {
@@ -384,13 +384,17 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         if (ComboBoxFormaPago.getSelectedIndex() == 1) {
             formapago = "Tarjeta";
         }
-         productos.add((Producto) ComboBoxProducto.getSelectedItem());
-        facturaAux.setProducto((Producto)ComboBoxProducto.getSelectedItem());
-        double im = facturaAux.impuestos(productos);
+
+        double im =  facturaAux.impuestos(productos);
         double sub = facturaAux.subtotal(productos);
         double to = facturaAux.totalNeto(productos);
         productosAux.addAll(productos);
-        facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to, productosAux);
+        
+        
+         
+        facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to, vces,productosAux);
+
+
 
       try {
             control.agregar(facturaAux);
@@ -511,7 +515,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         ComboBoxEmpresa.setSelectedItem(current.getEmpresa());
         ComboBoxProducto.setSelectedItem(current.getProducto());
         NumerodeFactura.setText(current.getNumeroFactura());
-        this.TextFieldCantidadProductos.setText(" ");
+        TextFieldCantidadProductos.setText(current.getNumeroFactura());
         ComboBoxFormaPago.setSelectedItem(current.getFormadePago());
         
         }
@@ -693,10 +697,18 @@ public void CargaEmpresa(){
             Facturaelectronica.appendChild(receptor);
         //------------------------------------------Linea de Detalle
             for (Producto p : this.facturaAux.getProductos()) {
+               
+                Element Cantidad = documento.createElement("Cantidad");
+                Text textCantidad = documento.createTextNode(facturaAux.getString_Cantidadl());
+                Cantidad.appendChild(textCantidad);
+                factura.appendChild(Cantidad);      
+                
                 Element Detalle = documento.createElement("Detalle");
                 Text textDetalle = documento.createTextNode(p.getDetalle());
                 Detalle.appendChild(textDetalle);
                 factura.appendChild(Detalle);
+                
+                 
 
                 Element Medida = documento.createElement("Medida");
                 Text textMedida = documento.createTextNode(p.getMedida());
@@ -736,7 +748,8 @@ public void CargaEmpresa(){
             Text texttotal = documento.createTextNode(stringtotal);
             total.appendChild(texttotal);
             factura.appendChild(total);
-
+            
+            
             Facturaelectronica.appendChild(factura);
 
             documento.getDocumentElement().appendChild(Facturaelectronica);

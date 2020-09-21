@@ -21,6 +21,8 @@ public class Factura_Modelo extends Observable{
     List<Producto> listaProducto;
     List<Cliente> listaCliente;
     List<Empresa> listaEmpresa;
+    Datos datos;
+    Producto ps;
 
     @Override
     public synchronized void addObserver(Observer o) {
@@ -89,5 +91,7 @@ public class Factura_Modelo extends Observable{
     public void commit(){
         this.setChanged();
         this.notifyObservers();        
-    }   
+    }
+
+    
 }

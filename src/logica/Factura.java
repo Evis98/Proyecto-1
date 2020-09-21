@@ -31,29 +31,15 @@ public class Factura {
     double impuestos;
     double subtotal;
     double totalNeto;
-    
+    double cantidadDeProductos;
+    double precioTP;
     @XmlIDREF
     List<Producto> productos;
-//    @XmlIDREF
-//    List<Cliente> clientes;
-//    @XmlIDREF
-//    List<Empresa> empresas;
 
-//    public Factura(String FechaEmision, int numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
-//        this.FechaEmision = FechaEmision;
-//        this.numeroFactura = numeroFactura;
-//        this.empresa = empresa;
-//        this.Cliente = Cliente;
-//        this.producto = producto;
-//        this.observaciones = observaciones;
-//        this.formadePago = formadePago;
-//        this.impuestos = impuestos;
-//        this.subtotal = subtotal;
-//        this.totalNeto = totalNeto;
-//         productos = new ArrayList<>();
-//    }
+    
+
    
-    public Factura(String FechaEmision, String numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
+    public Factura(String FechaEmision, String numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, double cantidadDeProductos,List<Producto> productos) {
         this.FechaEmision = FechaEmision;
         this.numeroFactura = numeroFactura;
         this.empresa = empresa;
@@ -65,6 +51,7 @@ public class Factura {
         this.subtotal = subtotal;
         this.totalNeto = totalNeto;
          this.productos = productos;
+         this.cantidadDeProductos=0;
     }
     
 
@@ -78,7 +65,13 @@ public class Factura {
         this.producto = producto;
     }
    
+ public double getCantidadDeProductos() {
+        return cantidadDeProductos;
+    }
 
+    public void setCantidadDeProductos(double cantidadDeProductos) {
+        this.cantidadDeProductos = cantidadDeProductos;
+    }
     public double getImpuestos() {
         return impuestos;
     }
@@ -118,7 +111,8 @@ public class Factura {
             return (double) 0.0;
          else {
             for (Producto p: productos) 
-                newSubtotal +=p.getPrecio_unitario();   
+//                newSubtotal +=p.getPrecio_unitario(); 
+                 newSubtotal +=precioTP;
             return (double) newSubtotal;
         }
     }
@@ -129,16 +123,21 @@ public class Factura {
             return (double) 0.0;
          else {
             for (Producto p: productos) 
-                newImpuestos +=p.getPrecio_unitario()*0.13;  
+//                newImpuestos +=p.getPrecio_unitario()*0.13;  
+                newImpuestos+=precioTP*0.13;
             return (double) newImpuestos;
         }
     }
+    
       public String getString_impuestos(){
         String stringPrecio = String.valueOf(this.impuestos(productos));
         return stringPrecio;
     }
      
-   
+    public String getString_Cantidadl(){
+        String stringPrecio = String.valueOf(this.getCantidadDeProductos());
+        return stringPrecio;
+    }
     public String getString_subtotal(){
         String stringPrecio = String.valueOf(this.subtotal(productos));
         return stringPrecio;
@@ -211,5 +210,21 @@ public class Factura {
     public Empresa getEmpresa() {
         return empresa;
     }
-
-}
+//    public double PrecioxProductosxCantidad(List<Producto> p){
+//        double x=0.0;
+//        if(getProductos().equals(p))
+//           getProductos().addAll(p);
+//        else{
+//            x=p. getCantidadDeProductos()*ps.getPrecio_unitario();
+//            
+//        }   
+//        return x;
+//    }
+    public void linea(Producto p,double cantidad){
+        if(!p.getCodigo().equals(p))
+           agregarProducto(p);
+//             productos.add(p)
+         System.out.println(precioTP= p.getPrecio_unitario()*cantidad);
+        
+        }
+    }
