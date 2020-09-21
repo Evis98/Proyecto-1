@@ -31,7 +31,6 @@ public class Factura {
     double impuestos;
     double subtotal;
     double totalNeto;
-    double cantidadDeProductos;
     double precioTP;
     @XmlIDREF
     List<Producto> productos;
@@ -39,7 +38,7 @@ public class Factura {
     
 
    
-    public Factura(String FechaEmision, String numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, double cantidadDeProductos,List<Producto> productos) {
+    public Factura(String FechaEmision, String numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
         this.FechaEmision = FechaEmision;
         this.numeroFactura = numeroFactura;
         this.empresa = empresa;
@@ -51,7 +50,7 @@ public class Factura {
         this.subtotal = subtotal;
         this.totalNeto = totalNeto;
          this.productos = productos;
-         this.cantidadDeProductos=0;
+         
     }
     
 
@@ -65,13 +64,7 @@ public class Factura {
         this.producto = producto;
     }
    
- public double getCantidadDeProductos() {
-        return cantidadDeProductos;
-    }
 
-    public void setCantidadDeProductos(double cantidadDeProductos) {
-        this.cantidadDeProductos = cantidadDeProductos;
-    }
     public double getImpuestos() {
         return impuestos;
     }
@@ -134,10 +127,7 @@ public class Factura {
         return stringPrecio;
     }
      
-    public String getString_Cantidadl(){
-        String stringPrecio = String.valueOf(this.getCantidadDeProductos());
-        return stringPrecio;
-    }
+
     public String getString_subtotal(){
         String stringPrecio = String.valueOf(this.subtotal(productos));
         return stringPrecio;
@@ -210,21 +200,14 @@ public class Factura {
     public Empresa getEmpresa() {
         return empresa;
     }
-//    public double PrecioxProductosxCantidad(List<Producto> p){
-//        double x=0.0;
-//        if(getProductos().equals(p))
-//           getProductos().addAll(p);
-//        else{
-//            x=p. getCantidadDeProductos()*ps.getPrecio_unitario();
-//            
-//        }   
-//        return x;
-//    }
+
     public void linea(Producto p,double cantidad){
         if(!p.getCodigo().equals(p))
-           agregarProducto(p);
-//             productos.add(p)
-         System.out.println(precioTP= p.getPrecio_unitario()*cantidad);
+        p.setCantidad(cantidad);
+        agregarProducto(p);
+        precioTP= p.getPrecio_unitario()*p.getCantidad();
+        
+        
         
         }
     }

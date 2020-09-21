@@ -15,6 +15,9 @@ public class Producto {
     private String medida;
     private String codigo;
     private double precio_unitario;
+
+ 
+    private double cantidad;
     @XmlIDREF
     private List<Producto> productos;
     
@@ -23,6 +26,13 @@ public class Producto {
         this.medida = medida;
         this.codigo = codigo;
         this.precio_unitario = precio_unitario;
+    }
+       public double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
     }
     
     public Producto() {

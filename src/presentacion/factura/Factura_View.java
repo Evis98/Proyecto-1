@@ -40,6 +40,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
      List<Producto> productos;
     Factura facturaAux ;
     double vces = 0.0;
+     Producto p = new Producto();
     
     public Factura_View() {
         initComponents();
@@ -357,15 +358,12 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarProductoActionPerformed
-        vces = Double.parseDouble(TextFieldCantidadProductos.getText());
-        Producto p;
-                 
-                p = (Producto)ComboBoxProducto.getSelectedItem();
+     
+       vces = Double.parseDouble(TextFieldCantidadProductos.getText());
+//        p.setCantidad(Double.parseDouble(TextFieldCantidadProductos.getText()));
+        p = (Producto)ComboBoxProducto.getSelectedItem();       
                 facturaAux.linea(p,vces);
                 productos.add(p);
-
-                
-       
     }//GEN-LAST:event_ButtonAgregarProductoActionPerformed
 
     private void TextFieldCantidadProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCantidadProductosActionPerformed
@@ -392,7 +390,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         
         
          
-        facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to, vces,productosAux);
+        facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to,productosAux);
 
 
 
@@ -598,6 +596,7 @@ public void CargaEmpresa(){
         double im = 0.0;
         double sub = 0.0;
         double to = 0.0;
+        double c = 0.0;
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder;
@@ -697,9 +696,11 @@ public void CargaEmpresa(){
             Facturaelectronica.appendChild(receptor);
         //------------------------------------------Linea de Detalle
             for (Producto p : this.facturaAux.getProductos()) {
-               
+                c = p.getCantidad();
+                String cs = String.valueOf(c);
+            
                 Element Cantidad = documento.createElement("Cantidad");
-                Text textCantidad = documento.createTextNode(facturaAux.getString_Cantidadl());
+                Text textCantidad = documento.createTextNode(cs);
                 Cantidad.appendChild(textCantidad);
                 factura.appendChild(Cantidad);      
                 
