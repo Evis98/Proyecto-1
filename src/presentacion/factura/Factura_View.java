@@ -8,7 +8,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,9 +30,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 import presentacion.Factura_TableModel;
 import presentacion.Producto_TableModel;
-import presentacion.cliente.Cliente_View;
-import presentacion.factura.Factura_Control;
-import presentacion.factura.Factura_Modelo;
+
 
 public class Factura_View extends javax.swing.JInternalFrame implements Observer {
     double aux = 0.0;
@@ -697,7 +694,7 @@ public void CargaEmpresa(){
             for (Producto p : this.facturaAux.getProductos()) {
                
                 Element Cantidad = documento.createElement("Cantidad");
-                Text textCantidad = documento.createTextNode(facturaAux.getString_Cantidadl());
+                Text textCantidad = documento.createTextNode(p.getString_Cantidad());
                 Cantidad.appendChild(textCantidad);
                 factura.appendChild(Cantidad);      
                 
@@ -743,12 +740,12 @@ public void CargaEmpresa(){
             factura.appendChild(impuestos);
 
             Element Subtotal = documento.createElement("Subtotal");
-            Text textSubtotal = documento.createTextNode(stringsubtotal);
+            Text textSubtotal = documento.createTextNode(stringtotal);
             Subtotal.appendChild(textSubtotal);
             factura.appendChild(Subtotal);
 
             Element total = documento.createElement("Total");
-            Text texttotal = documento.createTextNode(stringtotal);
+            Text texttotal = documento.createTextNode(stringsubtotal);
             total.appendChild(texttotal);
             factura.appendChild(total);
             

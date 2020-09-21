@@ -1,11 +1,11 @@
 package logica;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
-import java.util.Objects;
+//import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -104,7 +104,6 @@ public class Factura {
             return (double) 0.0;
          else {
             for (Producto p: productos) 
-//                newSubtotal +=p.getPrecio_unitario(); 
                  newSubtotal +=precioTP;
             return (double) newSubtotal;
         }
@@ -116,7 +115,6 @@ public class Factura {
             return (double) 0.0;
          else {
             for (Producto p: productos) 
-//                newImpuestos +=p.getPrecio_unitario()*0.13;  
                 newImpuestos+=precioTP*0.13;
             return (double) newImpuestos;
         }

@@ -6,9 +6,9 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Producto;
-import presentacion.Cliente_TableModel;
+//import presentacion.Cliente_TableModel;
 import presentacion.Producto_TableModel;
-import presentacion.cliente.Cliente_View;
+//import presentacion.cliente.Cliente_View;
 /**
  *
  * @author Daniel
@@ -22,15 +22,6 @@ public class Producto_View extends javax.swing.JInternalFrame implements Observe
     
     }
     
-//    public void cargaDatosProducto(){
-//        try {
-//            Datos c = control.load("DataBase");
-//            control.agregarTodos(c.getProductos());
-//            Table_Productos.setModel(new Producto_TableModel(c.getProductos()));
-//        } catch (Exception ex) {
-//            Logger.getLogger(Producto_View.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

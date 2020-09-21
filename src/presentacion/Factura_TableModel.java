@@ -51,9 +51,10 @@ public class Factura_TableModel extends AbstractTableModel implements TableModel
             case 3:
                 return stringImpuesto;
             case 4:
-                return stringTotal;
-            case 5:
                 return stringSub;
+                        
+            case 5:
+                return stringTotal;
             default:
                 return "";
         }

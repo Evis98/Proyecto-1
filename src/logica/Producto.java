@@ -15,9 +15,7 @@ public class Producto {
     private String medida;
     private String codigo;
     private double precio_unitario;
-
- 
-    private double cantidad;
+    private double cantidad = 0.0;
     @XmlIDREF
     private List<Producto> productos;
     
@@ -81,5 +79,9 @@ public class Producto {
     public String getString_Precio_unitario(){
         String stringPrecio = String.valueOf(precio_unitario);
         return stringPrecio;
+    }
+      public String getString_Cantidad(){
+        String stringC = String.valueOf(cantidad);
+        return stringC;
     }
 }

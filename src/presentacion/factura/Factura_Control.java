@@ -3,7 +3,7 @@ package presentacion.factura;
 import Datos.Datos;
 import java.util.List;
 import logica.Factura;
-import logica.Producto;
+//import logica.Producto;
 /**
  *
  * @author PC
