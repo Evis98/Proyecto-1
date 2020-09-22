@@ -803,7 +803,7 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         documentoPDF.setMargins(40, 40, 40, 40);
         
         //Imagen añadida
-        ImageData data = ImageDataFactory.create("IconoFinal.png");        
+        ImageData data = ImageDataFactory.create("404.png");        
         Image img = new Image(data); 
         documentoPDF.add(img);
         
@@ -874,7 +874,7 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         
         //Añade tabla
         //Añade las cabeceras de la tabla
-        Table table = new Table(5);
+        Table table = new Table(4);
         Cell c;
         //Definicion de los colores de la tabla 
         Color bkg = ColorConstants.BLACK;
@@ -888,10 +888,7 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         table.addHeaderCell(c);     
         c= new Cell(); 
         c.add(new Paragraph("Descripcion")).setBackgroundColor(bkg).setFontColor(frg);
-        table.addHeaderCell(c);
-        c= new Cell();
-        c.add(new Paragraph("Impuesto")).setBackgroundColor(bkg).setFontColor(frg);
-        table.addHeaderCell(c);
+        table.addHeaderCell(c);       
         c= new Cell(); 
         c.add(new Paragraph("Precio")).setBackgroundColor(bkg).setFontColor(frg);
         table.addHeaderCell(c);                         
@@ -915,10 +912,10 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
 //            String stringsubtotal = String.valueOf(sub);
 //            to = facturaAux.totalNeto(productos);
 //            String stringtotal = String.valueOf(to);
-            table.addHeaderCell("4");
+            table.addHeaderCell(p.getString_Cantidad());
             table.addHeaderCell(p.getCodigo());
             table.addHeaderCell(p.getDetalle());
-            table.addHeaderCell(stringimim);
+//            table.addHeaderCell(stringimim);
             table.addHeaderCell(p.getString_Precio_unitario());
 //            table.addHeaderCell(stringsubtotal);
 //            table.addHeaderCell(stringtotal);               
@@ -932,11 +929,21 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         String stringsubtotal = String.valueOf(subtotal);
         to = facturaAux.totalNeto(productos);       
         String stringtotal = String.valueOf(total1);
-        c= new Cell(1,4);  c.add(new Paragraph("SubTotal")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
-        table.addHeaderCell(c);    
-        c= new Cell();  c.add(new Paragraph(stringtotal)).setBackgroundColor(bkg).setFontColor(frg);
+        c= new Cell();  c.add(new Paragraph("Impuesto")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(c);
-        c= new Cell(1,5);  c.add(new Paragraph("Observaciones: ")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
+        c= new Cell(2,4);  c.add(new Paragraph(stringimim)).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);
+        c= new Cell();  c.add(new Paragraph("SubTotal")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
+        table.addHeaderCell(c);
+        c= new Cell(2,4);  c.add(new Paragraph(stringtotal)).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);
+        c= new Cell();  c.add(new Paragraph("Total")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
+        table.addHeaderCell(c);
+        c= new Cell(2,4);  c.add(new Paragraph(stringsubtotal)).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);
+        c= new Cell();  c.add(new Paragraph("Observaciones: ")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
+        table.addHeaderCell(c);
+        c= new Cell(2,4);  c.add(new Paragraph(this.facturaAux.getObservaciones())).setBackgroundColor(bkg).setFontColor(frg);
         table.addHeaderCell(c);
         
         //Añade la tabla final al PDF
