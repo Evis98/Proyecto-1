@@ -414,7 +414,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         try {
             control.agregar(facturaAux);
             this.crearXmlFactura(im, sub, to);
-            this.crearPdf();
+            this.crearPdf(im,sub,to);
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -753,8 +753,6 @@ public void CargaEmpresa(){
             String stringtotal = String.valueOf(total1);
            // double impuesto, double subtotal, double total
             
-            System.out.println(impuesto+ "nn");
-            System.out.println(stringimim + "wwww");
 
             Element impuestos = documento.createElement("Impuestos");
             Text textimpuestos = documento.createTextNode(stringimim);
@@ -788,11 +786,11 @@ public void CargaEmpresa(){
 
     }
 
-public void crearPdf() throws IOException { 
-        double im = 0.0;
-        double sub = 0.0;
-        double to = 0.0;
-        double cant = 0.0;
+public void crearPdf(double impuesto, double subtotal, double total1) throws IOException { 
+        double im;
+        double sub;
+        double to;
+        double cant;
         
         //Fuente del escrito
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
@@ -900,11 +898,20 @@ public void crearPdf() throws IOException {
         
         //Añade la información correspondiente para cada columna
         for(Producto p : this.facturaAux.getProductos()){
+//            im = facturaAux.impuestos(productos);
+//            String stringimim = String.valueOf(impuesto);
+//            sub = facturaAux.subtotal(productos);
+//            String stringsubtotal = String.valueOf(subtotal);
+//            to = facturaAux.totalNeto(productos);
+//            String stringtotal = String.valueOf(total1);
+            
+            
+            
 //            cant = facturaAux.totalNeto(productos);
 //            String stringcant = String.valueOf(cant);
-            im = facturaAux.impuestos(productos);
-            String stringimim = String.valueOf(im);
-            sub = facturaAux.subtotal(productos);
+//                    im = facturaAux.impuestos(productos);
+            String stringimim = String.valueOf(impuesto);
+//            sub = facturaAux.subtotal(productos);
 //            String stringsubtotal = String.valueOf(sub);
 //            to = facturaAux.totalNeto(productos);
 //            String stringtotal = String.valueOf(to);
@@ -916,12 +923,15 @@ public void crearPdf() throws IOException {
 //            table.addHeaderCell(stringsubtotal);
 //            table.addHeaderCell(stringtotal);               
         }
-        
+         im = facturaAux.impuestos(productos);
+            String stringimim = String.valueOf(impuesto);
+            
+            sub = facturaAux.subtotal(productos);
         //Crea una celda que cubre las otras celdas;
 //        to = facturaAux.totalNeto(productos);
-//        String stringsubtotal = String.valueOf(sub);
+        String stringsubtotal = String.valueOf(subtotal);
         to = facturaAux.totalNeto(productos);       
-        String stringtotal = String.valueOf(to);
+        String stringtotal = String.valueOf(total1);
         c= new Cell(1,4);  c.add(new Paragraph("SubTotal")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(c);    
         c= new Cell();  c.add(new Paragraph(stringtotal)).setBackgroundColor(bkg).setFontColor(frg);
