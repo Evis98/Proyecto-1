@@ -1,13 +1,31 @@
 package presentacion.factura;
 
 import Datos.Datos;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,14 +48,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 import presentacion.Factura_TableModel;
 import presentacion.Producto_TableModel;
-
+import presentacion.cliente.Cliente_View;
+import presentacion.factura.Factura_Control;
+import presentacion.factura.Factura_Modelo;
 
 public class Factura_View extends javax.swing.JInternalFrame implements Observer {
     double aux = 0.0;
      List<Producto> productos;
     Factura facturaAux ;
     double vces = 0.0;
-     Producto p = new Producto();
+    Producto p = new Producto();
+    public static final String DEST = "Factura.pdf";
     
     public Factura_View() {
         initComponents();
@@ -393,6 +414,7 @@ public class Factura_View extends javax.swing.JInternalFrame implements Observer
         try {
             control.agregar(facturaAux);
             this.crearXmlFactura(im, sub, to);
+            this.crearPdf();
         } catch (Exception ex) {
             Logger.getLogger(Factura_View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -766,5 +788,155 @@ public void CargaEmpresa(){
 
     }
 
+public void crearPdf() throws IOException { 
+        double im = 0.0;
+        double sub = 0.0;
+        double to = 0.0;
+        double cant = 0.0;
+        
+        //Fuente del escrito
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        PdfWriter writer = new PdfWriter("FacturaElectronica_" + this.facturaAux.getNumeroFactura()+ ".pdf");
+        PdfDocument pdf = new PdfDocument(writer);
+        
+        //Tamaño de la hoja generada
+        com.itextpdf.layout.Document documentoPDF = new com.itextpdf.layout.Document(pdf, PageSize.A4.rotate());
+        //Márgenes de la hoja generada
+        documentoPDF.setMargins(40, 40, 40, 40);
+        
+        //Imagen añadida
+        ImageData data = ImageDataFactory.create("IconoFinal.png");        
+        Image img = new Image(data); 
+        documentoPDF.add(img);
+        
+        //Títulos y subtítulos con sus respectivas fuentes y tamaños
+        Table table1 = new Table(2);
+        //A
+        Cell A;
+        A= new Cell(); A.setBorder(Border.NO_BORDER);
+        A.add(new Paragraph(this.facturaAux.getEmpresa().getNombreComercial()+"                                                                          ")).setFont(font).setBold().setFontSize(20f).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(A);
+//        A= new Cell(); A.setBorder(Border.NO_BORDER);
+//        A.add(new Paragraph(".                                                           .")).setTextAlignment(TextAlignment.CENTER);
+//        table1.addHeaderCell(A);
+        A= new Cell(); A.setBorder(Border.NO_BORDER);
+        A.add(new Paragraph("No Factura: " + this.facturaAux.getNumeroFactura())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(A);
+        //B
+        Cell B;
+        B= new Cell(); B.setBorder(Border.NO_BORDER);
+        B.add(new Paragraph("Cédula empresarial: " + this.facturaAux.getEmpresa().getId())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(B);
+//        B= new Cell(); B.setBorder(Border.NO_BORDER);
+//        B.add(new Paragraph(".                                                           .")).setTextAlignment(TextAlignment.CENTER);
+//        table1.addHeaderCell(B);
+        B= new Cell(); B.setBorder(Border.NO_BORDER);
+        B.add(new Paragraph("Fecha:" + this.facturaAux.getFechaEmision())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(B);
+        //C
+        Cell C;
+        C= new Cell(); C.setBorder(Border.NO_BORDER);
+        C.add(new Paragraph("Fax: " + this.facturaAux.getEmpresa().getFax())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(C);
+//        C= new Cell(); C.setBorder(Border.NO_BORDER);
+//        C.add(new Paragraph("Fax: " + this.facturaAux.getEmpresa().getFax())).setTextAlignment(TextAlignment.LEFT);
+//        table1.addHeaderCell(C);
+        C= new Cell(); C.setBorder(Border.NO_BORDER);
+        C.add(new Paragraph("Forma de pago: " + this.facturaAux.getFormadePago())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(C);
+        //D
+        Cell D;
+        D= new Cell(); D.setBorder(Border.NO_BORDER);
+        D.add(new Paragraph("Ubicación:" + this.facturaAux.getEmpresa().getUbicacion())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(D);
+//        D= new Cell(); D.setBorder(Border.NO_BORDER);
+//        D.add(new Paragraph("Fax: " + this.facturaAux.getEmpresa().getFax())).setTextAlignment(TextAlignment.LEFT);
+//        table1.addHeaderCell(D);
+        D= new Cell(); D.setBorder(Border.NO_BORDER);
+        D.add(new Paragraph("Vencimiento: 31/12/2020").setFont(font).setBold().setFontSize(10f)).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(D);
+        //E
+        Cell E;
+        E= new Cell(); E.setBorder(Border.NO_BORDER);
+        E.add(new Paragraph("Correo: " + this.facturaAux.getEmpresa().getCorreo())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(E);
 
+        E= new Cell(); E.setBorder(Border.NO_BORDER);
+        E.add(new Paragraph("Tipo de cambio: 597.16").setFont(font).setBold().setFontSize(10f)).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(E);
+        //F
+        Cell F;
+        F= new Cell(); F.setBorder(Border.NO_BORDER);
+        F.add(new Paragraph(this.facturaAux.getEmpresa().getNombreComercial())).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(F);
+
+        F= new Cell(); F.setBorder(Border.NO_BORDER);
+        F.add(new Paragraph("Vendedor: 01").setFont(font).setBold().setFontSize(10f)).setTextAlignment(TextAlignment.LEFT);
+        table1.addHeaderCell(F);
+        
+        //Añade tabla
+        //Añade las cabeceras de la tabla
+        Table table = new Table(5);
+        Cell c;
+        //Definicion de los colores de la tabla 
+        Color bkg = ColorConstants.BLACK;
+        Color frg= ColorConstants.WHITE;
+        //Añade las columnas
+        c= new Cell(); 
+        c.add(new Paragraph("Cantidad")).setBackgroundColor(bkg).setFontColor(frg); 
+        table.addHeaderCell(c);
+        c= new Cell(); 
+        c.add(new Paragraph("Codigo")).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);     
+        c= new Cell(); 
+        c.add(new Paragraph("Descripcion")).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);
+        c= new Cell();
+        c.add(new Paragraph("Impuesto")).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);
+        c= new Cell(); 
+        c.add(new Paragraph("Precio")).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);                         
+        
+        //Añade la información correspondiente para cada columna
+        for(Producto p : this.facturaAux.getProductos()){
+//            cant = facturaAux.totalNeto(productos);
+//            String stringcant = String.valueOf(cant);
+            im = facturaAux.impuestos(productos);
+            String stringimim = String.valueOf(im);
+            sub = facturaAux.subtotal(productos);
+//            String stringsubtotal = String.valueOf(sub);
+//            to = facturaAux.totalNeto(productos);
+//            String stringtotal = String.valueOf(to);
+            table.addHeaderCell("4");
+            table.addHeaderCell(p.getCodigo());
+            table.addHeaderCell(p.getDetalle());
+            table.addHeaderCell(stringimim);
+            table.addHeaderCell(p.getString_Precio_unitario());
+//            table.addHeaderCell(stringsubtotal);
+//            table.addHeaderCell(stringtotal);               
+        }
+        
+        //Crea una celda que cubre las otras celdas;
+//        to = facturaAux.totalNeto(productos);
+//        String stringsubtotal = String.valueOf(sub);
+        to = facturaAux.totalNeto(productos);       
+        String stringtotal = String.valueOf(to);
+        c= new Cell(1,4);  c.add(new Paragraph("SubTotal")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
+        table.addHeaderCell(c);    
+        c= new Cell();  c.add(new Paragraph(stringtotal)).setBackgroundColor(bkg).setFontColor(frg);
+        table.addHeaderCell(c);
+        c= new Cell(1,5);  c.add(new Paragraph("Observaciones: ")).setBackgroundColor(bkg).setFontColor(frg).setTextAlignment(TextAlignment.CENTER);
+        table.addHeaderCell(c);
+        
+        //Añade la tabla final al PDF
+        documentoPDF.add(table1);
+        documentoPDF.add(new Paragraph("Cliente: " + this.facturaAux.getCliente().getNombre()).setFont(font).setBold().setFontSize(12f));
+        documentoPDF.add(new Paragraph("Identificación: " + this.facturaAux.getCliente().getId()).setFont(font).setBold().setFontSize(12f));
+        documentoPDF.add(new Paragraph("Correo: " + facturaAux.getCliente().getCorreo()).setFont(font).setBold().setFontSize(12f));
+        documentoPDF.add(new Paragraph("Ubicación: " + this.facturaAux.getCliente().getProvincia()+ ", " + this.facturaAux.getCliente().getCanton()+ ", " + this.facturaAux.getCliente().getDistrito()).setFont(font).setBold().setFontSize(12f));
+        documentoPDF.add(table);
+        documentoPDF.close();
+        Result resultado = new StreamResult(new File("FacturaElectronica_" + this.facturaAux.getNumeroFactura()+ ".pdf"));       
+    }
 }

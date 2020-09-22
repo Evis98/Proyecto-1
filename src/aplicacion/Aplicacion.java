@@ -37,7 +37,5 @@ public class Aplicacion {
         aplicacion_Control = new presentacion.aplicacion.Aplicacion_Control(aplicacion_Modelo,aplicacion_View);
         
         aplicacion_View.setVisible(true);
-        
-        //crearPdf(DEST);
     }   
 }
