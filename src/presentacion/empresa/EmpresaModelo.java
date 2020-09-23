@@ -9,7 +9,7 @@ import logica.Empresa;
  *
  * @author Daniel
  */
-public class Empresa_Modelo  extends Observable{
+public class EmpresaModelo  extends Observable{
     Empresa actual;
     List<Empresa> lista;
     
@@ -19,12 +19,12 @@ public class Empresa_Modelo  extends Observable{
         this.commit();
     }
 
-    public Empresa_Modelo() {
+    public EmpresaModelo() {
         actual = new Empresa();
         lista = new ArrayList<>();
     }
 
-    public Empresa_Modelo(Empresa actual, List<Empresa> lista) {
+    public EmpresaModelo(Empresa actual, List<Empresa> lista) {
         this.actual = actual;
         this.lista = lista;
     }

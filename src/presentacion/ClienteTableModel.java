@@ -1,18 +1,18 @@
 package presentacion;
 
+import logica.Cliente;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-import logica.Empresa;
 /**
  *
- * @author Daniel
+ * @author Ivan
  */
-public class Empresa_TableModel extends AbstractTableModel implements TableModel{
-    String[] cols = {"Codigo Actividad", "Nombre Comercial", "Identificacion", "Ubicacion", "Correo", "Telefono", "Fax"};               //
-    List<Empresa> rows;   
+public class ClienteTableModel extends AbstractTableModel implements TableModel {
+    String[] cols = {"Nombre", "Id", "Correo", "Provincia", "Canton", "Distrito", "Telefono"};               
+    List<Cliente> rows;
 
-    public Empresa_TableModel(List<Empresa> rows) {
+    public ClienteTableModel(List<Cliente> rows) {
         this.rows = rows;
     }
 
@@ -33,25 +33,25 @@ public class Empresa_TableModel extends AbstractTableModel implements TableModel
     
     @Override
     public Object getValueAt(int rowc, int col) {
-        Empresa c = rows.get(rowc);
+        Cliente c = rows.get(rowc);
         java.text.DecimalFormat dc = new java.text.DecimalFormat("####");
         switch (col) {
             case 0:
-                return c.getCodigoActividad();
+                return c.getNombre();
             case 1:
-                return c.getNombreComercial();
-            case 2:
                 return c.getId();
-            case 3:
-                return c.getUbicacion();
-            case 4:
+            case 2:
                 return c.getCorreo();
+            case 3:
+                return c.getProvincia();
+            case 4:
+                return c.getCanton();
             case 5:
-                return c.getTelefono();
+                return c.getDistrito();
             case 6:
-                return c.getFax();
+                return c.getTelefono();
             default:
                 return "";
         }
-    }
+    }    
 }
