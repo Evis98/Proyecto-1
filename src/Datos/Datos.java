@@ -59,6 +59,5 @@ public class Datos {
     
     public void setClientes(List<Cliente> clientes) {
         this.clientes =clientes;
-    }   
-       
+    }       
 }
