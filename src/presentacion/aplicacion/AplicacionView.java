@@ -1,11 +1,13 @@
 package presentacion.aplicacion;
 
 import Datos.Datos;
+import java.awt.Graphics;
 import logica.Servicio;
 import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import presentacion.ClienteTableModel;
 import presentacion.EmpresaTableModel;
 import presentacion.ProductoTableModel;
@@ -41,7 +43,7 @@ public class AplicacionView extends javax.swing.JFrame implements java.util.Obse
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        panel = new FondoPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_Producto = new javax.swing.JMenu();
         jMenu_Cliente = new javax.swing.JMenu();
@@ -167,5 +169,15 @@ public class AplicacionView extends javax.swing.JFrame implements java.util.Obse
     
     public void update(java.util.Observable updatedModel,Object parametros){
     
+    }
+    class FondoPanel extends JPanel{
+        private Image imagen;
+        
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/Imagenes/fondo.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(),getHeight() ,this);
+            setOpaque(false);
+            super.paint(g);
+        }
     }
 }
