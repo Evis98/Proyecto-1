@@ -7,12 +7,15 @@ import java.util.Observer;
 import logica.Empresa;
 /**
  *
- * @author Daniel
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//La clase Modelo se encarga de la estructuración de lo mostrado en pantalla para Empresa
+//extends Observable permite que el modelo pueda ser monitoreado en busca de cambios, para actualizar información y refrescarla para poder mostrarla en pantalla 
 public class EmpresaModelo  extends Observable{
     Empresa actual;
     List<Empresa> lista;
     
+    //addObserver funciona como un elemento pendiente de los cambios dentro de las listas y los actualiza para mostrar en pantalla
     @Override
     public synchronized void addObserver(Observer o) {
         super.addObserver(o); 
@@ -45,6 +48,7 @@ public class EmpresaModelo  extends Observable{
         this.lista = lista;
     }
        
+    //Actualiza la lista con los cambios realizados  informa sobre ellos
     public void commit(){
         this.setChanged();
         this.notifyObservers();        

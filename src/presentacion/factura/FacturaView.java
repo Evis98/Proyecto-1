@@ -25,7 +25,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -48,10 +47,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 import presentacion.FacturaTableModel;
 import presentacion.ProductoTableModel;
-import presentacion.cliente.ClienteView;
-import presentacion.factura.FacturaControl;
-import presentacion.factura.FacturaModelo;
-
+/**
+ *
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
+ */
 public class FacturaView extends javax.swing.JInternalFrame implements Observer {
     double aux = 0.0;
      List<Producto> productos;
@@ -66,8 +65,6 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
         facturaAux = new Factura();
     }
 
-  
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -382,6 +379,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Configuración del botón "Agregar Producto" al darle click
     private void ButtonAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarProductoActionPerformed
      
        vces = Double.parseDouble(TextFieldCantidadProductos.getText());
@@ -393,11 +391,11 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
     private void TextFieldCantidadProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCantidadProductosActionPerformed
     }//GEN-LAST:event_TextFieldCantidadProductosActionPerformed
 
+    //Configuración del botón "Facturar" al darle click
     private void jButton_FacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FacturarActionPerformed
         if (TextFieldObservaciones.getText().isEmpty() || FechaemisicionTextField.getText().isEmpty()) {
             return;
         }    
-
         String formapago = "";
          List<Producto> productosAux= new ArrayList<>();
         if (ComboBoxFormaPago.getSelectedIndex() == 0) {
@@ -406,25 +404,22 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
         if (ComboBoxFormaPago.getSelectedIndex() == 1) {
             formapago = "Tarjeta";
         }
-
         double im =  facturaAux.impuestos(productos);
         double sub = facturaAux.subtotal(productos);
         double to = facturaAux.totalNeto(productos);
-        productosAux.addAll(productos);
+        productosAux.addAll(productos);  
         
-        
-         
         facturaAux = new Factura(FechaemisicionTextField.getText(), NumerodeFactura.getText(), (Empresa) ComboBoxEmpresa.getSelectedItem(), (Cliente) ComboBoxCliente.getSelectedItem(), (Producto) ComboBoxProducto.getSelectedItem(), TextFieldObservaciones.getText(), formapago, im, sub, to,productosAux);
-
-
+        //Agrega la informacion de la factura genrada para crear un XML y un PDF
         try {
             control.agregar(facturaAux);
+            //Crea un XML con la informacion recien añadida
             this.crearXmlFactura(im, sub, to);
+            //Crea un PDF con la informacion recien añadida
             this.crearPdf(im,sub,to);
         } catch (Exception ex) {
             Logger.getLogger(FacturaView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      
+        }    
     }//GEN-LAST:event_jButton_FacturarActionPerformed
 
     private void TextFieldObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldObservacionesActionPerformed
@@ -448,15 +443,18 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
 
     }//GEN-LAST:event_ButtonAgregarProductoMouseClicked
 
+    //Configuración del botón "Load" al darle click
     private void LoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadActionPerformed
         carComboBoxCliente();
         carComboBoxProducto();
-        CargaEmpresa();        // TODO add your handling code here:
+        CargaEmpresa();        
     }//GEN-LAST:event_LoadActionPerformed
 
+    //Configuración del botón "Store" al darle click
     private void storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeActionPerformed
-       try {   
-            control.store("BaseData.xml");        // TODO add your handling code here:
+       try {
+           //Crea el XML "Database" y guarda ahí la información añadida en la tabla
+            control.store("BaseData.xml");        
         } 
         catch (Exception ex) {
             Logger.getLogger(FacturaView.class.getName()).log(Level.SEVERE, null, ex);
@@ -527,6 +525,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
         return modelo;
     }
 
+    //Acciones adicionales al actualizar la pantalla
     @Override
     public void update(Observable o, Object o1) {
         Factura current = modelo.getCurrent();
@@ -539,13 +538,12 @@ public class FacturaView extends javax.swing.JInternalFrame implements Observer 
         ComboBoxProducto.setSelectedItem(current.getProducto());
         NumerodeFactura.setText(current.getNumeroFactura());
         TextFieldCantidadProductos.setText(current.getNumeroFactura());
-        ComboBoxFormaPago.setSelectedItem(current.getFormadePago());
-        
-        }
+        ComboBoxFormaPago.setSelectedItem(current.getFormadePago());       
+    }
     
-    
-public void CargaEmpresa(){
-                List<Empresa> Eaux = new ArrayList<>();
+    //Carga la información de la lista de Empresas en el ComboBox correspondiente    
+    public void CargaEmpresa(){
+        List<Empresa> Eaux = new ArrayList<>();
         try {
             Datos c = control.load("DataBase.xml");
             Eaux = c.getEmpresas();
@@ -557,8 +555,7 @@ public void CargaEmpresa(){
        
     }
     
-    
-    
+    //Carga la información de la lista de Clientes en el ComboBox correspondiente
     public void carComboBoxCliente() {
         List<Cliente> laux = new ArrayList<>();
         try {
@@ -571,9 +568,8 @@ public void CargaEmpresa(){
         }
     }
     
-    
-        public void carComboBoxProducto() {            
-            
+    //Carga la información de la lista de Productos en el ComboBox correspondiente
+    public void carComboBoxProducto() {                        
         List<Producto> Paux = new ArrayList<>();
         try {
             Datos c = control.load("DataBase.xml");
@@ -584,7 +580,6 @@ public void CargaEmpresa(){
             Logger.getLogger(FacturaView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton ButtonAgregarProducto;
@@ -615,8 +610,7 @@ public void CargaEmpresa(){
     private javax.swing.JLabel tituloJLabel;
     // End of variables declaration//GEN-END:variables
 
-
- 
+ //Proceso completo de creacion del XML para cada factura individualmente (De forma manual)
  public void crearXmlFactura(double impuesto, double subtotal, double total1) throws ParserConfigurationException, TransformerConfigurationException {
         double im ;
         double sub ;
@@ -791,6 +785,7 @@ public void CargaEmpresa(){
 
     }
 
+//Proceso completo de creacion del PDF para cada factura individualmente (De forma manual)
 public void crearPdf(double impuesto, double subtotal, double total1) throws IOException { 
         double im;
         double sub;
@@ -814,65 +809,57 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         
         //Títulos y subtítulos con sus respectivas fuentes y tamaños
         Table table1 = new Table(2);
+        
         //A
         Cell A;
         A= new Cell(); A.setBorder(Border.NO_BORDER);
         A.add(new Paragraph(this.facturaAux.getEmpresa().getNombreComercial()+"                                                                          ")).setFont(font).setBold().setFontSize(20f).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(A);
-//        A= new Cell(); A.setBorder(Border.NO_BORDER);
-//        A.add(new Paragraph(".                                                           .")).setTextAlignment(TextAlignment.CENTER);
-//        table1.addHeaderCell(A);
         A= new Cell(); A.setBorder(Border.NO_BORDER);
         A.add(new Paragraph("No Factura: " + this.facturaAux.getNumeroFactura())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(A);
+        
         //B
         Cell B;
         B= new Cell(); B.setBorder(Border.NO_BORDER);
         B.add(new Paragraph("Cédula empresarial: " + this.facturaAux.getEmpresa().getId())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(B);
-//        B= new Cell(); B.setBorder(Border.NO_BORDER);
-//        B.add(new Paragraph(".                                                           .")).setTextAlignment(TextAlignment.CENTER);
-//        table1.addHeaderCell(B);
         B= new Cell(); B.setBorder(Border.NO_BORDER);
         B.add(new Paragraph("Fecha:" + this.facturaAux.getFechaEmision())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(B);
+        
         //C
         Cell C;
         C= new Cell(); C.setBorder(Border.NO_BORDER);
         C.add(new Paragraph("Fax: " + this.facturaAux.getEmpresa().getFax())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(C);
-//        C= new Cell(); C.setBorder(Border.NO_BORDER);
-//        C.add(new Paragraph("Fax: " + this.facturaAux.getEmpresa().getFax())).setTextAlignment(TextAlignment.LEFT);
-//        table1.addHeaderCell(C);
         C= new Cell(); C.setBorder(Border.NO_BORDER);
         C.add(new Paragraph("Forma de pago: " + this.facturaAux.getFormadePago())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(C);
+        
         //D
         Cell D;
         D= new Cell(); D.setBorder(Border.NO_BORDER);
         D.add(new Paragraph("Ubicación:" + this.facturaAux.getEmpresa().getUbicacion())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(D);
-//        D= new Cell(); D.setBorder(Border.NO_BORDER);
-//        D.add(new Paragraph("Fax: " + this.facturaAux.getEmpresa().getFax())).setTextAlignment(TextAlignment.LEFT);
-//        table1.addHeaderCell(D);
         D= new Cell(); D.setBorder(Border.NO_BORDER);
         D.add(new Paragraph("Vencimiento: 31/12/2020").setFont(font).setBold().setFontSize(10f)).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(D);
+        
         //E
         Cell E;
         E= new Cell(); E.setBorder(Border.NO_BORDER);
         E.add(new Paragraph("Correo: " + this.facturaAux.getEmpresa().getCorreo())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(E);
-
         E= new Cell(); E.setBorder(Border.NO_BORDER);
         E.add(new Paragraph("Tipo de cambio: 597.16").setFont(font).setBold().setFontSize(10f)).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(E);
+        
         //F
         Cell F;
         F= new Cell(); F.setBorder(Border.NO_BORDER);
         F.add(new Paragraph(this.facturaAux.getEmpresa().getNombreComercial())).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(F);
-
         F= new Cell(); F.setBorder(Border.NO_BORDER);
         F.add(new Paragraph("Vendedor: 01").setFont(font).setBold().setFontSize(10f)).setTextAlignment(TextAlignment.LEFT);
         table1.addHeaderCell(F);
@@ -881,9 +868,11 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         //Añade las cabeceras de la tabla
         Table table = new Table(4);
         Cell c;
+        
         //Definicion de los colores de la tabla 
         Color bkg = ColorConstants.BLACK;
         Color frg= ColorConstants.WHITE;
+        
         //Añade las columnas
         c= new Cell(); 
         c.add(new Paragraph("Cantidad")).setBackgroundColor(bkg).setFontColor(frg); 
@@ -900,37 +889,16 @@ public void crearPdf(double impuesto, double subtotal, double total1) throws IOE
         
         //Añade la información correspondiente para cada columna
         for(Producto p : this.facturaAux.getProductos()){
-//            im = facturaAux.impuestos(productos);
-//            String stringimim = String.valueOf(impuesto);
-//            sub = facturaAux.subtotal(productos);
-//            String stringsubtotal = String.valueOf(subtotal);
-//            to = facturaAux.totalNeto(productos);
-//            String stringtotal = String.valueOf(total1);
-            
-            
-            
-//            cant = facturaAux.totalNeto(productos);
-//            String stringcant = String.valueOf(cant);
-//                    im = facturaAux.impuestos(productos);
             String stringimim = String.valueOf(impuesto);
-//            sub = facturaAux.subtotal(productos);
-//            String stringsubtotal = String.valueOf(sub);
-//            to = facturaAux.totalNeto(productos);
-//            String stringtotal = String.valueOf(to);
             table.addHeaderCell(p.getString_Cantidad());
             table.addHeaderCell(p.getCodigo());
             table.addHeaderCell(p.getDetalle());
-//            table.addHeaderCell(stringimim);
-            table.addHeaderCell(p.getString_Precio_unitario());
-//            table.addHeaderCell(stringsubtotal);
-//            table.addHeaderCell(stringtotal);               
+            table.addHeaderCell(p.getString_Precio_unitario());              
         }
-         im = facturaAux.impuestos(productos);
-            String stringimim = String.valueOf(impuesto);
-            
-            sub = facturaAux.subtotal(productos);
-        //Crea una celda que cubre las otras celdas;
-//        to = facturaAux.totalNeto(productos);
+        
+        im = facturaAux.impuestos(productos);
+        String stringimim = String.valueOf(impuesto);   
+        sub = facturaAux.subtotal(productos);
         String stringsubtotal = String.valueOf(subtotal);
         to = facturaAux.totalNeto(productos);       
         String stringtotal = String.valueOf(total1);

@@ -19,7 +19,7 @@ import presentacion.empresa.EmpresaView;
 import presentacion.producto.ProductoControl;
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class AplicacionView extends javax.swing.JFrame implements java.util.Observer{
 
@@ -33,6 +33,7 @@ public class AplicacionView extends javax.swing.JFrame implements java.util.Obse
          this.setTitle("FACTURACION-Eva Miguel Daniel");
     }
     
+    //Permite agregar un icono a la pestaña de Aplicacion
     public void LogoIcon() {
         ImageIcon ImageIcon = new ImageIcon("F.png");
         Image image = ImageIcon.getImage();
@@ -167,9 +168,11 @@ public class AplicacionView extends javax.swing.JFrame implements java.util.Obse
         return modelo;
     }
     
-    public void update(java.util.Observable updatedModel,Object parametros){
-    
+    //Acciones adicionales al actualizar la pantalla
+    public void update(java.util.Observable updatedModel,Object parametros){ 
     }
+    
+    //Permite añadir una imagen como fondo de pantalla
     class FondoPanel extends JPanel{
         private Image imagen;
         

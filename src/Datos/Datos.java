@@ -12,9 +12,11 @@ import logica.Factura;
 
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//@XmlRootElement Convierte "Datos" en la raíz de la base para los XML
 @XmlRootElement
+//Todo lo que esté debajo de @XmlAccessorType(XmlAccessType.FIELD), será vinculado al XML
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Datos {
     List<Producto> productos;   

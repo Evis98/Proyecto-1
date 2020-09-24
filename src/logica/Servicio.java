@@ -1,34 +1,17 @@
 package logica;
+
 import Datos.Datos;
-//import java.io.File;
-//import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.List;
-//import logica.XmlPersister;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-//import javax.xml.parsers.DocumentBuilder;
-//import javax.xml.parsers.DocumentBuilderFactory;
-//import javax.xml.parsers.ParserConfigurationException;
-//import javax.xml.transform.Result;
-//import javax.xml.transform.Source;
-//import javax.xml.transform.Transformer;
-//import javax.xml.transform.TransformerConfigurationException;
-//import javax.xml.transform.TransformerException;
-//import javax.xml.transform.TransformerFactory;
-//import javax.xml.transform.dom.DOMSource;
-//import javax.xml.transform.stream.StreamResult;
-//import org.w3c.dom.DOMImplementation;
-//import org.w3c.dom.Document;
-//import org.w3c.dom.Element;
-//import org.w3c.dom.Text;
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//Servicio se encarga de la configuración de XmlPersister para la correcta generación del XML utilizando los datos de la raíz(Datos.java)
 public class Servicio {
     private static Servicio theInstance;
-    private Datos datos;    
+    private Datos datos;
+    
     public static Servicio instance(){
         if (theInstance==null){ 
             theInstance=new Servicio();
@@ -64,59 +47,69 @@ public class Servicio {
         return datos.getEmpresas();
     }
 
-    public void add(Producto o) {
-        if (!this.EliminaRepeP(o)) 
-            datos.getProductos().add(o);
+    //Añade un Producto
+    public void add(Producto p) {
+        if (!this.EliminaRepeP(p)) 
+            datos.getProductos().add(p);
     }
 
-    public void add(Empresa o) {
-         if (!this.EliminaRepeE(o))
-             datos.getEmpresas().add(o);
+    //Añade una Empresa
+    public void add(Empresa e) {
+         if (!this.EliminaRepeE(e))
+             datos.getEmpresas().add(e);
     }
 
     public void setPath(String u) {
         XmlPersister.TheinstanceXml(u).setPath(u);
     }
 
+    //Añade un Cliente
     public void add(Cliente cli) {
         if (!this.EliminaRepeC(cli)) 
             datos.getClientes().add(cli);
         
     }
 
+    //Añade Clientes después de asegurarse que su información no coincide con la de otro Cliente ya existente
     public void addAll1(List<Cliente> c) {
         if (!datos.getClientes().equals(c)) 
             datos.getClientes().addAll(c);        
     }
 
-    public void addAll2(List<Empresa> c) {
-        if (!datos.getEmpresas().equals(c))
-        datos.getEmpresas().addAll(c);
+    //Añade Empresas después de asegurarse que su información no coincide con la de otra Empresa ya existente
+    public void addAll2(List<Empresa> e) {
+        if (!datos.getEmpresas().equals(e))
+        datos.getEmpresas().addAll(e);
     }
 
-    public void addAll3(List<Producto> c) {
-        if (!datos.getProductos().equals(c))
-        datos.getProductos().addAll(c);
+    //Añade Productos después de asegurarse que su información no coincide con la de otro Producto ya existente
+    public void addAll3(List<Producto> p) {
+        if (!datos.getProductos().equals(p))
+        datos.getProductos().addAll(p);
     }
 
-    public void addAll4(List<Factura> c) {
-         if (!datos.getFacturas().equals(c))
-        datos.getFacturas().addAll(c);
+    //Añade Facturas después de asegurarse que su información no coincide con la de otra Factura ya existente
+    public void addAll4(List<Factura> f) {
+        if (!datos.getFacturas().equals(f))
+        datos.getFacturas().addAll(f);
     }
 
-    public void add(Factura f) {
-        
+    //Añade una Factura
+    public void add(Factura f) {        
         datos.getFacturas().add(f);
     }
 
+    //Carga la información del XML
     public Datos load(String u) throws Exception {
         return logica.XmlPersister.TheinstanceXml(u).load();
     }
 
+    //Almacena la información de la clase Datos.java para construir el XML
     public void store(String u) throws Exception {
         logica.XmlPersister.TheinstanceXml(u).store(datos);
     }
 
+    //Busca elementos Específicos en la lista de Productos
     public List<Producto> buscar(Producto pro) {
         List<Producto> result = new ArrayList<>();
         for (Producto p : datos.getProductos()) {
@@ -127,6 +120,7 @@ public class Servicio {
         return result;
     }
 
+    //Busca elementos Específicos en la lista de Clientes
     public List<Cliente> buscar(Cliente cli) {
         List<Cliente> result = new ArrayList<>();
         for (Cliente c : datos.getClientes()) {
@@ -137,6 +131,7 @@ public class Servicio {
         return result;
     }
 
+    //Busca elementos Específicos en la lista de Empresas
     public List<Empresa> buscar(Empresa emp) {
         List<Empresa> result = new ArrayList<>();
         for (Empresa c : datos.getEmpresas()) {
@@ -147,7 +142,7 @@ public class Servicio {
         return result;
     }
 
-    //---------------------------------------------------------------------------
+    //Elimina elementos repetidos en la lista de Clientes
     public boolean EliminaRepeC(Cliente cli) {
         List<Cliente> result = new ArrayList<>();
         for (Cliente c : datos.getClientes()) {
@@ -158,6 +153,7 @@ public class Servicio {
         return false;
     }
 
+    //Elimina elementos repetidos en la lista de Productos
     public boolean EliminaRepeP(Producto pro) {
         List<Producto> result = new ArrayList<>();
         for (Producto p : datos.getProductos()) {
@@ -168,6 +164,7 @@ public class Servicio {
         return false;
     }
 
+    //Elimina elementos repetidos en la lista de Empresas
     public boolean EliminaRepeE(Empresa emp) {
         List<Empresa> result = new ArrayList<>();
         for (Empresa c : datos.getEmpresas()) {
@@ -176,6 +173,5 @@ public class Servicio {
             }
         };
         return false;
-    }
-      
+    }     
 }

@@ -6,7 +6,7 @@ import logica.Factura;
 //import logica.Producto;
 /**
  *
- * @author PC
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class FacturaControl {
     FacturaModelo modelo;
@@ -20,16 +20,15 @@ public class FacturaControl {
         view.setControl(this);
     }
     
+    //Permite la acción de agregar una Factura
     public void agregar(Factura f){
         logica.Servicio.instance().add(f);
         modelo.setCurrent(new Factura());
         modelo.setLista(logica.Servicio.instance().getFacturas());        
         modelo.commit();
     }
-    
-    
-    
-        public void agregarTodos(List<Factura> c) {
+
+    public void agregarTodos(List<Factura> c) {
         logica.Servicio.instance().addAll4(c);
         modelo.setCurrent(new Factura());
         modelo.setLista(logica.Servicio.instance().getFacturas());

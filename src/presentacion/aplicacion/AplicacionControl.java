@@ -1,11 +1,8 @@
 package presentacion.aplicacion;
 
-//import javax.swing.JTable;
-//import presentacion.Factura_TableModel;
-
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class AplicacionControl {
     AplicacionModelo modelo;
@@ -35,6 +32,7 @@ public class AplicacionControl {
     presentacion.factura.FacturaView factura_View;
     presentacion.factura.FacturaControl factura_Control;
 
+    //Se encarga de preparar todas las pantallas dentro de la pantalla de aplición para ejecutarse una vez se selelccionen
     public void initOptions() {
         producto_Modelo = new presentacion.producto.ProductoModelo();
         producto_View = new presentacion.producto.ProductoView();
@@ -58,18 +56,22 @@ public class AplicacionControl {
         this.view.panel.add(factura_View);
     }
     
+    //Muestra la pantalla de Producto con la configuración señalada en Control
     public void productoShow() {
         this.producto_Control.show();
     }
 
+    //Muestra la pantalla de Cliente con la configuración señalada en Control
     public void clienteShow() {
         this.cliente_Control.show();
     }
     
+    //Muestra la pantalla de Factura con la configuración señalada en Control
     public void facturaShow() {
         this.factura_Control.show();
     }
     
+    //Muestra la pantalla de Empresa con la configuración señalada en Control
     public void empresaShow() {
         this.empresa_Control.show();
     }  

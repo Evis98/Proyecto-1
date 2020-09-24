@@ -6,9 +6,11 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//Las clases TableModel definen la forma de las tablas utilizadas en la interfaz
 public class ClienteTableModel extends AbstractTableModel implements TableModel {
+    //Define el nombre de las columnas
     String[] cols = {"Nombre", "Id", "Correo", "Provincia", "Canton", "Distrito", "Telefono"};               
     List<Cliente> rows;
 
@@ -16,6 +18,7 @@ public class ClienteTableModel extends AbstractTableModel implements TableModel 
         this.rows = rows;
     }
 
+    //Define la cantidad de columbas para el TableModel de Cliente
     @Override
     public int getColumnCount() {
         return 7;                               
@@ -31,6 +34,7 @@ public class ClienteTableModel extends AbstractTableModel implements TableModel 
         return rows.size();
     }
     
+    //Define en qué columna ubicar la información de la clase Cliente
     @Override
     public Object getValueAt(int rowc, int col) {
         Cliente c = rows.get(rowc);

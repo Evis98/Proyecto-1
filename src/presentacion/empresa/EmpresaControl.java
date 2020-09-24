@@ -1,10 +1,11 @@
 package presentacion.empresa;
+
 import Datos.Datos;
 import java.util.List;
 import logica.Empresa;
 /**
  *
- * @author Daniel
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class EmpresaControl {
     EmpresaModelo modelo;
@@ -19,6 +20,7 @@ public class EmpresaControl {
         view.setControl(this);
     }
   
+    //Permite la acción de agregar una Empresa
     public void agregar(Empresa p) throws Exception{
         logica.Servicio.instance().add(p);
         modelo.setCurrent(new Empresa());
@@ -32,8 +34,7 @@ public class EmpresaControl {
         modelo.setLista(logica.Servicio.instance().getEmpresas());
         modelo.commit();
     }
-
-       
+ 
     public void buscar(Empresa p){    
         modelo.setLista(logica.Servicio.instance().buscar(p));
         modelo.commit();        

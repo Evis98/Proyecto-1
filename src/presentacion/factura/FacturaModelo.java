@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//La clase Modelo se encarga de la estructuración de lo mostrado en pantalla para Factura
+//extends Observable permite que el modelo pueda ser monitoreado en busca de cambios, para actualizar información y refrescarla para poder mostrarla en pantalla 
 public class FacturaModelo extends Observable{
     Factura actual;
     List<Factura> lista;
@@ -24,6 +24,7 @@ public class FacturaModelo extends Observable{
     Datos datos;
     Producto ps;
 
+    //addObserver funciona como un elemento pendiente de los cambios dentro de las listas y los actualiza para mostrar en pantalla
     @Override
     public synchronized void addObserver(Observer o) {
         super.addObserver(o);
@@ -88,10 +89,9 @@ public class FacturaModelo extends Observable{
         this.lista = lista;
     }
 
+    //Actualiza la lista con los cambios realizados  informa sobre ellos
     public void commit(){
         this.setChanged();
         this.notifyObservers();        
-    }
-
-    
+    }    
 }

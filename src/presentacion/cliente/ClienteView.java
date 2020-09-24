@@ -16,7 +16,7 @@ import logica.Cliente;
 import presentacion.ClienteTableModel;
 /**
  *
- * @author Eva
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class ClienteView extends javax.swing.JInternalFrame implements Observer {
    
@@ -287,9 +287,9 @@ public class ClienteView extends javax.swing.JInternalFrame implements Observer 
         }           
     }//GEN-LAST:event_jTable_ClientesMouseClicked
 
+    //Configuración del botón "Agregar" al darle click
     private void jButton_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AgregarActionPerformed
         if (TextFieldNombre.getText().isEmpty() || TextFieldId.getText().isEmpty() || TextFieldNumero.getText().isEmpty()|| TextFieldCorreo.getText().isEmpty() || TextFieldProvincia.getText().isEmpty() || TextFieldCanton.getText().isEmpty() || TextFieldDistrito.getText().isEmpty())  return;
-//        if(jTextField_Nombre.getText().isEmpty() || jTextField_Id.getText().isEmpty() || jTextField_Correo.getText().isEmpty() || jTextField_Provincia.getText().isEmpty()) return;
         Cliente cliente = new Cliente();
         cliente.setNombre(TextFieldNombre.getText());
         cliente.setId(TextFieldId.getText());
@@ -305,6 +305,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements Observer 
         }
     }//GEN-LAST:event_jButton_AgregarActionPerformed
 
+    //Configuración de la barra de "Busqueda por identificacion" al escribir una identificacion y aceptar con el botón "Enter"
     private void TextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldBuscarActionPerformed
         Cliente filtro = new Cliente();
         filtro.setId(TextFieldBuscar.getText());
@@ -312,6 +313,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements Observer 
                    
     }//GEN-LAST:event_TextFieldBuscarActionPerformed
 
+    //Configuración del botón "Load" al darle click
     private void cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarMouseClicked
         try {
             Datos c = control.load("DataBase.xml");
@@ -322,6 +324,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements Observer 
         }
     }//GEN-LAST:event_cargarMouseClicked
 
+    //Configuración del botón "Store" al darle click
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {   
             control.store("DataBase.xml");        // TODO add your handling code here:
@@ -388,7 +391,8 @@ public class ClienteView extends javax.swing.JInternalFrame implements Observer 
         return modelo;
     }
 
-      @Override
+    //Acciones adicionales al actualizar la pantalla
+    @Override
     public void update(Observable o, Object arg) {
         Cliente current = modelo.getCurrent();
         TextFieldNombre.setText(current.getNombre());

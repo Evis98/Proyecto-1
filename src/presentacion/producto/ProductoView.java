@@ -11,7 +11,7 @@ import presentacion.ProductoTableModel;
 //import presentacion.cliente.Cliente_View;
 /**
  *
- * @author Daniel
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class ProductoView extends javax.swing.JInternalFrame implements Observer {
     /**
@@ -249,6 +249,7 @@ public class ProductoView extends javax.swing.JInternalFrame implements Observer
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Configuración del botón "Agregar" al darle click
     private void Button_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarActionPerformed
         if( TextfieldDetalle.getText().isEmpty() || TextfieldCodigo.getText().isEmpty() || TextfieldPrecio.getText().isEmpty()) return; //
             Producto producto = new Producto();
@@ -264,6 +265,7 @@ public class ProductoView extends javax.swing.JInternalFrame implements Observer
         }
     }//GEN-LAST:event_Button_AgregarActionPerformed
 
+    //Configuración de la Tabla en la pestaña de Producto
     private void Table_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ProductosMouseClicked
             if(evt.getClickCount()==2){
             control.seleccionar(Table_Productos.getSelectedRow());
@@ -271,9 +273,10 @@ public class ProductoView extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_Table_ProductosMouseClicked
 
     private void TextfieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldCodigoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_TextfieldCodigoActionPerformed
 
+    //Configuración de la barra de "Buscar: " al escribir una identificacion y aceptar con el botón "Enter"
     private void TextfieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldBuscarActionPerformed
         Producto filtro= new Producto();
         filtro.setDetalle(TextfieldBuscar.getText());
@@ -288,6 +291,7 @@ public class ProductoView extends javax.swing.JInternalFrame implements Observer
   
     }//GEN-LAST:event_loadActionPerformed
 
+    //Configuración del botón "Store" al darle click
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
          try {
             control.store("DataBase.xml");        
@@ -297,6 +301,7 @@ public class ProductoView extends javax.swing.JInternalFrame implements Observer
         }
     }//GEN-LAST:event_storeMouseClicked
 
+    //Configuración del botón "Load" al darle click
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
          try {
             Datos c = control.load("DataBase.xml");
@@ -365,6 +370,7 @@ public class ProductoView extends javax.swing.JInternalFrame implements Observer
         return modelo;
     }
 
+    //Acciones adicionales al actualizar la pantalla
     @Override
     public void update(Observable o, Object o1) {
         Producto current = modelo.getCurrent();

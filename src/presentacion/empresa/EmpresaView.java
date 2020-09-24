@@ -11,7 +11,7 @@ import presentacion.ClienteTableModel;
 import presentacion.EmpresaTableModel;
 import presentacion.producto.ProductoView;
 /**
- * @author Daniel
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class EmpresaView extends javax.swing.JInternalFrame implements Observer  {
     /**
@@ -298,6 +298,7 @@ public class EmpresaView extends javax.swing.JInternalFrame implements Observer 
         // TODO add your handling code here:
     }//GEN-LAST:event_TextfieldCorreoActionPerformed
 
+    //Configuración del botón "Agregar" al darle click
     private void Button_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AgregarActionPerformed
         if (TextfieldCodigoActividad.getText().isEmpty() || TextfieldNombreComercial.getText().isEmpty() || TextfieldId.getText().isEmpty() || TextfieldUbicacion.getText().isEmpty() || TextfieldCorreo.getText().isEmpty()
             || TextfieldTelefono.getText().isEmpty() || TextfieldFax.getText().isEmpty()) return;            
@@ -316,12 +317,14 @@ public class EmpresaView extends javax.swing.JInternalFrame implements Observer 
         }
     }//GEN-LAST:event_Button_AgregarActionPerformed
 
+    //Configuración de la Tabla en la pestaña de Empresa
     private void Table_EmpresasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_EmpresasMouseClicked
         if (evt.getClickCount() == 7) {
             control.seleccionar(Table_Empresas.getSelectedRow());
         }
     }//GEN-LAST:event_Table_EmpresasMouseClicked
 
+    //Configuración de la barra de "Buscar: " al escribir una identificacion y aceptar con el botón "Enter"
     private void TextfieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldBuscarActionPerformed
         Empresa filtro = new Empresa();
         filtro.setNombreComercial(TextfieldBuscar.getText());
@@ -333,6 +336,7 @@ public class EmpresaView extends javax.swing.JInternalFrame implements Observer 
   
     }//GEN-LAST:event_storeActionPerformed
 
+    //Configuración del botón "Store" al darle click
     private void storeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_storeMouseClicked
         try {
             control.store("DataBase.xml");       
@@ -342,6 +346,7 @@ public class EmpresaView extends javax.swing.JInternalFrame implements Observer 
         }           // TODO add your handling code here:
     }//GEN-LAST:event_storeMouseClicked
 
+    //Configuración del botón "Mostrar empresas" al darle click
     private void jButtonLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoadMouseClicked
            try {
             Datos c = control.load("DataBase.xml");
@@ -353,7 +358,7 @@ public class EmpresaView extends javax.swing.JInternalFrame implements Observer 
     }//GEN-LAST:event_jButtonLoadMouseClicked
 
     private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonLoadActionPerformed
    
     /**
@@ -408,6 +413,7 @@ public class EmpresaView extends javax.swing.JInternalFrame implements Observer 
          modelo.addObserver(this);
     }
     
+    //Acciones adicionales al actualizar la pantalla
     @Override
     public void update(Observable o, Object arg) {
         Empresa current = modelo.getCurrent();

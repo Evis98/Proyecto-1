@@ -1,11 +1,7 @@
 package logica;
 
-//import java.text.ParseException;
-//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-//import java.util.Date;
 import java.util.List;
-//import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,13 +9,11 @@ import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
- * @author PC
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Factura {
-
-   
-
+    //@XmlID registra las variables declaradas debajo de él como propiedades para un XML
     @XmlID
     String FechaEmision;
     String numeroFactura;
@@ -32,12 +26,11 @@ public class Factura {
     double subtotal;
     double totalNeto;
     double precioTP;
+    
+    //Sirve para crear listas de Clientes con los datosdeclarados con @XmlID
     @XmlIDREF
     List<Producto> productos;
-
-    
-
-   
+ 
     public Factura(String FechaEmision, String numeroFactura, Empresa empresa, Cliente Cliente, Producto producto, String observaciones, String formadePago, double impuestos, double subtotal, double totalNeto, List<Producto> productos) {
         this.FechaEmision = FechaEmision;
         this.numeroFactura = numeroFactura;
@@ -49,12 +42,12 @@ public class Factura {
         this.impuestos = impuestos;
         this.subtotal = subtotal;
         this.totalNeto = totalNeto;
-         this.productos = productos;
-         
+         this.productos = productos;         
     }
     
-
-    public Factura() {   productos = new ArrayList<>();  }
+    public Factura() {   
+        productos = new ArrayList<>();  
+    }
       
     public Producto getProducto() {
         return producto;
@@ -62,8 +55,7 @@ public class Factura {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
-    }
-   
+    } 
 
     public double getImpuestos() {
         return impuestos;
@@ -85,8 +77,6 @@ public class Factura {
         this.Cliente = Cliente;
     }
 
- 
-
     public void setImpuestos(double impuestos) {
         this.impuestos = impuestos;
     }
@@ -98,6 +88,7 @@ public class Factura {
     public void setTotalNeto(double totalNeto) {
         this.totalNeto = totalNeto;
     }
+    
     public double subtotal(List<Producto> productos) {
         double newSubtotal = 0;
         if (this.productos.isEmpty()) 
@@ -109,22 +100,21 @@ public class Factura {
         }
     }
     
-     public double impuestos(List<Producto> productos) {
+    public double impuestos(List<Producto> productos) {
         double newImpuestos = 0;
         if (this.productos.isEmpty()) 
             return (double) 0.0;
-         else {
+        else {
             for (Producto p: productos) 
                 newImpuestos+=precioTP*0.13;
             return (double) newImpuestos;
         }
     }
     
-      public String getString_impuestos(){
+    public String getString_impuestos(){
         String stringPrecio = String.valueOf(this.impuestos(productos));
         return stringPrecio;
-    }
-     
+    }     
 
     public String getString_subtotal(){
         String stringPrecio = String.valueOf(this.subtotal(productos));
@@ -142,14 +132,11 @@ public class Factura {
 
     public double totalNeto(List<Producto> productos){
         return (double)this.subtotal(productos)-this.impuestos(productos) ;
-    }
-    
+    }  
     
     public  boolean agregarProducto(Producto p){        
         return this.productos.add(p);
     }
-
- 
 
     public List<Producto> getProductos() {
         return productos;
@@ -199,13 +186,11 @@ public class Factura {
         return empresa;
     }
 
+    //Método línea necesario para calcular el precio total de la factura
     public void linea(Producto p,double cantidad){
         if(!p.getCodigo().equals(p))
         p.setCantidad(cantidad);
         agregarProducto(p);
-        precioTP= p.getPrecio_unitario()*p.getCantidad();
-        
-        
-        
+        precioTP= p.getPrecio_unitario()*p.getCantidad();  
         }
     }

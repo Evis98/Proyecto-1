@@ -5,7 +5,7 @@ import java.util.List;
 import logica.Producto;
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class ProductoControl {
     ProductoModelo modelo;
@@ -19,6 +19,7 @@ public class ProductoControl {
         view.setControl(this);
     }
     
+    //Permite la acción de agregar un Producto 
     public void agregar(Producto p){
         logica.Servicio.instance().add(p);
         modelo.setCurrent(new Producto());

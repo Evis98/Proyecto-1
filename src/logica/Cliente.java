@@ -7,10 +7,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlIDREF;
 /**
  *
- * @author Eva
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//Todo lo que esté debajo de @XmlAccessorType(XmlAccessType.FIELD), será vinculado al XML
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Cliente {
+    //@XmlID registra las variables declaradas debajo de él como propiedades para un XML
     @XmlID
     String nombre;
     String id;
@@ -20,6 +22,7 @@ public class Cliente {
     String distrito;
     String telefono;
     
+    //Sirve para crear listas de Clientes con los datosdeclarados con @XmlID
     @XmlIDREF
     private List<Cliente> clientes;
 

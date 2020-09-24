@@ -1,10 +1,11 @@
 package presentacion.cliente;
+
 import Datos.Datos;
 import java.util.List;
 import logica.Cliente;
 /**
  *
- * @author Eva
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
 public class ClienteControl {
     ClienteModelo modelo;
@@ -18,19 +19,21 @@ public class ClienteControl {
         view.setControl(this);    
     }
     
+    //Permite la acción de agregar un Cliente 
     public void agregar(Cliente c) throws Exception{
     
-            logica.Servicio.instance().add(c);
-            modelo.setCurrent(new Cliente());
-            modelo.setLista(logica.Servicio.instance().getClientes());
-            modelo.commit();  
-    } 
+        logica.Servicio.instance().add(c);
+        modelo.setCurrent(new Cliente());
+        modelo.setLista(logica.Servicio.instance().getClientes());
+        modelo.commit();  
+    }
+
     public void agregarTodos(List<Cliente> c){
     
-            logica.Servicio.instance().addAll1(c);
-            modelo.setCurrent(new Cliente());
-            modelo.setLista(logica.Servicio.instance().getClientes());
-            modelo.commit();  
+        logica.Servicio.instance().addAll1(c);
+        modelo.setCurrent(new Cliente());
+        modelo.setLista(logica.Servicio.instance().getClientes());
+        modelo.commit();  
     } 
     
     

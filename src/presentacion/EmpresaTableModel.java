@@ -6,16 +6,19 @@ import javax.swing.table.TableModel;
 import logica.Empresa;
 /**
  *
- * @author Daniel
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//Las clases TableModel definen la forma de las tablas utilizadas en la interfaz
 public class EmpresaTableModel extends AbstractTableModel implements TableModel{
-    String[] cols = {"Codigo Actividad", "Nombre Comercial", "Identificacion", "Ubicacion", "Correo", "Telefono", "Fax"};               //
+    //Define el nombre de las columnas
+    String[] cols = {"Codigo Actividad", "Nombre Comercial", "Identificacion", "Ubicacion", "Correo", "Telefono", "Fax"}; 
     List<Empresa> rows;   
 
     public EmpresaTableModel(List<Empresa> rows) {
         this.rows = rows;
     }
 
+    //Define la cantidad de columbas para el TableModel de Empresa
     @Override
     public int getColumnCount() {
         return 7;                               
@@ -31,6 +34,7 @@ public class EmpresaTableModel extends AbstractTableModel implements TableModel{
         return rows.size();
     }
     
+    //Define en qué columna ubicar la información de la clase Empresa
     @Override
     public Object getValueAt(int rowc, int col) {
         Empresa c = rows.get(rowc);

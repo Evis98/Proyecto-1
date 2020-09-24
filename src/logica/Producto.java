@@ -6,16 +6,20 @@ import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlAccessType;
 /**
  *
- * @author Ivan
+ * @authors Daniel Campos, Eva Durán y Miguel Montero
  */
+//Todo lo que esté debajo de @XmlAccessorType(XmlAccessType.FIELD), será vinculado al XML
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Producto {
+    //@XmlID registra las variables declaradas debajo de él como propiedades para un XML
     @XmlID
     private String detalle;
     private String medida;
     private String codigo;
     private double precio_unitario;
     private double cantidad = 0.0;
+    
+    //Sirve para crear listas de Clientes con los datosdeclarados con @XmlID
     @XmlIDREF
     private List<Producto> productos;
     
@@ -25,7 +29,8 @@ public class Producto {
         this.codigo = codigo;
         this.precio_unitario = precio_unitario;
     }
-       public double getCantidad() {
+    
+    public double getCantidad() {
         return cantidad;
     }
 
@@ -33,8 +38,7 @@ public class Producto {
         this.cantidad = cantidad;
     }
     
-    public Producto() {
-        
+    public Producto() {       
     }
     
     public String getDetalle() {
@@ -44,10 +48,8 @@ public class Producto {
     public void setDetalle(String detalle) {
         this.detalle = detalle;
     }
-
-    
-    
-       @Override
+ 
+    @Override
     public String toString() {
         return  codigo ;
     }
